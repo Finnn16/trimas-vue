@@ -73,8 +73,8 @@ props: {
 
 .product-image {
     position: absolute;
-    top: -40px;
-    left: 120px;
+    top: -55px;
+    left: 128px;
     height: 300px;
     object-fit: contain;
     z-index: 1;

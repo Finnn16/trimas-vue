@@ -24,7 +24,7 @@
 <style scoped>
 .president-message {
     width: 100%;
-    padding: 40px 20px;
+    padding: 40px 0;
     margin: 0 auto;
     background-color: #fff;
 }

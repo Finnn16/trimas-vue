@@ -3,7 +3,6 @@
     <NavBar />
     <main class="main-content">
       <PresidentMessage />
-      <div class="navbar-spacer"></div>
       <h1 class="head-content">Our Value & Excellence</h1>
       <div class="values-container">
         <CompanyCard v-for="(item, index) in companyValues"
@@ -73,7 +72,7 @@ body {
 
 .main-content {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   padding-top: 80px; 
 }
 
