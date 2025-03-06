@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <NavBar />
+    <header>
+      <NavBar />
+    </header>
     <main class="main-content">
       <PresidentMessage />
       <h1 class="head-content">Our Value & Excellence</h1>
@@ -12,6 +14,8 @@
         :iconSrc="item.iconSrc"
         :productImage="item.productImage"/>
       </div>
+      <h1 class="head-content">Trusted By Leading Brands</h1>
+      <BrandSlider />
     </main>
   </div>
 </template>
@@ -20,13 +24,15 @@
 import NavBar from './components/NavBar.vue'
 import PresidentMessage from './components/PresidentMessage.vue';
 import CompanyCard from './components/CardVision.vue';
+import BrandSlider from './components/BrandCarousel.vue';
 
 export default {
   name: 'App',
   components: {
     NavBar,
     PresidentMessage,
-    CompanyCard
+    CompanyCard,
+    BrandSlider
   },
   data() {
     return {
@@ -56,6 +62,7 @@ export default {
 </script>
 
 <style scoped>
+@import './assets/styles/main.css';
 html {
   scroll-behavior: smooth;
 }
@@ -72,25 +79,27 @@ body {
 
 .main-content {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1600px;
   padding-top: 80px; 
 }
 
 .values-container {
   max-width: 1200px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   padding: 20px;
+  background-color: transparent;
+  margin-left: 150px;
 }
 
 .head-content {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: MDPrimer;
   font-weight: 800;
-  font-size: 5.5rem;
+  font-size: 6.6rem;
   text-align: center;
-  margin: 2% 0;
+  margin: 5% 0;
+  color: black;
 }
 
 @media (max-width: 992px) {
