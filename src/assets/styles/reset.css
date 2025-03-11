@@ -1,4 +1,8 @@
 /* reset.css - CSS Reset komprehensif untuk project Vue.js */
+@font-face {
+  font-family: "MDPrimer";
+  src: url("../assets/fonts/MDPrimer/MDPrimerTest-Bold.otf");
+}
 
 /* Reset box model untuk semua elemen */
 *,

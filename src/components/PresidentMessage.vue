@@ -32,13 +32,12 @@ export default {
 <style scoped>
 .president-message {
   width: 100%;
-  padding: 40px 0;
   margin: 0 auto;
   background-color: transparent;
 }
 
 .message-container {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -49,26 +48,28 @@ export default {
 .president-image {
   flex: 1 1 60%;
   width: 100vw;
+  height: auto;
 }
 
 .president-image img {
   width: 100%;
-  height: auto;
+  height: 500px;
   display: block;
   border-radius: 4px;
 }
 
 .message-content {
   flex: 1 1 40%;
-  padding: 10px 0;
+  align-items: center;
 }
 
 .title {
-  font-size: 3.3rem;
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 4rem;
   font-weight: 700;
   color: #333;
-  margin-bottom: 10px;
   line-height: 1.2;
+  margin-top: 10px;
 }
 
 .message-text {
@@ -78,7 +79,6 @@ export default {
 }
 
 .president-name {
-  margin-top: 20px;
   font-weight: 600;
 }
 

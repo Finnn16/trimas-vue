@@ -16,8 +16,10 @@
       </div>
       <h1 class="head-content">Trusted By Leading Brands</h1>
       <BrandSlider />
+      <ProductionInfo />
     </main>
   </div>
+  <Footer />
 </template>
 
 <script>
@@ -25,6 +27,8 @@ import NavBar from './components/NavBar.vue'
 import PresidentMessage from './components/PresidentMessage.vue';
 import CompanyCard from './components/CardVision.vue';
 import BrandSlider from './components/BrandCarousel.vue';
+import ProductionInfo from './components/ProductionInfo.vue';
+import Footer from './components/Footer.vue';
 
 export default {
   name: 'App',
@@ -32,7 +36,9 @@ export default {
     NavBar,
     PresidentMessage,
     CompanyCard,
-    BrandSlider
+    BrandSlider,
+    ProductionInfo,
+    Footer
   },
   data() {
     return {
@@ -62,7 +68,7 @@ export default {
 </script>
 
 <style scoped>
-@import './assets/styles/main.css';
+@import './assets/styles/reset.css';
 html {
   scroll-behavior: smooth;
 }
@@ -94,9 +100,9 @@ body {
 }
 
 .head-content {
-  font-family: MDPrimer;
+  font-family: 'MDPrimer', sans-serif;
   font-weight: 800;
-  font-size: 6.6rem;
+  font-size: 6rem;
   text-align: center;
   margin: 5% 0;
   color: black;
