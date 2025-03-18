@@ -1,14 +1,13 @@
-<!-- BrandSlider.vue (Vue 3 Composition API) -->
 <template>
   <div>
     <div class="logos" ref="logosContainer">
       <div class="logos-slide" ref="logosSlide">
-        <img
-          v-for="(logo, index) in logos"
-          :key="index"
-          :src="logo.src"
-          :alt="logo.alt"
-        />
+        <div class="logo-container" v-for="(logo, index) in logos" :key="index">
+          <img
+            :src="logo.src"
+            :alt="logo.alt"
+          />
+        </div>
       </div>
       <!-- The clone will be added here programmatically -->
     </div>
@@ -95,11 +94,35 @@ onMounted(() => {
   animation: 9s slide infinite linear;
 }
 
-.logos-slide img {
-  object-fit: contain;
-  height: auto;
+.logo-container {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   width: 130px;
+  height: 80px;
   margin: 0 40px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+  transform: translateY(-5px);
+}
+
+.logo-container img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.logo-container:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
 }
 
 .brand-desk {
@@ -125,8 +148,9 @@ onMounted(() => {
     font-size: 3rem;
   }
 
-  .logos-slide img {
+  .logo-container {
     width: 100px;
+    height: 60px;
     margin: 0 20px;
   }
 

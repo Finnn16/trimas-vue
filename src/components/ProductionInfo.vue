@@ -89,6 +89,7 @@
                 @click="activeStep = index"
               >
                 <div class="indicator-number">{{ index + 1 }}</div>
+                <div class="indicator-title">{{ step.title }}</div>
               </div>
             </div>
             <div class="indicator-line"></div>
@@ -136,6 +137,9 @@
               >
                 <span class="material-icons">arrow_back</span>
               </button>
+              <div class="process-step-indicator">
+                Step {{ activeStep + 1 }} of {{ processSteps.length }}
+              </div>
               <button
                 class="nav-button next"
                 @click="nextStep"
@@ -182,13 +186,15 @@
 </template>
 
 <script>
-import { ref, onUnmounted } from "vue";
+import { ref, onUnmounted, onMounted } from "vue";
 
 export default {
   name: "ProductionInfo",
   setup() {
     const activeStat = ref(null);
     const activeStep = ref(0);
+    let autoAdvanceInterval = null;
+    let isMobile = ref(window.innerWidth <= 768);
 
     // Company stats
     const stats = ref([
@@ -267,14 +273,25 @@ export default {
       }
     };
 
-    // Auto advance process steps every 10 seconds
-    const autoAdvanceInterval = setInterval(() => {
-      activeStep.value = (activeStep.value + 1) % processSteps.value.length;
-    }, 10000);
+    // Window resize handler
+    const handleResize = () => {
+      isMobile.value = window.innerWidth <= 768;
+    };
+
+    onMounted(() => {
+      // Auto advance process steps every 10 seconds
+      autoAdvanceInterval = setInterval(() => {
+        activeStep.value = (activeStep.value + 1) % processSteps.value.length;
+      }, 10000);
+
+      // Add resize event listener
+      window.addEventListener('resize', handleResize);
+    });
 
     // Clean up interval on component unmount
     onUnmounted(() => {
       clearInterval(autoAdvanceInterval);
+      window.removeEventListener('resize', handleResize);
     });
 
     return {
@@ -284,6 +301,7 @@ export default {
       activeStep,
       nextStep,
       prevStep,
+      isMobile,
     };
   },
 };
@@ -307,13 +325,15 @@ export default {
 }
 
 .container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
 }
 
 section {
-  padding: 5rem 0;
+  padding: 4rem 0;
   position: relative;
 }
 
@@ -325,18 +345,18 @@ h3 {
 }
 
 h1 {
-  font-size: 3.5rem;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 700;
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 4vw, 2.5rem);
   font-weight: 600;
   margin-bottom: 1rem;
 }
 
 h3 {
-  font-size: 1.8rem;
+  font-size: clamp(1.5rem, 3vw, 1.8rem);
   font-weight: 600;
   color: var(--primary-color);
 }
@@ -344,6 +364,7 @@ h3 {
 p {
   line-height: 1.6;
   color: #6c757d;
+  font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
 .text-accent {
@@ -355,14 +376,15 @@ p {
   margin-bottom: 3rem;
 }
 
-.section-header h1,h2 {
+.section-header h1,
+.section-header h2 {
   font-family: 'MDPrimer', sans-serif;
   font-weight: 800;
-  font-size: 6rem;
+  font-size: clamp(2.5rem, 8vw, 6rem);
 }
 
 .section-tagline {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
   max-width: 600px;
   margin: 0 auto;
 }
@@ -374,13 +396,20 @@ p {
 
 .quality-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  grid-template-columns: 1fr;
+  gap: 2rem;
   align-items: center;
 }
 
+@media (min-width: 768px) {
+  .quality-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
 .quality-features {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 .feature {
@@ -421,7 +450,13 @@ p {
 }
 
 .main-product {
-  height: 350px;
+  height: 250px;
+}
+
+@media (min-width: 768px) {
+  .main-product {
+    height: 350px;
+  }
 }
 
 .gallery-item:hover img {
@@ -435,7 +470,7 @@ p {
   width: 100%;
   background-color: rgba(74, 107, 175, 0.9);
   color: white;
-  padding: 1rem;
+  padding: 0.75rem;
   text-align: center;
   transform: translateY(100%);
   transition: var(--transition);
@@ -448,7 +483,13 @@ p {
 /* Process Section */
 .process-section {
   background-color: var(--light-gray);
-  padding: 6rem 0;
+  padding: 4rem 0;
+}
+
+@media (min-width: 768px) {
+  .process-section {
+    padding: 6rem 0;
+  }
 }
 
 .process-showcase {
@@ -458,9 +499,19 @@ p {
 
 .process-indicators-container {
   position: relative;
-  max-width: 700px;
-  margin: 0 auto 3rem;
-  padding: 0 30px;
+  max-width: 100%;
+  margin: 0 auto 2rem;
+  padding: 0 15px;
+  overflow-x: auto;
+}
+
+@media (min-width: 768px) {
+  .process-indicators-container {
+    max-width: 700px;
+    padding: 0 30px;
+    margin-bottom: 3rem;
+    overflow-x: visible;
+  }
 }
 
 /* The horizontal line that connects all indicators */
@@ -472,14 +523,28 @@ p {
   top: 25px;
   left: 0;
   z-index: 1;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .indicator-line {
+    display: block;
+  }
 }
 
 .process-indicators {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   z-index: 2;
+  min-width: 500px;
+}
+
+@media (min-width: 768px) {
+  .process-indicators {
+    min-width: auto;
+  }
 }
 
 .process-indicator {
@@ -487,47 +552,104 @@ p {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  padding: 0 5px;
 }
 
 .indicator-number {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: #2c3e50;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  margin-bottom: 8px;
+}
+
+.indicator-title {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: center;
+  max-width: 90px;
+  color: #6c757d;
+  transition: var(--transition);
+  display: none;
+}
+
+@media (min-width: 480px) {
+  .indicator-title {
+    display: block;
+  }
 }
 
 .process-indicator.active .indicator-number {
   background-color: #092e5e;
   color: white;
 }
+
+.process-indicator.active .indicator-title {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
 .process-content-container {
   position: relative;
   background-color: white;
   border-radius: 8px;
   box-shadow: var(--shadow);
   overflow: hidden;
-  padding: 2rem;
+  padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .process-content-container {
+    padding: 2rem;
+  }
 }
 
 .process-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .process-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+}
+
+.process-step-indicator {
+  font-size: 0.9rem;
+  color: #6c757d;
+  text-align: center;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .process-step-indicator {
+    display: none;
+  }
 }
 
 .process-image {
-  height: 300px;
+  height: 200px;
   overflow: hidden;
   border-radius: 8px;
+}
+
+@media (min-width: 768px) {
+  .process-image {
+    height: 300px;
+  }
 }
 
 .process-image img {
@@ -538,27 +660,28 @@ p {
 }
 
 .process-details h3 {
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .process-tools {
   display: flex;
+  flex-wrap: wrap;
   margin-top: 1.5rem;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .tool-item {
   display: flex;
   align-items: center;
   background-color: var(--light-gray);
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 30px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .tool-img {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   object-fit: cover;
   border-radius: 50%;
   margin-right: 0.5rem;
@@ -567,12 +690,13 @@ p {
 .process-navigation {
   display: flex;
   justify-content: space-between;
-  margin-top: 2rem;
+  align-items: center;
+  margin-top: 1.5rem;
 }
 
 .nav-button {
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background-color: white;
   border: 1px solid #e9ecef;
@@ -612,13 +736,13 @@ p {
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
 }
 
 .stat-card {
   background-color: var(--light-gray);
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 8px;
   box-shadow: var(--shadow);
   text-align: center;
@@ -626,6 +750,12 @@ p {
   position: relative;
   overflow: hidden;
   z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .stat-card {
+    padding: 2rem;
+  }
 }
 
 .stat-card::before {
@@ -662,114 +792,91 @@ p {
 }
 
 .stat-icon span {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   color: var(--accent-color);
   transition: var(--transition);
 }
 
 .stat-number {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: var(--dark-gray);
   margin-bottom: 0.5rem;
   transition: var(--transition);
 }
 
+@media (min-width: 768px) {
+  .stat-number {
+    font-size: 3rem;
+  }
+}
+
 .stat-title {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   color: var(--text-color);
   transition: var(--transition);
 }
 
+@media (min-width: 768px) {
+  .stat-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+}
+
 .stat-desc {
+  font-size: 0.9rem;
   transition: var(--transition);
 }
 
-.vertical-text {
-  position: absolute;
-  right: 5%;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #e9ecef;
-  text-align: center;
-  line-height: 1.5;
-}
-
-/* Responsive Styles */
-@media (max-width: 1024px) {
-  h1 {
-    font-size: 2.8rem;
-  }
-
-  h2 {
-    font-size: 2rem;
-  }
-
-  .quality-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .vertical-text {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  section {
-    padding: 3rem 0;
-  }
-
-  .process-content {
-    grid-template-columns: 1fr;
-  }
-
-  .indicator-line {
-    width: 50px;
-  }
-
-  .process-image {
-    height: 200px;
+@media (min-width: 768px) {
+  .stat-desc {
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  h1 {
-    font-size: 2.2rem;
+  .container {
+    padding: 0 1rem;
   }
-
-  h2 {
-    font-size: 1.8rem;
+  
+  section {
+    padding: 2rem 0;
   }
-
-  .process-indicators {
-    overflow-x: auto;
-    padding-bottom: 1rem;
-    justify-content: flex-start;
+  
+  .section-header {
+    margin-bottom: 2rem;
   }
-
-  .indicator-number {
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
+  
+  .quality-features {
+    margin-top: 1rem;
   }
-
-  .indicator-line {
-    width: 30px;
+  
+  .feature {
+    margin-bottom: 0.75rem;
   }
-
+  
+  .main-product {
+    height: 200px;
+  }
+  
+  .process-content-container {
+    padding: 1rem;
+  }
+  
   .process-tools {
     flex-direction: column;
+    gap: 0.5rem;
   }
-
-  .stats-grid {
-    gap: 1rem;
+  
+  .stat-card {
+    padding: 1.25rem;
+  }
+  
+  .stat-number {
+    font-size: 2.25rem;
   }
 }
 </style>

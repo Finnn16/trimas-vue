@@ -30,10 +30,12 @@ export default {
 </script>
 
 <style scoped>
+/* Styling Dasar */
 .president-message {
   width: 100%;
   margin: 0 auto;
   background-color: transparent;
+  padding: 40px 20px; /* Padding untuk semua ukuran layar */
 }
 
 .message-container {
@@ -42,34 +44,38 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
+  gap: 30px; /* Jarak lebih besar untuk desktop */
 }
 
 .president-image {
-  flex: 1 1 60%;
-  width: 100vw;
-  height: auto;
+  flex: 1 1 50%; /* Proporsi fleksibel */
+  max-width: 50%; /* Batasi lebar maksimum */
 }
 
 .president-image img {
   width: 100%;
-  height: 500px;
+  height: auto; /* Menjaga rasio aspek gambar */
   display: block;
-  border-radius: 4px;
+  border-radius: 8px; /* Radius sudut lebih lembut */
+  object-fit: cover; /* Pastikan gambar terisi dengan baik */
+  max-height: 600px; /* Batasi tinggi maksimum */
 }
 
 .message-content {
-  flex: 1 1 40%;
+  flex: 1 1 50%; /* Proporsi fleksibel */
+  max-width: 50%;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .title {
   font-family: 'IBM Plex Serif', serif;
-  font-size: 4rem;
+  font-size: 3.5rem; /* Ukuran awal untuk desktop */
   font-weight: 700;
   color: #333;
   line-height: 1.2;
-  margin-top: 10px;
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
 .message-text {
@@ -80,34 +86,72 @@ export default {
 
 .president-name {
   font-weight: 600;
+  margin-top: 15px;
+  color: #2c3e50; /* Warna lebih kontras */
 }
 
-/* Responsif untuk tablet dan mobile */
+/* Responsif untuk Tablet (maksimum 992px) */
 @media screen and (max-width: 992px) {
   .message-container {
     flex-direction: column;
+    gap: 20px; /* Jarak lebih kecil untuk tablet */
   }
 
-  .president-image {
-    max-width: 100%;
+  .president-image,
+  .message-content {
+    max-width: 100%; /* Penuhi lebar layar */
+    flex: 1 1 100%;
   }
 
-  .title {
-    font-size: 32px;
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .president-message {
-    padding: 15px 0;
+  .president-image img {
+    max-height: 400px; /* Tinggi lebih kecil untuk tablet */
   }
 
   .title {
-    font-size: 28px;
+    font-size: 2.5rem; /* Ukuran teks lebih kecil */
+    text-align: center; /* Pusatkan teks */
   }
 
   .message-text {
-    font-size: 14px;
+    text-align: center; /* Pusatkan teks */
+  }
+}
+
+/* Responsif untuk Mobile (maksimum 576px) */
+@media screen and (max-width: 576px) {
+  .president-message {
+    padding: 20px 10px; /* Padding lebih kecil untuk mobile */
+  }
+
+  .president-image img {
+    max-height: 300px; /* Tinggi lebih kecil untuk mobile */
+  }
+
+  .title {
+    font-size: 2rem; /* Ukuran teks lebih kecil lagi */
+  }
+
+  .message-text {
+    font-size: 0.95rem; /* Ukuran teks lebih kecil */
+  }
+
+  .president-name {
+    font-size: 1.1rem; /* Pastikan nama tetap terbaca */
+  }
+}
+
+/* Responsif Tambahan untuk Layar Sangat Kecil (< 400px) */
+@media screen and (max-width: 400px) {
+  .title {
+    font-size: 1.8rem; /* Sesuaikan untuk layar sangat kecil */
+  }
+
+  .message-text {
+    font-size: 0.9rem; /* Ukuran teks lebih kecil lagi */
+  }
+
+  .president-image img {
+    max-height: 250px; /* Tinggi lebih kecil untuk layar kecil */
   }
 }
 </style>

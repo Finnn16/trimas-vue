@@ -2,10 +2,12 @@
   <div id="app">
     <header>
       <NavBar />
+      <div class="content">
+      </div>
     </header>
     <main class="main-content">
       <PresidentMessage />
-      <h1 class="head-content">Our Value & Excellence</h1>
+      <h1 class="head-content">Our Value &<span style="color: #092E5E;"> Excellence</span> </h1>
       <div class="values-container">
         <CompanyCard v-for="(item, index) in companyValues"
         :key="index"
@@ -14,7 +16,7 @@
         :iconSrc="item.iconSrc"
         :productImage="item.productImage"/>
       </div>
-      <h1 class="head-content">Trusted By Leading Brands</h1>
+      <h1 class="head-content">Trusted By <span style="color: #092E5E;">Leading Brands</span></h1>
       <BrandSlider />
       <ProductionInfo />
     </main>
