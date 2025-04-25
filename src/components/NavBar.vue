@@ -14,7 +14,7 @@
       
       <div class="menu-items" :class="{ active: isOpen }">
         <a href="#" class="nav-link" @click="closeMenu">Home</a>
-        <router-link to="/about" class="nav-link" @click="closeMenu">
+        <router-link to="/company-details" class="nav-link" @click="closeMenu">
           About
         </router-link>
         <div class="logo desktop-logo">

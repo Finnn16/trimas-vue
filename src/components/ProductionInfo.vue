@@ -482,7 +482,6 @@ p {
 
 /* Process Section */
 .process-section {
-  background-color: var(--light-gray);
   padding: 4rem 0;
 }
 
