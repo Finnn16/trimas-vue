@@ -25,7 +25,9 @@
         <router-link to="/career-page" class="nav-link" @click="closeMenu">
           Career
         </router-link>
-        <a href="#" class="nav-link" @click="closeMenu">Contact</a>
+        <router-link to="/about-us" class="nav-link" @click="closeMenu">
+          About Us
+        </router-link>
       </div>
     </div>
   </nav>

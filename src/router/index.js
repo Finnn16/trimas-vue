@@ -1,32 +1,32 @@
 // src/router/index.js
-import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../views/Home.vue'; 
-import CompanyDetails from '../views/CompanyDetails.vue'; 
-import CareerPage from '../views/CareerPage.vue';
-import JobDetail from '../views/JobDetail.vue';
-import path from 'path';
+import { createRouter, createWebHistory } from "vue-router";
+import Home from "../views/Home.vue";
+import CareerPage from "../views/CareerPage.vue";
+import JobDetail from "../views/JobDetail.vue";
+import path from "path";
+import AboutUs from "../views/AboutUs.vue";
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home,  
+    path: "/",
+    name: "Home",
+    component: Home,
   },
   {
-    path: '/company-details',
-    name: 'CompanyDetails',
-    component: CompanyDetails,
+    path: "/about-us",
+    name: "AboutUs",
+    component: AboutUs,
   },
   {
-    path: '/career-page',
-    name: 'CareerPage',
+    path: "/career-page",
+    name: "CareerPage",
     component: CareerPage,
   },
   {
-    path: '/job-detail/:id',
-    name: 'JobDetail',
+    path: "/job-detail/:id",
+    name: "JobDetail",
     component: JobDetail,
-  }
+  },
 ];
 
 const router = createRouter({
