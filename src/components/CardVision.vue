@@ -43,9 +43,7 @@ export default {
   height: 100%;
   display: flex;
   flex-direction: column;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: visible;
   margin-top: 10%;

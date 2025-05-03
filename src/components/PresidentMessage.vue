@@ -69,7 +69,7 @@ export default {
 }
 
 .title {
-  font-family: 'IBM Plex Serif', serif;
+  font-family: "IBM Plex Serif", serif;
   font-size: 3.5rem; /* Ukuran awal untuk desktop */
   font-weight: 700;
   color: #333;

@@ -14,15 +14,15 @@
           <div class="quality-text">
             <h3>Premium <span class="text-accent">Quality</span></h3>
             <p>
-                We are dedicated to creating garments of the highest quality,
-                paying meticulous attention to every detail. Our commitment to
-                excellence ensures that each product we manufacture meets the
-                highest standards of craftsmanship and durability.
+              We are dedicated to creating garments of the highest quality,
+              paying meticulous attention to every detail. Our commitment to
+              excellence ensures that each product we manufacture meets the
+              highest standards of craftsmanship and durability.
             </p>
             <p>
-                From the selection of premium materials to the precision of our
-                stitching, we strive to deliver garments that not only look great
-                but also stand the test of time.
+              From the selection of premium materials to the precision of our
+              stitching, we strive to deliver garments that not only look great
+              but also stand the test of time.
             </p>
             <div class="quality-features">
               <div class="feature">
@@ -234,28 +234,32 @@ export default {
         title: "Material Selection",
         description:
           "We source only the finest fabrics and materials for our garments. Each material is carefully evaluated for quality, durability, and comfort before being approved for production.",
-        image: "https://cdn.propercloth.com/fab_gallery/f95c9e1d2b3c8df6e66b00356faeadc5.jpg",
+        image:
+          "https://cdn.propercloth.com/fab_gallery/f95c9e1d2b3c8df6e66b00356faeadc5.jpg",
         tools: ["Material Testing Kit", "Quality Inspection Tools"],
       },
       {
         title: "Pattern Making",
         description:
           "Our expert pattern makers create precise templates for each garment. These patterns are the foundation of our clothing, ensuring perfect fit and style for every piece we produce.",
-        image: "https://i0.wp.com/textilelearner.net/wp-content/uploads/2023/11/Pattern-Making.jpg?fit=600%2C400&ssl=1",
+        image:
+          "https://i0.wp.com/textilelearner.net/wp-content/uploads/2023/11/Pattern-Making.jpg?fit=600%2C400&ssl=1",
         tools: ["CAD Software", "Precision Cutting Tools"],
       },
       {
         title: "Cutting & Stitching",
         description:
           "Using Juki machines, we cut and stitch each piece with precision. Our skilled operators follow strict quality guidelines to ensure every seam is perfect and every detail is carefully executed.",
-        image: "https://images-cdn.ubuy.com.sa/634fef3d0f9ef1365518f4b7-juki-ddl-8100-economy-straight-stitch.jpg",
+        image:
+          "https://images-cdn.ubuy.com.sa/634fef3d0f9ef1365518f4b7-juki-ddl-8100-economy-straight-stitch.jpg",
         tools: ["Juki Sewing Machines", "Precision Cutters"],
       },
       {
         title: "Quality Control",
         description:
           "Every garment undergoes rigorous quality checks before leaving our facility. Our QC team inspects each piece for stitching quality, measurements, and overall finish to ensure only the best reaches our customers.",
-        image: "https://img.freepik.com/premium-photo/garment-factory-quality-control-check-defects_508835-1985.jpg",
+        image:
+          "https://img.freepik.com/premium-photo/garment-factory-quality-control-check-defects_508835-1985.jpg",
         tools: ["Quality Inspection Forms", "Measurement Tools"],
       },
     ]);
@@ -285,13 +289,13 @@ export default {
       }, 10000);
 
       // Add resize event listener
-      window.addEventListener('resize', handleResize);
+      window.addEventListener("resize", handleResize);
     });
 
     // Clean up interval on component unmount
     onUnmounted(() => {
       clearInterval(autoAdvanceInterval);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     });
 
     return {
@@ -378,7 +382,7 @@ p {
 
 .section-header h1,
 .section-header h2 {
-  font-family: 'MDPrimer', sans-serif;
+  font-family: "MDPrimer", sans-serif;
   font-weight: 800;
   font-size: clamp(2.5rem, 8vw, 6rem);
 }
@@ -840,40 +844,40 @@ p {
   .container {
     padding: 0 1rem;
   }
-  
+
   section {
     padding: 2rem 0;
   }
-  
+
   .section-header {
     margin-bottom: 2rem;
   }
-  
+
   .quality-features {
     margin-top: 1rem;
   }
-  
+
   .feature {
     margin-bottom: 0.75rem;
   }
-  
+
   .main-product {
     height: 200px;
   }
-  
+
   .process-content-container {
     padding: 1rem;
   }
-  
+
   .process-tools {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .stat-card {
     padding: 1.25rem;
   }
-  
+
   .stat-number {
     font-size: 2.25rem;
   }

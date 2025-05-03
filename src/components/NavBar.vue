@@ -11,21 +11,25 @@
           <div class="line3"></div>
         </div>
       </div>
-      
+
       <div class="menu-items" :class="{ active: isOpen }">
-        <a href="#" class="nav-link" @click="closeMenu">Home</a>
-        <router-link to="/company-details" class="nav-link" @click="closeMenu">
-          About
+        <router-link to="/" class="nav-link" @click="closeMenu">
+          Home
+        </router-link>
+        <router-link to="/company-article" class="nav-link" @click="closeMenu">
+          Article
         </router-link>
         <div class="logo desktop-logo">
           <img src="../assets/img/TrimasTransparan.webp" alt="Logo" />
         </div>
-        <a href="#" class="nav-link" @click="closeMenu">Career</a>
+        <router-link to="/career-page" class="nav-link" @click="closeMenu">
+          Career
+        </router-link>
         <a href="#" class="nav-link" @click="closeMenu">Contact</a>
       </div>
     </div>
   </nav>
-  <!-- Spacer div to prevent content from hiding under fixed navbar -->
+
   <div class="navbar-spacer"></div>
 </template>
 
@@ -40,23 +44,22 @@ export default {
   methods: {
     toggleMenu() {
       this.isOpen = !this.isOpen;
-      
-      // Prevent scrolling when menu is open
+
       if (this.isOpen) {
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = "hidden";
       } else {
-        document.body.style.overflow = '';
+        document.body.style.overflow = "";
       }
     },
     closeMenu() {
       this.isOpen = false;
-      document.body.style.overflow = '';
-    }
+      document.body.style.overflow = "";
+    },
   },
-  // Clean up when component is destroyed
+
   beforeUnmount() {
-    document.body.style.overflow = '';
-  }
+    document.body.style.overflow = "";
+  },
 };
 </script>
 
@@ -129,7 +132,7 @@ export default {
 }
 
 .nav-link::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 0;
   height: 2px;
@@ -163,15 +166,15 @@ export default {
   .navbar-container {
     padding: 0 1.5rem;
   }
-  
+
   .menu-items {
     gap: 1.5rem;
   }
-  
+
   .logo img {
     height: 40px;
   }
-  
+
   .nav-link {
     font-size: 1rem;
   }
@@ -181,30 +184,30 @@ export default {
   .navbar {
     height: 60px;
   }
-  
+
   .navbar-spacer {
     height: 60px;
   }
-  
+
   .navbar-container {
     padding: 0 1rem;
     flex-direction: column;
     justify-content: flex-start;
   }
-  
+
   .mobile-header {
     display: flex;
     height: 60px;
   }
-  
+
   .mobile-logo {
     display: flex;
   }
-  
+
   .desktop-logo {
     display: none;
   }
-  
+
   .menu-items {
     position: fixed;
     top: 60px;
@@ -222,11 +225,11 @@ export default {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
   }
-  
+
   .menu-items.active {
     transform: translateX(0);
   }
-  
+
   .nav-link {
     padding: 1.2rem;
     width: 100%;
@@ -234,52 +237,53 @@ export default {
     font-size: 1.1rem;
     border-bottom: 1px solid #f1f1f1;
   }
-  
+
   .nav-link::after {
     display: none;
   }
-  
+
   .nav-link:hover {
     background-color: #f9f5f5;
   }
-  
+
   .burger {
     display: block;
   }
-  
+
   /* Animasi untuk burger menu */
   .navbar-open .line1 {
     transform: rotate(-45deg) translate(-5px, 6px);
   }
-  
+
   .navbar-open .line2 {
     opacity: 0;
   }
-  
+
   .navbar-open .line3 {
     transform: rotate(45deg) translate(-5px, -6px);
   }
 }
 
 @media screen and (max-width: 480px) {
-  .navbar, .navbar-spacer {
+  .navbar,
+  .navbar-spacer {
     height: 55px;
   }
-  
+
   .mobile-header {
     height: 55px;
   }
-  
+
   .logo img {
     height: 35px;
   }
-  
+
   .menu-items {
     top: 55px;
     height: calc(100vh - 55px);
     padding: 1rem 0;
   }
-  
+
   .nav-link {
     padding: 1rem;
     font-size: 1rem;

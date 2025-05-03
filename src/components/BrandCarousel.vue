@@ -3,10 +3,7 @@
     <div class="logos" ref="logosContainer">
       <div class="logos-slide" ref="logosSlide">
         <div class="logo-container" v-for="(logo, index) in logos" :key="index">
-          <img
-            :src="logo.src"
-            :alt="logo.alt"
-          />
+          <img :src="logo.src" :alt="logo.alt" />
         </div>
       </div>
       <!-- The clone will be added here programmatically -->
@@ -41,6 +38,7 @@ const logos = ref([
   { src: `${logoPath}Logo-bridgestone.png`, alt: "Bridgestone" },
   { src: `${logoPath}srixon.svg`, alt: "Srixon" },
   { src: `${logoPath}jobb-big.png`, alt: "Jobb" },
+  { src: `${logoPath}WAC.png`, alt: "WAC" },
 ]);
 
 const logosContainer = ref(null);
