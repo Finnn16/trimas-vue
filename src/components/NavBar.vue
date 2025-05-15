@@ -1,9 +1,12 @@
 <template>
   <nav class="navbar" :class="{ 'navbar-open': isOpen }">
     <div class="navbar-container">
+      <!-- Mobile Header -->
       <div class="mobile-header">
         <div class="logo mobile-logo">
-          <img src="../assets/img/TrimasTransparan.webp" alt="Logo" />
+          <router-link to="/" @click="closeMenu">
+            <img src="../assets/img/Trimas-Logo.png" alt="Garment Co Logo" />
+          </router-link>
         </div>
         <div class="burger" @click="toggleMenu">
           <div class="line1"></div>
@@ -12,22 +15,26 @@
         </div>
       </div>
 
+      <!-- Desktop Logo -->
+      <div class="logo desktop-logo">
+        <router-link to="/" @click="closeMenu">
+          <img src="../assets/img/Trimas-Logo.png" alt="Garment Co Logo" />
+        </router-link>
+      </div>
+
       <div class="menu-items" :class="{ active: isOpen }">
-        <router-link to="/" class="nav-link" @click="closeMenu">
-          Home
-        </router-link>
-        <router-link to="/company-article" class="nav-link" @click="closeMenu">
-          Article
-        </router-link>
-        <div class="logo desktop-logo">
-          <img src="../assets/img/TrimasTransparan.webp" alt="Logo" />
-        </div>
-        <router-link to="/career-page" class="nav-link" @click="closeMenu">
-          Career
-        </router-link>
-        <router-link to="/about-us" class="nav-link" @click="closeMenu">
-          About Us
-        </router-link>
+        <router-link to="/" class="nav-link" @click="closeMenu"
+          >Home</router-link
+        >
+        <router-link to="/company-article" class="nav-link" @click="closeMenu"
+          >Article</router-link
+        >
+        <router-link to="/career-page" class="nav-link" @click="closeMenu"
+          >Career</router-link
+        >
+        <router-link to="/about-us" class="nav-link" @click="closeMenu"
+          >About Us</router-link
+        >
       </div>
     </div>
   </nav>
@@ -46,36 +53,42 @@ export default {
   methods: {
     toggleMenu() {
       this.isOpen = !this.isOpen;
-
-      if (this.isOpen) {
-        document.body.style.overflow = "hidden";
-      } else {
-        document.body.style.overflow = "";
-      }
+      document.body.style.overflow = this.isOpen ? "hidden" : "";
     },
     closeMenu() {
       this.isOpen = false;
       document.body.style.overflow = "";
     },
+    handleResize() {
+      if (window.innerWidth > 768 && this.isOpen) {
+        this.closeMenu();
+      }
+    },
   },
-
+  mounted() {
+    window.addEventListener("resize", this.handleResize);
+  },
   beforeUnmount() {
+    window.removeEventListener("resize", this.handleResize);
     document.body.style.overflow = "";
   },
 };
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 70px;
-  background-color: white;
+  background-color: #ffffff;
   z-index: 1000;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  font-family: "Poppins", sans-serif;
 }
 
 .navbar-spacer {
@@ -84,11 +97,12 @@ export default {
 
 .navbar-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 100%;
-  padding: 0 2rem;
-  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
 .mobile-header {
@@ -98,39 +112,30 @@ export default {
   align-items: center;
 }
 
-.logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .logo img {
-  height: 45px;
+  padding-top: 10px;
+  height: 60px;
+  width: auto;
   transition: height 0.3s ease;
 }
 
 .menu-items {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 2.5rem;
-}
-
-.menu-items a {
-  padding: 10px;
-  font-weight: 600;
+  gap: 2rem;
 }
 
 .nav-link {
-  color: #333;
+  color: #2d3748;
   text-decoration: none;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: 600;
   position: relative;
+  transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-  color: black;
+  color: #1a4971;
 }
 
 .nav-link::after {
@@ -138,15 +143,15 @@ export default {
   position: absolute;
   width: 0;
   height: 2px;
-  bottom: 0;
+  bottom: -4px;
   left: 50%;
-  background-color: #333;
+  background-color: #1a4971;
   transition: all 0.3s ease;
+  transform: translateX(-50%);
 }
 
 .nav-link:hover::after {
-  width: 80%;
-  left: 10%;
+  width: 100%;
 }
 
 .burger {
@@ -156,32 +161,14 @@ export default {
 }
 
 .burger div {
-  width: 25px;
+  width: 24px;
   height: 3px;
-  background-color: #333;
+  background-color: #2d3748;
   margin: 5px;
   transition: all 0.3s ease;
 }
 
-/* Responsiveness */
-@media screen and (max-width: 992px) {
-  .navbar-container {
-    padding: 0 1.5rem;
-  }
-
-  .menu-items {
-    gap: 1.5rem;
-  }
-
-  .logo img {
-    height: 40px;
-  }
-
-  .nav-link {
-    font-size: 1rem;
-  }
-}
-
+/* Mobile Styles */
 @media screen and (max-width: 768px) {
   .navbar {
     height: 60px;
@@ -193,17 +180,11 @@ export default {
 
   .navbar-container {
     padding: 0 1rem;
-    flex-direction: column;
-    justify-content: flex-start;
   }
 
   .mobile-header {
     display: flex;
     height: 60px;
-  }
-
-  .mobile-logo {
-    display: flex;
   }
 
   .desktop-logo {
@@ -214,18 +195,14 @@ export default {
     position: fixed;
     top: 60px;
     left: 0;
-    right: 0;
-    background-color: white;
-    flex-direction: column;
     width: 100%;
     height: calc(100vh - 60px);
-    text-align: center;
+    background-color: #ffffff;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
     transform: translateX(-100%);
-    transition: transform 0.5s ease;
-    gap: 0;
-    padding: 1.5rem 0;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
+    transition: transform 0.4s ease;
   }
 
   .menu-items.active {
@@ -233,11 +210,10 @@ export default {
   }
 
   .nav-link {
-    padding: 1.2rem;
+    font-size: 1.2rem;
+    padding: 0.75rem;
     width: 100%;
-    display: block;
-    font-size: 1.1rem;
-    border-bottom: 1px solid #f1f1f1;
+    text-align: center;
   }
 
   .nav-link::after {
@@ -245,14 +221,14 @@ export default {
   }
 
   .nav-link:hover {
-    background-color: #f9f5f5;
+    background-color: #f7fafc;
+    color: #1a4971;
   }
 
   .burger {
     display: block;
   }
 
-  /* Animasi untuk burger menu */
   .navbar-open .line1 {
     transform: rotate(-45deg) translate(-5px, 6px);
   }
@@ -277,18 +253,17 @@ export default {
   }
 
   .logo img {
-    height: 35px;
+    height: 40px;
   }
 
   .menu-items {
     top: 55px;
     height: calc(100vh - 55px);
-    padding: 1rem 0;
   }
 
   .nav-link {
-    padding: 1rem;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    padding: 0.5rem;
   }
 }
 </style>

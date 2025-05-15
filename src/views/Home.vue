@@ -15,7 +15,12 @@
         :productImage="item.productImage"
       />
     </div>
+    <br /><br />
     <ProductionInfo />
+    <h1 class="head-content">
+      Shipping<span style="color: #092e5e"> Brands</span>
+    </h1>
+    <ShippingMap />
     <h1 class="head-content">
       Trusted By <span style="color: #092e5e">Leading Brands</span>
     </h1>
@@ -29,6 +34,8 @@ import CompanyCard from "../components/CardVision.vue";
 import BrandSlider from "../components/BrandCarousel.vue";
 import ProductionInfo from "../components/ProductionInfo.vue";
 import HeroSection from "../components/HeroSection.vue";
+import { useRouter } from "vue-router"; // Impor useRouter
+import ShippingMap from "@/components/ShippingMap.vue";
 
 export default {
   name: "Home",
@@ -38,6 +45,7 @@ export default {
     BrandSlider,
     ProductionInfo,
     HeroSection,
+    ShippingMap,
   },
   data() {
     return {
@@ -65,6 +73,14 @@ export default {
         },
       ],
     };
+  },
+  setup() {
+    const router = useRouter(); // Gunakan composition API untuk router
+    return { router };
+  },
+  mounted() {
+    document.title =
+      this.router.currentRoute.value.meta?.title || "Home - Trimas SGI";
   },
 };
 </script>

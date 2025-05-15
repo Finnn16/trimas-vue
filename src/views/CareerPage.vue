@@ -88,15 +88,20 @@
     </div>
     <div v-else class="job-list">
       <div v-for="job in jobs" :key="job.ID" class="job-card">
-        <h3>{{ job.Title }}</h3>
-        <p>{{ job.Department }}</p>
-        <a :href="`/job-detail/${job.ID}`" class="details-link">Selengkapnya</a>
+        <div class="job-content">
+          <h3>{{ job.Title }}</h3>
+          <p>{{ job.Department }}</p>
+        </div>
+        <div class="job-link">
+          <a :href="`/job-detail/${job.ID}`" class="details-link">Read More</a>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+// Script tetap sama seperti sebelumnya
 export default {
   name: "CareerPage",
   data() {
@@ -287,12 +292,26 @@ export default {
 }
 
 .job-card {
+  width: 250px;
+  height: 120px;
   border: 1px solid #ddd;
   padding: 15px;
   border-radius: 8px;
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto; /* Memastikan box berada di tengah */
+}
+
+.job-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .job-card h3 {
@@ -307,8 +326,12 @@ export default {
   color: #7f8c8d;
 }
 
+.job-link {
+  margin-top: auto; /* Memastikan link selalu di bawah */
+}
+
 .details-link {
-  color: #1e2a44;
+  color: #7f8c8d;
   text-decoration: none;
   font-weight: bold;
   font-size: 0.9rem;
@@ -362,6 +385,8 @@ export default {
   }
 
   .job-card {
+    width: 100%; /* Menyesuaikan lebar di layar kecil */
+    height: 180px; /* Sedikit lebih kecil untuk layar kecil */
     padding: 10px;
   }
 
@@ -416,6 +441,8 @@ export default {
   }
 
   .job-card {
+    width: 200px; /* Ukuran tetap untuk tablet */
+    height: 200px;
     padding: 12px;
   }
 

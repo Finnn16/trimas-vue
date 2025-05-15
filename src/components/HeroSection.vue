@@ -1,5 +1,9 @@
 <template>
   <section class="hero-section">
+    <div
+      class="parallax-bg"
+      :style="{ transform: `translateY(${parallaxOffset}px)` }"
+    ></div>
     <div class="overlay"></div>
     <div class="content">
       <h1>
@@ -21,8 +25,29 @@
 </template>
 
 <script>
+import { ref, onMounted, onUnmounted } from "vue";
+
 export default {
   name: "HeroSection",
+  setup() {
+    const parallaxOffset = ref(0);
+
+    const updateParallax = () => {
+      const scrollY = window.scrollY;
+      parallaxOffset.value = scrollY * 0.5; // Faktor 0.5 untuk efek parallax (bisa disesuaikan)
+      requestAnimationFrame(updateParallax);
+    };
+
+    onMounted(() => {
+      requestAnimationFrame(updateParallax);
+    });
+
+    onUnmounted(() => {
+      // Cleanup jika perlu
+    });
+
+    return { parallaxOffset };
+  },
 };
 </script>
 
@@ -30,14 +55,26 @@ export default {
 .hero-section {
   position: relative;
   height: 100vh;
-  background-image: url("../assets/img/karyawan.webp");
-  background-size: cover;
-  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: white;
+  overflow: hidden; /* Mencegah gambar meluber */
+}
+
+.parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/img/karyawan.webp");
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  will-change: transform; /* Optimasi performa */
+  transition: transform 0.1s linear; /* Transisi halus */
 }
 
 .overlay {
