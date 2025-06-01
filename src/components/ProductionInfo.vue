@@ -196,7 +196,7 @@ export default {
     let autoAdvanceInterval = null;
     let isMobile = ref(window.innerWidth <= 768);
 
-    // Company stats
+    // Company stats dengan tambahan International Buyers
     const stats = ref([
       {
         icon: "inventory_2",
@@ -207,7 +207,7 @@ export default {
       },
       {
         icon: "history",
-        value: "33",
+        value: "34",
         title: "Years Experience",
         description:
           "Established in 1991, our company has amassed decades of experience in the garment industry.",
@@ -226,9 +226,16 @@ export default {
         description:
           "We produce thousands of high-quality garments each month with precision and care.",
       },
+      {
+        icon: "public",
+        value: "18+",
+        title: "International Buyers",
+        description:
+          "Trusted by over 18 international buyers, showcasing our global reach in premium garment manufacturing.",
+      },
     ]);
 
-    // Enhanced process steps
+    // Enhanced process steps (tidak berubah)
     const processSteps = ref([
       {
         title: "Material Selection",
@@ -743,6 +750,12 @@ p {
   gap: 1.5rem;
 }
 
+@media (min-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(5, 1fr); /* Tepat 5 kolom untuk layar besar */
+  }
+}
+
 .stat-card {
   background-color: var(--light-gray);
   padding: 1.5rem;
@@ -883,3 +896,4 @@ p {
   }
 }
 </style>
+<style scoped></style>

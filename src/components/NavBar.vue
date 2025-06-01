@@ -26,7 +26,7 @@
         <router-link to="/" class="nav-link" @click="closeMenu"
           >Home</router-link
         >
-        <router-link to="/company-article" class="nav-link" @click="closeMenu"
+        <router-link to="/article-list" class="nav-link" @click="closeMenu"
           >Article</router-link
         >
         <router-link to="/career-page" class="nav-link" @click="closeMenu"
@@ -128,10 +128,12 @@ export default {
 .nav-link {
   color: #2d3748;
   text-decoration: none;
+  font-family: "Montserrat", sans-serif;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 800;
   position: relative;
   transition: color 0.3s ease;
+  letter-spacing: 1.2px;
 }
 
 .nav-link:hover {

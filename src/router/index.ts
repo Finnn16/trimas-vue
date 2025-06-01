@@ -3,6 +3,8 @@ import Home from "../views/Home.vue";
 import AboutUs from "../views/AboutUs.vue";
 import CareerPage from "../views/CareerPage.vue";
 import JobDetail from "../views/JobDetail.vue";
+import CatalogPage from "@/views/CatalogPage.vue";
+import ArticleList from "@/views/ArticleList.vue";
 
 const routes = [
   {
@@ -28,6 +30,18 @@ const routes = [
     name: "JobDetail",
     component: JobDetail,
     meta: { title: "Job Detail - Trimas SGI" },
+  },
+  {
+    path: "/catalog-page",
+    name: "CatalogPage",
+    component: CatalogPage,
+    meta: { title: "Catalog - Trimas SGI" },
+  },
+  {
+    path: "/article-list",
+    name: "ArticleList",
+    component: ArticleList,
+    meta: { title: "Article List - Trimas SGI" },
   },
   {
     path: "/:pathMatch(.*)*", // Fallback untuk path yang tidak dikenali

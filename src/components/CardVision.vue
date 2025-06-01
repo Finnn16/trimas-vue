@@ -65,8 +65,8 @@ export default {
 }
 
 .card-icon {
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   z-index: 2;
   opacity: 0.8;
 }
@@ -81,8 +81,8 @@ export default {
 }
 
 .card-title {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 2.2rem;
+  font-weight: 800;
   margin-bottom: 15px;
   color: #000;
   z-index: 3;

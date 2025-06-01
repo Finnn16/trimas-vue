@@ -51,24 +51,24 @@ export default {
     return {
       companyValues: [
         {
-          title: "Vision",
+          title: "Quality",
           description:
-            "To become the world's premier choice for flexible and innovative garment solutions",
-          iconSrc: "src/assets/img/icon/darts.png",
+            "We believe in achieving the highest quality in everyting we do.",
+          iconSrc: "src/assets/img/icon/quality.png",
           productImage: "src/assets/img/blazer.webp",
         },
         {
-          title: "Mission",
+          title: "Care",
           description:
-            "Sustainable profit growth. Delivering customer satisfaction through high-quality products.",
-          iconSrc: "src/assets/img/icon/target.png",
+            "We apply world-class handling standards to everything we do.",
+          iconSrc: "src/assets/img/icon/care.png",
           productImage: "src/assets/img/pants.webp",
         },
         {
-          title: "Core Values",
+          title: "Commitment",
           description:
-            "Our core values are driven by a spirit of quality, care, and commitment. We believe in creating better lives for all through our dedication to excellence.",
-          iconSrc: "src/assets/img/icon/evaluation.png",
+            "We all promise to commit to Trisula, a promise to work hand and fight.",
+          iconSrc: "src/assets/img/icon/handshake.png",
           productImage: "src/assets/img/tshirt.webp",
         },
       ],
@@ -114,6 +114,7 @@ body {
   padding: 20px;
   background-color: transparent;
   margin-left: 150px;
+  font-family: "MDPrimer", sans-serif;
 }
 
 .head-content {

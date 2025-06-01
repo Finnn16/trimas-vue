@@ -17,7 +17,12 @@
         garment needs with unparalleled quality and service.
       </p>
       <div class="cta-buttons">
-        <a href="/products" class="cta-button primary">More Product</a>
+        <router-link
+          to="/catalog-page"
+          class="cta-button primary"
+          @click="closeMenu"
+          >More Info..</router-link
+        >
         <a href="/contact" class="cta-button secondary">Contact Us</a>
       </div>
     </div>
@@ -95,6 +100,7 @@ export default {
 }
 
 h1 {
+  font-family: "Montserrat", sans-serif;
   font-size: 48px;
   font-weight: 700;
   margin-bottom: 20px;
@@ -102,6 +108,7 @@ h1 {
 }
 
 p {
+  font-family: "Open Sans", sans-serif;
   font-size: 18px;
   line-height: 1.6;
   margin-bottom: 30px;

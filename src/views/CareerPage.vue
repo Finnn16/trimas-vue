@@ -180,6 +180,12 @@ export default {
 </script>
 
 <style scoped>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+}
 .career-page {
   position: relative;
   padding: 20px;
@@ -221,6 +227,7 @@ export default {
   color: #fff;
   overflow: hidden;
   z-index: 1;
+  font-family: "montserrat", sans-serif;
 }
 
 .abstract-shape {
@@ -238,6 +245,7 @@ export default {
   color: #fff;
   margin-bottom: 15px;
   z-index: 1;
+  font-family: "montserrat", sans-serif;
 }
 
 .why-join-text {
@@ -281,53 +289,53 @@ export default {
   text-decoration: none;
 }
 
-.job-list {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  z-index: 1;
-}
-
 .job-card {
-  width: 250px;
-  height: 120px;
+  height: auto; /* Mengatur tinggi menjadi auto agar menyesuaikan konten */
   border: 1px solid #ddd;
   padding: 15px;
   border-radius: 8px;
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
+  display: flex; /* Menggunakan flex untuk mengatur tata letak internal */
+  flex-direction: column; /* Menyusun elemen internal secara vertikal */
   justify-content: space-between;
-  align-items: center;
-  margin: 0 auto; /* Memastikan box berada di tengah */
+  align-items: flex-start; /* Mengatur alignment item ke kiri */
+  margin: 10px;
+  width: 250px; /* Tetapkan lebar tetap */
 }
 
 .job-content {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin-bottom: 10px; /* Memberikan jarak antara konten dan link */
+  text-align: left; /* Mengatur teks ke kiri */
 }
 
 .job-card h3 {
-  margin: 0 0 10px;
+  margin: 0 0 5px;
   font-size: 1.2rem;
   color: #2c3e50;
 }
 
 .job-card p {
-  margin: 0 0 10px;
+  margin: 0;
   font-size: 0.9rem;
   color: #7f8c8d;
 }
 
 .job-link {
-  margin-top: auto; /* Memastikan link selalu di bawah */
+  margin-top: auto; /* Mendorong link ke bagian bawah */
+  width: 100%; /* Membuat link selebar card */
+  text-align: right; /* Mengatur teks link ke kanan */
+}
+
+.job-list {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  z-index: 1;
+  justify-content: flex-start; /* Mengatur alignment item ke kiri */
 }
 
 .details-link {
@@ -380,14 +388,19 @@ export default {
   }
 
   .job-list {
-    grid-template-columns: 1fr; /* Satu kolom untuk handphone */
-    gap: 15px;
+    flex-direction: column;
+    align-items: center;
   }
 
   .job-card {
-    width: 100%; /* Menyesuaikan lebar di layar kecil */
-    height: 180px; /* Sedikit lebih kecil untuk layar kecil */
-    padding: 10px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .job-link {
+    text-align: right;
   }
 
   .job-card h3 {
@@ -433,11 +446,7 @@ export default {
   }
 
   .job-list {
-    grid-template-columns: repeat(
-      auto-fit,
-      minmax(200px, 1fr)
-    ); /* Maksimal dua kolom */
-    gap: 18px;
+    justify-content: flex-start;
   }
 
   .job-card {
