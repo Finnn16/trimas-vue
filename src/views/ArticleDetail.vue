@@ -6,12 +6,12 @@
     <p class="publish-date">
       Diterbitkan pada: {{ formatDate(article.tanggal_terbit) }}
     </p>
-    <div v-html="articleContent" class="article-body"></div>
+    <div class="article-body" v-html="articleContent"></div>
   </div>
 </template>
 
 <script>
-import { google } from "googleapis";
+import axios from "axios";
 
 export default {
   name: "ArticleDetail",
@@ -20,35 +20,31 @@ export default {
       articleContent: "",
       loading: false,
       error: null,
-      googleDocsApiKey: "AIzaSyCz_kM4eePUuGnE_JznJLrH9VwIycPwElY", // Ganti dengan API key Anda
       article: null,
     };
   },
   async mounted() {
     this.loading = true;
-    const articleId = this.$route.params.id; // Jika Anda menggunakan Vue Router
+    const articleId = this.$route.params.id;
 
-    // Cari artikel berdasarkan ID dari array articles di parent component (ArticleList)
     this.article = this.$parent.articles.find(
-      (article) => article.id === articleId
+        (article) => article.id === articleId
     );
 
     if (this.article && this.article.link_isi_artikel) {
       try {
         const docId = this.extractDocumentId(this.article.link_isi_artikel);
-        const docs = google.docs({
-          version: "v1",
-          auth: this.googleDocsApiKey,
-        });
-        const response = await docs.documents.get({
-          documentId: docId,
-          fields:
-            "body.content(paragraph.elements(textRun,inlineObjectElement))",
-        });
+        if (!docId) {
+          throw new Error("ID dokumen Google Docs tidak valid");
+        }
 
-        this.articleContent = this.processGoogleDocsContent(
-          response.data.body.content
-        );
+        // Use the export=format=html feature of Google Docs
+        const exportUrl = `https://docs.google.com/document/d/${docId}/export?format=html`;
+
+        const response = await axios.get(exportUrl);
+
+        // The response is already in HTML format, but we can process it if needed
+        this.articleContent = this.processHtmlContent(response.data);
       } catch (err) {
         this.error = `Gagal mengambil konten dari Google Docs: ${err}`;
         console.error("Gagal mengambil konten dari Google Docs:", err);
@@ -57,7 +53,7 @@ export default {
       }
     } else {
       this.error =
-        "Artikel tidak ditemukan atau link Google Docs tidak tersedia.";
+          "Artikel tidak ditemukan atau link Google Docs tidak tersedia.";
       this.loading = false;
     }
   },
@@ -67,38 +63,11 @@ export default {
       const match = url.match(regex);
       return match ? match[1] : null;
     },
-    processGoogleDocsContent(content) {
-      let html = "";
-      content.forEach((item) => {
-        if (item.paragraph) {
-          item.paragraph.elements.forEach((element) => {
-            if (element.textRun) {
-              const text = element.textRun.content.replace(/\n/g, "<br>");
-              let tag = "p";
-              let style = "";
-              if (element.textRun.textStyle) {
-                if (element.textRun.textStyle.bold) {
-                  tag = "strong";
-                }
-                if (element.textRun.textStyle.italic) {
-                  style += "font-style: italic;";
-                }
-                if (element.textRun.textStyle.underline) {
-                  style += "text-decoration: underline;";
-                }
-              }
-              html += `<${tag} style="${style}">${text}</${tag}>`;
-            } else if (element.inlineObjectElement) {
-              const objectId = element.inlineObjectElement.inlineObjectId;
-              // Anda perlu mengambil informasi objek inline secara terpisah untuk mendapatkan URL gambar
-              // Ini memerlukan permintaan API tambahan ke docs.documents.get dengan includeInlineObjectIds
-              // Untuk contoh sederhana ini, kita akan tampilkan placeholder
-              html += "<div>[Gambar dari Google Docs]</div>";
-            }
-          });
-        }
-      });
-      return html;
+    // This method is no longer needed as we're getting HTML directly from Google Docs
+    // Keeping a simplified version for potential future use or customization
+    processHtmlContent(htmlContent) {
+      // You can add any custom processing here if needed
+      return htmlContent;
     },
     formatDate(dateString) {
       try {
