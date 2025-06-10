@@ -105,50 +105,91 @@
           <p class="section-tagline">Meet the visionaries behind our success</p>
         </div>
 
-        <div class="team-showcase">
-          <div class="team-grid">
-            <div
-              v-for="(member, index) in teamMembers"
-              :key="index"
-              :class="{ active: activeTeamMember === index }"
-              class="team-card"
-              @click="setActiveTeamMember(index)"
-            >
-              <div class="team-image">
-                <img :alt="member.name" :src="member.image" />
-                <div class="team-overlay">
-                  <span class="material-icons">person</span>
+        <div class="leadership-categories">
+          <div
+            v-for="(category, categoryKey) in leadershipTeams"
+            :key="categoryKey"
+            class="leadership-category"
+          >
+            <h3 class="category-title">{{ category.title }}</h3>
+            <div class="team-showcase">
+              <div class="team-modern-grid">
+                <div
+                  v-for="(member, index) in category.members"
+                  :key="index"
+                  :class="{
+                    active: activeTeamMember === `${categoryKey}-${index}`,
+                  }"
+                  class="team-member"
+                  @click="setActiveTeamMember(`${categoryKey}-${index}`)"
+                >
+                  <div class="member-image-container">
+                    <div class="member-image">
+                      <img :alt="member.name" :src="member.image" />
+                      <div class="image-overlay">
+                        <div class="overlay-content">
+                          <span class="material-icons">info</span>
+                          <p>Click to learn more</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="member-info">
+                    <h4 class="member-name">{{ member.name }}</h4>
+                    <p class="member-role">{{ member.role }}</p>
+                    <div class="member-divider"></div>
+                  </div>
                 </div>
-              </div>
-              <div class="team-info">
-                <h4>{{ member.name }}</h4>
-                <p class="team-role">{{ member.role }}</p>
               </div>
             </div>
           </div>
 
-          <div v-if="activeTeamMember !== null" class="team-details">
+          <!-- Popup Overlay for Team Member Details -->
+          <div
+            v-if="activeTeamMember !== null"
+            class="team-popup-overlay"
+            @click.self="setActiveTeamMember(null)"
+          >
             <transition mode="out-in" name="slide-fade">
-              <div :key="activeTeamMember" class="team-profile">
-                <div class="profile-content">
-                  <h3>{{ teamMembers[activeTeamMember].name }}</h3>
-                  <p class="profile-role">
-                    {{ teamMembers[activeTeamMember].role }}
-                  </p>
-                  <p class="profile-bio">
-                    {{ teamMembers[activeTeamMember].bio }}
-                  </p>
-                  <div class="profile-achievements">
-                    <h5>Key Achievements:</h5>
-                    <ul>
-                      <li
-                        v-for="achievement in teamMembers[activeTeamMember]
-                          .achievements"
-                        :key="achievement"
-                      >
-                        {{ achievement }}
-                      </li>
-                    </ul>
+              <div :key="activeTeamMember" class="team-popup-content">
+                <button class="close-popup" @click="setActiveTeamMember(null)">
+                  &times;
+                </button>
+                <div class="member-profile">
+                  <div class="profile-header">
+                    <div class="profile-avatar">
+                      <img
+                        :alt="getActiveMember.name"
+                        :src="getActiveMember.image"
+                      />
+                    </div>
+                    <div class="profile-title">
+                      <h3>{{ getActiveMember.name }}</h3>
+                      <p class="profile-position">{{ getActiveMember.role }}</p>
+                    </div>
+                  </div>
+                  <div class="profile-body">
+                    <div class="profile-bio">
+                      <h5>About</h5>
+                      <p>{{ getActiveMember.bio }}</p>
+                    </div>
+                    <div class="profile-achievements">
+                      <h5>Key Achievements</h5>
+                      <div class="achievements-list">
+                        <div
+                          v-for="(
+                            achievement, idx
+                          ) in getActiveMember.achievements"
+                          :key="idx"
+                          class="achievement-item"
+                        >
+                          <span class="achievement-icon">🏆</span>
+                          <span class="achievement-text">{{
+                            achievement
+                          }}</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -304,7 +345,7 @@
 </template>
 
 <script>
-import { onMounted, onUnmounted, ref } from "vue";
+import { onMounted, onUnmounted, ref, computed } from "vue";
 
 export default {
   name: "AboutUs",
@@ -404,44 +445,107 @@ export default {
       },
     ]);
 
-    const teamMembers = ref([
-      {
-        name: "Kevin Oen",
-        role: "Director",
-        image:
-          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
-        bio: "With over 25 years of experience in the garment industry, John leads our company with vision and passion for excellence.",
-        achievements: [
-          "Led company growth by 300% over 10 years",
-          "Implemented sustainable manufacturing practices",
-          "Established partnerships with 18+ international buyers",
+    const leadershipTeams = ref({
+      bod: {
+        title: "Board of Directors",
+        members: [
+          {
+            name: "Kevin Oen",
+            role: "President Director",
+            image:
+              "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=300&fit=crop&crop=face",
+            bio: "With over 25 years of experience in the garment industry, Kevin leads our company with vision and passion for excellence.",
+            achievements: [
+              "Led company growth by 300% over 10 years",
+              "Implemented sustainable manufacturing practices",
+              "Established partnerships with 18+ international buyers",
+            ],
+          },
+          {
+            name: "David Chen",
+            role: "Finance Director",
+            image:
+              "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=300&fit=crop&crop=face",
+            bio: "David brings 20 years of financial expertise, ensuring strong fiscal management and sustainable growth.",
+            achievements: [
+              "Secured major international investments",
+              "Implemented cost-effective operations",
+              "Developed strategic financial planning",
+            ],
+          },
         ],
       },
-      {
-        name: "Sarah Chen",
-        role: "Chief Operations Officer",
-        image:
-          "https://images.unsplash.com/photo-1494790108755-2616b612b524?w=300&h=300&fit=crop&crop=face",
-        bio: "Sarah oversees our production operations, ensuring efficiency and quality in every aspect of manufacturing.",
-        achievements: [
-          "Optimized production efficiency by 40%",
-          "Reduced waste by 60% through lean manufacturing",
-          "Led ISO certification initiatives",
+      boc: {
+        title: "Board of Commissioners",
+        members: [
+          {
+            name: "William Zhang",
+            role: "President Commissioner",
+            image:
+              "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
+            bio: "William oversees corporate governance and ensures alignment with company vision and values.",
+            achievements: [
+              "Established robust corporate governance",
+              "Led strategic planning initiatives",
+              "Enhanced stakeholder relationships",
+            ],
+          },
+          {
+            name: "Emily Wong",
+            role: "Independent Commissioner",
+            image:
+              "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=300&fit=crop&crop=face",
+            bio: "Emily brings independent oversight and extensive industry expertise to ensure company growth.",
+            achievements: [
+              "Strengthened risk management",
+              "Improved corporate transparency",
+              "Enhanced board effectiveness",
+            ],
+          },
         ],
       },
-      {
-        name: "Michael Rodriguez",
-        role: "Head of Design",
-        image:
-          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
-        bio: "Michael brings creative vision to our designs, blending functionality with modern aesthetics.",
-        achievements: [
-          "Designed award-winning golf apparel collection",
-          "Created innovative hospital uniform line",
-          "Led sustainable fabric research projects",
+      managers: {
+        title: "Management Team",
+        members: [
+          {
+            name: "Michael Lee",
+            role: "Production Manager",
+            image:
+              "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=300&fit=crop&crop=face",
+            bio: "Michael oversees all production operations, ensuring efficiency and quality standards.",
+            achievements: [
+              "Optimized production efficiency by 40%",
+              "Implemented lean manufacturing",
+              "Reduced production waste by 30%",
+            ],
+          },
+          {
+            name: "Sarah Lin",
+            role: "HR Manager",
+            image:
+              "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=300&fit=crop&crop=face",
+            bio: "Sarah leads our human resources initiatives, focusing on employee development and workplace culture.",
+            achievements: [
+              "Developed comprehensive training programs",
+              "Improved employee retention by 25%",
+              "Implemented performance management system",
+            ],
+          },
+          {
+            name: "James Wilson",
+            role: "Quality Control Manager",
+            image:
+              "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
+            bio: "James ensures the highest quality standards across all our products and processes.",
+            achievements: [
+              "Achieved ISO 9001 certification",
+              "Reduced defect rate by 50%",
+              "Implemented QC automation",
+            ],
+          },
         ],
       },
-    ]);
+    });
 
     const csrStats = ref([
       {
@@ -620,9 +724,15 @@ export default {
       activeValue.value = index;
     };
 
-    const setActiveTeamMember = (index) => {
-      activeTeamMember.value = activeTeamMember.value === index ? null : index;
+    const setActiveTeamMember = (id) => {
+      activeTeamMember.value = activeTeamMember.value === id ? null : id;
     };
+
+    const getActiveMember = computed(() => {
+      if (!activeTeamMember.value) return null;
+      const [category, index] = activeTeamMember.value.split("-");
+      return leadershipTeams.value[category].members[index];
+    });
 
     const setActiveInitiative = (index) => {
       activeInitiative.value = index;
@@ -689,7 +799,7 @@ export default {
       timelineSection,
       milestones,
       values,
-      teamMembers,
+      leadershipTeams,
       csrStats,
       csrInitiatives,
       futureGoals,
@@ -697,6 +807,7 @@ export default {
       setActiveMilestone,
       setActiveValue,
       setActiveTeamMember,
+      getActiveMember,
       setActiveInitiative,
       setActiveGoal,
     };
@@ -923,7 +1034,6 @@ export default {
 
 .timeline-content {
   flex: 1;
-  padding: 0 2rem;
   background: white;
   border-radius: 8px;
   box-shadow: var(--shadow);
@@ -939,10 +1049,10 @@ export default {
 }
 
 .timeline-year {
-  font-size: 0.9rem;
+  font-size: 1.6rem;
   color: var(--accent-color);
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  padding: 0.5rem;
 }
 
 .timeline-content h3 {
@@ -1047,135 +1157,294 @@ export default {
   background: white;
 }
 
+.leadership-categories {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.leadership-category {
+  margin-bottom: 4rem;
+}
+
+.category-title {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
 .team-showcase {
   max-width: 1000px;
   margin: 0 auto;
 }
 
-.team-grid {
+/* Modern Team Grid */
+.team-modern-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-bottom: 4rem;
+  justify-items: center;
 }
 
-.team-card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+.team-member {
   cursor: pointer;
-}
-
-.team-card:hover,
-.team-card.active {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-}
-
-.team-image {
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
-  height: 250px;
-  overflow: hidden;
 }
 
-.team-image img {
+.team-member:hover,
+.team-member.active {
+  transform: translateY(-15px);
+}
+
+.member-image-container {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.member-image {
+  position: relative;
+  width: 300px; /* Fixed width for all team members */
+  height: 400px; /* Fixed height for all team members */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  margin: 0 auto; /* Center the image container */
+}
+
+/* Ensure all team member images have consistent styling */
+.member-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  object-position: top; /* Ensures faces are visible for all team members */
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.team-card:hover .team-image img {
-  transform: scale(1.1);
+.team-member:hover .member-image,
+.team-member.active .member-image {
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
 }
 
-.team-overlay {
+.team-member:hover .member-image img {
+  transform: scale(1.05);
+}
+
+.image-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(9, 46, 94, 0.8);
+  background: linear-gradient(
+    135deg,
+    rgba(9, 46, 94, 0.9),
+    rgba(9, 46, 94, 0.7)
+  );
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  backdrop-filter: blur(5px);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  backdrop-filter: blur(10px);
 }
 
-.team-card:hover .team-overlay,
-.team-card.active .team-overlay {
+.team-member:hover .image-overlay,
+.team-member.active .image-overlay {
   opacity: 1;
 }
 
-.team-overlay span {
-  color: white;
-  font-size: 3rem;
-}
-
-.team-info {
-  padding: 1.5rem;
+.overlay-content {
   text-align: center;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  padding: 1rem;
 }
 
-.team-info h4 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  color: var(--primary-color);
+.overlay-content span {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
 }
 
-.team-role {
-  color: var(--accent-color);
+.overlay-content p {
+  font-size: 1rem;
   font-weight: 500;
+  margin: 0;
 }
 
-.team-details {
-  background: var(--light-gray);
-  border-radius: 12px;
-  padding: 2rem;
-  min-height: 300px;
+.member-info {
+  text-align: center;
+  padding: 0 1rem;
 }
 
-.profile-content h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+.member-name {
+  font-size: 1.4rem;
+  font-weight: 600;
   color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
 }
 
-.profile-role {
+.team-member:hover .member-name,
+.team-member.active .member-name {
+  color: var(--accent-color);
+}
+
+.member-role {
+  font-size: 1rem;
+  color: #6c757d;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.member-divider {
+  width: 50px;
+  height: 3px;
+  background: var(--accent-color);
+  margin: 0 auto;
+  border-radius: 2px;
+  transform: scaleX(0);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.team-member:hover .member-divider,
+.team-member.active .member-divider {
+  transform: scaleX(1);
+}
+
+/* Modern Team Details */
+.team-details-modern {
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+}
+
+.member-profile {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-title h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.profile-position {
+  font-size: 1.2rem;
   color: var(--accent-color);
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin: 0;
 }
 
-.profile-bio {
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
+.profile-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
 }
 
+@media (min-width: 768px) {
+  .profile-body {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.profile-bio h5,
 .profile-achievements h5 {
+  font-size: 1.3rem;
   color: var(--primary-color);
-  margin-bottom: 1rem;
-}
-
-.profile-achievements ul {
-  list-style: none;
-  padding: 0;
-}
-
-.profile-achievements li {
-  padding: 0.5rem 0;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
   position: relative;
-  padding-left: 1.5rem;
+  padding-bottom: 0.5rem;
 }
 
-.profile-achievements li:before {
-  content: "🏆";
+.profile-bio h5::after,
+.profile-achievements h5::after {
+  content: "";
   position: absolute;
+  bottom: 0;
   left: 0;
+  width: 40px;
+  height: 3px;
+  background: var(--accent-color);
+  border-radius: 2px;
+}
+
+.profile-bio p {
+  line-height: 1.8;
+  color: #495057;
+  font-size: 1rem;
+}
+
+.achievements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.achievement-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.achievement-item:hover {
+  transform: translateX(10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.achievement-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.achievement-text {
+  font-size: 0.95rem;
+  color: #495057;
+  line-height: 1.5;
 }
 
 /* CSR Section */
@@ -1689,5 +1958,47 @@ export default {
   .impact-items {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+.team-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.team-popup-content {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 95%;
+  width: 800px;
+  max-height: 95vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.close-popup {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--accent-color);
+  font-weight: bold;
+  line-height: 1;
+  padding: 0;
+  transition: color 0.3s ease;
+}
+
+.close-popup:hover {
+  color: var(--primary-color);
 }
 </style>
