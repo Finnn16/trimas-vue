@@ -2,15 +2,22 @@
   <div class="about-us-container">
     <!-- Hero Section with Parallax -->
     <section class="hero-section">
-      <div :style="{ transform: `translateY(${parallaxOffset}px)` }" class="parallax-bg"></div>
+      <div
+        :style="{ transform: `translateY(${parallaxOffset}px)` }"
+        class="parallax-bg"
+      ></div>
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <div :class="{ 'animate-in': heroVisible }" class="hero-text">
-          <h1 class="hero-title">About <span class="text-accent-hero">Trimas SGI</span></h1>
+          <h1 class="hero-title">
+            About <span class="text-accent-hero">Trimas SGI</span>
+          </h1>
           <p class="hero-subtitle">Crafting Excellence Since 1991</p>
           <div class="hero-description">
-            <p>Discover the story behind our commitment to premium garment manufacturing and sustainable business
-              practices.</p>
+            <p>
+              Discover the story behind our commitment to premium garment
+              manufacturing and sustainable business practices.
+            </p>
           </div>
         </div>
       </div>
@@ -19,26 +26,27 @@
       </div>
     </section>
 
-
     <!-- Interactive Timeline Section -->
     <section ref="timelineSection" class="timeline-section">
       <div class="container">
         <div class="section-header">
           <h2>Our <span class="text-accent">Journey</span></h2>
-          <p class="section-tagline">From humble beginnings to industry leadership</p>
+          <p class="section-tagline">
+            From humble beginnings to industry leadership
+          </p>
         </div>
 
         <div class="timeline-container">
           <div class="timeline-line"></div>
           <div
-              v-for="(milestone, index) in milestones"
-              :key="index"
-              :class="{
-              'active': activeMilestone === index,
-              'visible': visibleMilestones.includes(index)
+            v-for="(milestone, index) in milestones"
+            :key="index"
+            :class="{
+              active: activeMilestone === index,
+              visible: visibleMilestones.includes(index),
             }"
-              class="timeline-item"
-              @click="setActiveMilestone(index)"
+            class="timeline-item"
+            @click="setActiveMilestone(index)"
           >
             <div class="timeline-marker">
               <span class="material-icons">{{ milestone.icon }}</span>
@@ -58,17 +66,19 @@
       <div class="container">
         <div class="section-header">
           <h2>Our <span class="text-accent">Values</span></h2>
-          <p class="section-tagline">The principles that guide everything we do</p>
+          <p class="section-tagline">
+            The principles that guide everything we do
+          </p>
         </div>
 
         <div class="values-grid">
           <div
-              v-for="(value, index) in values"
-              :key="index"
-              :class="{ 'active': activeValue === index }"
-              class="value-card"
-              @mouseenter="setActiveValue(index)"
-              @mouseleave="setActiveValue(null)"
+            v-for="(value, index) in values"
+            :key="index"
+            :class="{ active: activeValue === index }"
+            class="value-card"
+            @mouseenter="setActiveValue(index)"
+            @mouseleave="setActiveValue(null)"
           >
             <div class="value-icon">
               <span class="material-icons">{{ value.icon }}</span>
@@ -77,7 +87,9 @@
             <p>{{ value.description }}</p>
             <div v-if="activeValue === index" class="value-details">
               <ul>
-                <li v-for="detail in value.details" :key="detail">{{ detail }}</li>
+                <li v-for="detail in value.details" :key="detail">
+                  {{ detail }}
+                </li>
               </ul>
             </div>
           </div>
@@ -96,14 +108,14 @@
         <div class="team-showcase">
           <div class="team-grid">
             <div
-                v-for="(member, index) in teamMembers"
-                :key="index"
-                :class="{ 'active': activeTeamMember === index }"
-                class="team-card"
-                @click="setActiveTeamMember(index)"
+              v-for="(member, index) in teamMembers"
+              :key="index"
+              :class="{ active: activeTeamMember === index }"
+              class="team-card"
+              @click="setActiveTeamMember(index)"
             >
               <div class="team-image">
-                <img :alt="member.name" :src="member.image"/>
+                <img :alt="member.name" :src="member.image" />
                 <div class="team-overlay">
                   <span class="material-icons">person</span>
                 </div>
@@ -120,12 +132,20 @@
               <div :key="activeTeamMember" class="team-profile">
                 <div class="profile-content">
                   <h3>{{ teamMembers[activeTeamMember].name }}</h3>
-                  <p class="profile-role">{{ teamMembers[activeTeamMember].role }}</p>
-                  <p class="profile-bio">{{ teamMembers[activeTeamMember].bio }}</p>
+                  <p class="profile-role">
+                    {{ teamMembers[activeTeamMember].role }}
+                  </p>
+                  <p class="profile-bio">
+                    {{ teamMembers[activeTeamMember].bio }}
+                  </p>
                   <div class="profile-achievements">
                     <h5>Key Achievements:</h5>
                     <ul>
-                      <li v-for="achievement in teamMembers[activeTeamMember].achievements" :key="achievement">
+                      <li
+                        v-for="achievement in teamMembers[activeTeamMember]
+                          .achievements"
+                        :key="achievement"
+                      >
                         {{ achievement }}
                       </li>
                     </ul>
@@ -143,18 +163,20 @@
       <div class="container">
         <div class="section-header">
           <h2>Social <span class="text-accent">Impact</span></h2>
-          <p class="section-tagline">Creating positive change in our community</p>
+          <p class="section-tagline">
+            Creating positive change in our community
+          </p>
         </div>
 
         <div class="csr-content">
           <div class="csr-stats">
             <div
-                v-for="(stat, index) in csrStats"
-                :key="index"
-                :class="{ 'active': activeCsrStat === index }"
-                class="csr-stat-card"
-                @mouseenter="activeCsrStat = index"
-                @mouseleave="activeCsrStat = null"
+              v-for="(stat, index) in csrStats"
+              :key="index"
+              :class="{ active: activeCsrStat === index }"
+              class="csr-stat-card"
+              @mouseenter="activeCsrStat = index"
+              @mouseleave="activeCsrStat = null"
             >
               <div class="stat-icon">
                 <span class="material-icons">{{ stat.icon }}</span>
@@ -168,11 +190,11 @@
           <div class="csr-initiatives">
             <div class="initiative-tabs">
               <button
-                  v-for="(initiative, index) in csrInitiatives"
-                  :key="index"
-                  :class="{ 'active': activeInitiative === index }"
-                  class="tab-button"
-                  @click="setActiveInitiative(index)"
+                v-for="(initiative, index) in csrInitiatives"
+                :key="index"
+                :class="{ active: activeInitiative === index }"
+                class="tab-button"
+                @click="setActiveInitiative(index)"
               >
                 <span class="material-icons">{{ initiative.icon }}</span>
                 {{ initiative.title }}
@@ -183,7 +205,10 @@
               <transition mode="out-in" name="fade">
                 <div :key="activeInitiative" class="initiative-details">
                   <div class="initiative-image">
-                    <img :alt="csrInitiatives[activeInitiative].title" :src="csrInitiatives[activeInitiative].image"/>
+                    <img
+                      :alt="csrInitiatives[activeInitiative].title"
+                      :src="csrInitiatives[activeInitiative].image"
+                    />
                   </div>
                   <div class="initiative-text">
                     <h3>{{ csrInitiatives[activeInitiative].title }}</h3>
@@ -192,9 +217,10 @@
                       <h5>Impact Metrics:</h5>
                       <div class="impact-items">
                         <div
-                            v-for="impact in csrInitiatives[activeInitiative].impact"
-                            :key="impact.metric"
-                            class="impact-item"
+                          v-for="impact in csrInitiatives[activeInitiative]
+                            .impact"
+                          :key="impact.metric"
+                          class="impact-item"
                         >
                           <span class="impact-number">{{ impact.value }}</span>
                           <span class="impact-label">{{ impact.metric }}</span>
@@ -215,17 +241,19 @@
       <div class="container">
         <div class="section-header">
           <h2>Future <span class="text-accent">Vision</span></h2>
-          <p class="section-tagline">Our commitment to innovation and sustainability</p>
+          <p class="section-tagline">
+            Our commitment to innovation and sustainability
+          </p>
         </div>
 
         <div class="vision-content">
           <div class="vision-cards">
             <div
-                v-for="(goal, index) in futureGoals"
-                :key="index"
-                :class="{ 'active': activeGoal === index }"
-                class="vision-card"
-                @click="setActiveGoal(index)"
+              v-for="(goal, index) in futureGoals"
+              :key="index"
+              :class="{ active: activeGoal === index }"
+              class="vision-card"
+              @click="setActiveGoal(index)"
             >
               <div class="vision-icon">
                 <span class="material-icons">{{ goal.icon }}</span>
@@ -233,7 +261,10 @@
               <h4>{{ goal.title }}</h4>
               <div class="vision-progress">
                 <div class="progress-bar">
-                  <div :style="{ width: goal.progress + '%' }" class="progress-fill"></div>
+                  <div
+                    :style="{ width: goal.progress + '%' }"
+                    class="progress-fill"
+                  ></div>
                 </div>
                 <span class="progress-text">{{ goal.progress }}% Complete</span>
               </div>
@@ -249,10 +280,10 @@
                   <h5>Implementation Timeline:</h5>
                   <div class="timeline-steps">
                     <div
-                        v-for="(step, index) in futureGoals[activeGoal].steps"
-                        :key="index"
-                        :class="{ 'completed': step.completed }"
-                        class="timeline-step"
+                      v-for="(step, index) in futureGoals[activeGoal].steps"
+                      :key="index"
+                      :class="{ completed: step.completed }"
+                      class="timeline-step"
                     >
                       <div class="step-marker"></div>
                       <div class="step-content">
@@ -273,365 +304,377 @@
 </template>
 
 <script>
-import {onMounted, onUnmounted, ref} from 'vue'
+import { onMounted, onUnmounted, ref } from "vue";
 
 export default {
-  name: 'AboutUs',
+  name: "AboutUs",
   setup() {
-    const parallaxOffset = ref(0)
-    const heroVisible = ref(false)
-    const activeMilestone = ref(0)
-    const visibleMilestones = ref([])
-    const activeValue = ref(null)
-    const activeTeamMember = ref(null)
-    const activeCsrStat = ref(null)
-    const activeInitiative = ref(0)
-    const activeGoal = ref(null)
-    const timelineSection = ref(null)
+    const parallaxOffset = ref(0);
+    const heroVisible = ref(false);
+    const activeMilestone = ref(0);
+    const visibleMilestones = ref([]);
+    const activeValue = ref(null);
+    const activeTeamMember = ref(null);
+    const activeCsrStat = ref(null);
+    const activeInitiative = ref(0);
+    const activeGoal = ref(null);
+    const timelineSection = ref(null);
 
     // Data
     const milestones = ref([
       {
-        year: '1991',
-        title: 'Company Founded',
-        description: 'Started as a small family business with a vision for quality garment manufacturing.',
-        icon: 'flag'
+        year: "1991",
+        title: "Company Founded",
+        description:
+          "Started as a small family business with a vision for quality garment manufacturing.",
+        icon: "flag",
       },
       {
-        year: '1995',
-        title: 'First Major Contract',
-        description: 'Secured our first international contract, marking our entry into global markets.',
-        icon: 'handshake'
+        year: "1995",
+        title: "First Major Contract",
+        description:
+          "Secured our first international contract, marking our entry into global markets.",
+        icon: "handshake",
       },
       {
-        year: '2000',
-        title: 'Technology Integration',
-        description: 'Introduced advanced manufacturing technology to improve efficiency and quality.',
-        icon: 'precision_manufacturing'
+        year: "2000",
+        title: "Technology Integration",
+        description:
+          "Introduced advanced manufacturing technology to improve efficiency and quality.",
+        icon: "precision_manufacturing",
       },
       {
-        year: '2010',
-        title: 'Sustainability Initiative',
-        description: 'Launched comprehensive environmental and social responsibility programs.',
-        icon: 'eco'
+        year: "2010",
+        title: "Sustainability Initiative",
+        description:
+          "Launched comprehensive environmental and social responsibility programs.",
+        icon: "eco",
       },
       {
-        year: '2020',
-        title: 'Digital Transformation',
-        description: 'Implemented Industry 4.0 technologies for smart manufacturing.',
-        icon: 'smart_toy'
+        year: "2020",
+        title: "Digital Transformation",
+        description:
+          "Implemented Industry 4.0 technologies for smart manufacturing.",
+        icon: "smart_toy",
       },
       {
-        year: '2025',
-        title: 'Global Expansion',
-        description: 'Expanding operations to serve 25+ countries with premium garments.',
-        icon: 'public'
-      }
-    ])
+        year: "2025",
+        title: "Global Expansion",
+        description:
+          "Expanding operations to serve 25+ countries with premium garments.",
+        icon: "public",
+      },
+    ]);
 
     const values = ref([
       {
-        title: 'Quality Excellence',
-        description: 'Uncompromising commitment to the highest standards of craftsmanship.',
-        icon: 'star',
+        title: "Quality Excellence",
+        description:
+          "Uncompromising commitment to the highest standards of craftsmanship.",
+        icon: "star",
         details: [
-          'Premium material selection',
-          'Rigorous quality control',
-          'Continuous improvement processes',
-          'Customer satisfaction guarantee'
-        ]
+          "Premium material selection",
+          "Rigorous quality control",
+          "Continuous improvement processes",
+          "Customer satisfaction guarantee",
+        ],
       },
       {
-        title: 'Innovation',
-        description: 'Embracing cutting-edge technology and creative design solutions.',
-        icon: 'lightbulb',
+        title: "Innovation",
+        description:
+          "Embracing cutting-edge technology and creative design solutions.",
+        icon: "lightbulb",
         details: [
-          'Research & development investment',
-          'Technology integration',
-          'Design innovation',
-          'Process optimization'
-        ]
+          "Research & development investment",
+          "Technology integration",
+          "Design innovation",
+          "Process optimization",
+        ],
       },
       {
-        title: 'Sustainability',
-        description: 'Protecting our environment for future generations.',
-        icon: 'nature',
+        title: "Sustainability",
+        description: "Protecting our environment for future generations.",
+        icon: "nature",
         details: [
-          'Eco-friendly materials',
-          'Waste reduction programs',
-          'Energy efficiency',
-          'Carbon footprint reduction'
-        ]
+          "Eco-friendly materials",
+          "Waste reduction programs",
+          "Energy efficiency",
+          "Carbon footprint reduction",
+        ],
       },
-      {
-        title: 'Integrity',
-        description: 'Operating with transparency, honesty, and ethical practices.',
-        icon: 'verified',
-        details: [
-          'Ethical business practices',
-          'Fair labor conditions',
-          'Transparent operations',
-          'Community responsibility'
-        ]
-      }
-    ])
+    ]);
 
     const teamMembers = ref([
       {
-        name: 'Kevin Oen',
-        role: 'Director',
-        image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face',
-        bio: 'With over 25 years of experience in the garment industry, John leads our company with vision and passion for excellence.',
+        name: "Kevin Oen",
+        role: "Director",
+        image:
+          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
+        bio: "With over 25 years of experience in the garment industry, John leads our company with vision and passion for excellence.",
         achievements: [
-          'Led company growth by 300% over 10 years',
-          'Implemented sustainable manufacturing practices',
-          'Established partnerships with 18+ international buyers'
-        ]
+          "Led company growth by 300% over 10 years",
+          "Implemented sustainable manufacturing practices",
+          "Established partnerships with 18+ international buyers",
+        ],
       },
       {
-        name: 'Sarah Chen',
-        role: 'Chief Operations Officer',
-        image: 'https://images.unsplash.com/photo-1494790108755-2616b612b524?w=300&h=300&fit=crop&crop=face',
-        bio: 'Sarah oversees our production operations, ensuring efficiency and quality in every aspect of manufacturing.',
+        name: "Sarah Chen",
+        role: "Chief Operations Officer",
+        image:
+          "https://images.unsplash.com/photo-1494790108755-2616b612b524?w=300&h=300&fit=crop&crop=face",
+        bio: "Sarah oversees our production operations, ensuring efficiency and quality in every aspect of manufacturing.",
         achievements: [
-          'Optimized production efficiency by 40%',
-          'Reduced waste by 60% through lean manufacturing',
-          'Led ISO certification initiatives'
-        ]
+          "Optimized production efficiency by 40%",
+          "Reduced waste by 60% through lean manufacturing",
+          "Led ISO certification initiatives",
+        ],
       },
       {
-        name: 'Michael Rodriguez',
-        role: 'Head of Design',
-        image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face',
-        bio: 'Michael brings creative vision to our designs, blending functionality with modern aesthetics.',
+        name: "Michael Rodriguez",
+        role: "Head of Design",
+        image:
+          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
+        bio: "Michael brings creative vision to our designs, blending functionality with modern aesthetics.",
         achievements: [
-          'Designed award-winning golf apparel collection',
-          'Created innovative hospital uniform line',
-          'Led sustainable fabric research projects'
-        ]
-      }
-    ])
+          "Designed award-winning golf apparel collection",
+          "Created innovative hospital uniform line",
+          "Led sustainable fabric research projects",
+        ],
+      },
+    ]);
 
     const csrStats = ref([
       {
-        icon: 'school',
-        value: '500+',
-        label: 'Students Trained',
-        description: 'Vocational training programs for underprivileged youth'
+        icon: "school",
+        value: "500+",
+        label: "Students Trained",
+        description: "Vocational training programs for underprivileged youth",
       },
       {
-        icon: 'forest',
-        value: '10,000',
-        label: 'Trees Planted',
-        description: 'Environmental conservation and reforestation efforts'
+        icon: "forest",
+        value: "10,000",
+        label: "Trees Planted",
+        description: "Environmental conservation and reforestation efforts",
       },
       {
-        icon: 'local_hospital',
-        value: '50+',
-        label: 'Hospitals Supported',
-        description: 'Free uniform donations to healthcare facilities'
+        icon: "local_hospital",
+        value: "50+",
+        label: "Hospitals Supported",
+        description: "Free uniform donations to healthcare facilities",
       },
       {
-        icon: 'recycling',
-        value: '75%',
-        label: 'Waste Reduction',
-        description: 'Achieved through sustainable manufacturing processes'
-      }
-    ])
+        icon: "recycling",
+        value: "75%",
+        label: "Waste Reduction",
+        description: "Achieved through sustainable manufacturing processes",
+      },
+    ]);
 
     const csrInitiatives = ref([
       {
-        title: 'Youth Empowerment',
-        icon: 'school',
-        image: 'https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=600&h=400&fit=crop',
-        description: 'Our vocational training programs provide valuable skills to young people, creating pathways to meaningful careers in the garment industry.',
+        title: "Youth Empowerment",
+        icon: "school",
+        image:
+          "https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=600&h=400&fit=crop",
+        description:
+          "Our vocational training programs provide valuable skills to young people, creating pathways to meaningful careers in the garment industry.",
         impact: [
-          {value: '500+', metric: 'Students Trained'},
-          {value: '85%', metric: 'Job Placement Rate'},
-          {value: '20', metric: 'Training Centers'}
-        ]
+          { value: "500+", metric: "Students Trained" },
+          { value: "85%", metric: "Job Placement Rate" },
+          { value: "20", metric: "Training Centers" },
+        ],
       },
       {
-        title: 'Environmental Conservation',
-        icon: 'eco',
-        image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop',
-        description: 'We actively participate in reforestation projects and implement eco-friendly manufacturing processes to protect our environment.',
+        title: "Environmental Conservation",
+        icon: "eco",
+        image:
+          "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop",
+        description:
+          "We actively participate in reforestation projects and implement eco-friendly manufacturing processes to protect our environment.",
         impact: [
-          {value: '10,000', metric: 'Trees Planted'},
-          {value: '75%', metric: 'Waste Reduction'},
-          {value: '50%', metric: 'Energy Savings'}
-        ]
+          { value: "10,000", metric: "Trees Planted" },
+          { value: "75%", metric: "Waste Reduction" },
+          { value: "50%", metric: "Energy Savings" },
+        ],
       },
       {
-        title: 'Healthcare Support',
-        icon: 'local_hospital',
-        image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop',
-        description: 'Supporting healthcare workers by providing quality uniforms to hospitals and medical facilities in underserved communities.',
+        title: "Healthcare Support",
+        icon: "local_hospital",
+        image:
+          "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop",
+        description:
+          "Supporting healthcare workers by providing quality uniforms to hospitals and medical facilities in underserved communities.",
         impact: [
-          {value: '50+', metric: 'Hospitals Supported'},
-          {value: '5,000+', metric: 'Uniforms Donated'},
-          {value: '25', metric: 'Cities Reached'}
-        ]
-      }
-    ])
+          { value: "50+", metric: "Hospitals Supported" },
+          { value: "5,000+", metric: "Uniforms Donated" },
+          { value: "25", metric: "Cities Reached" },
+        ],
+      },
+    ]);
 
     const futureGoals = ref([
       {
-        title: 'Carbon Neutral Operations',
-        icon: 'eco',
+        title: "Carbon Neutral Operations",
+        icon: "eco",
         progress: 65,
-        description: 'Achieving complete carbon neutrality in our manufacturing operations by implementing renewable energy sources and optimizing our supply chain.',
+        description:
+          "Achieving complete carbon neutrality in our manufacturing operations by implementing renewable energy sources and optimizing our supply chain.",
         steps: [
           {
-            phase: 'Phase 1: Energy Audit',
-            description: 'Complete assessment of current energy consumption',
-            date: '2024 Q1',
-            completed: true
+            phase: "Phase 1: Energy Audit",
+            description: "Complete assessment of current energy consumption",
+            date: "2024 Q1",
+            completed: true,
           },
           {
-            phase: 'Phase 2: Solar Installation',
-            description: 'Install solar panels across all facilities',
-            date: '2024 Q3',
-            completed: true
+            phase: "Phase 2: Solar Installation",
+            description: "Install solar panels across all facilities",
+            date: "2024 Q3",
+            completed: true,
           },
           {
-            phase: 'Phase 3: Process Optimization',
-            description: 'Implement energy-efficient manufacturing processes',
-            date: '2025 Q1',
-            completed: false
+            phase: "Phase 3: Process Optimization",
+            description: "Implement energy-efficient manufacturing processes",
+            date: "2025 Q1",
+            completed: false,
           },
           {
-            phase: 'Phase 4: Supply Chain Integration',
-            description: 'Work with suppliers to reduce carbon footprint',
-            date: '2025 Q3',
-            completed: false
-          }
-        ]
+            phase: "Phase 4: Supply Chain Integration",
+            description: "Work with suppliers to reduce carbon footprint",
+            date: "2025 Q3",
+            completed: false,
+          },
+        ],
       },
       {
-        title: 'Digital Manufacturing',
-        icon: 'precision_manufacturing',
+        title: "Digital Manufacturing",
+        icon: "precision_manufacturing",
         progress: 45,
-        description: 'Transforming our operations with Industry 4.0 technologies including AI, IoT, and automated quality control systems.',
+        description:
+          "Transforming our operations with Industry 4.0 technologies including AI, IoT, and automated quality control systems.",
         steps: [
           {
-            phase: 'Phase 1: Infrastructure Setup',
-            description: 'Upgrade IT infrastructure and connectivity',
-            date: '2024 Q2',
-            completed: true
+            phase: "Phase 1: Infrastructure Setup",
+            description: "Upgrade IT infrastructure and connectivity",
+            date: "2024 Q2",
+            completed: true,
           },
           {
-            phase: 'Phase 2: IoT Integration',
-            description: 'Install sensors and monitoring systems',
-            date: '2024 Q4',
-            completed: false
+            phase: "Phase 2: IoT Integration",
+            description: "Install sensors and monitoring systems",
+            date: "2024 Q4",
+            completed: false,
           },
           {
-            phase: 'Phase 3: AI Implementation',
-            description: 'Deploy AI for quality control and optimization',
-            date: '2025 Q2',
-            completed: false
-          }
-        ]
+            phase: "Phase 3: AI Implementation",
+            description: "Deploy AI for quality control and optimization",
+            date: "2025 Q2",
+            completed: false,
+          },
+        ],
       },
       {
-        title: 'Global Market Expansion',
-        icon: 'public',
+        title: "Global Market Expansion",
+        icon: "public",
         progress: 30,
-        description: 'Expanding our reach to serve 30+ countries by establishing strategic partnerships and distribution networks.',
+        description:
+          "Expanding our reach to serve 30+ countries by establishing strategic partnerships and distribution networks.",
         steps: [
           {
-            phase: 'Phase 1: Market Research',
-            description: 'Analyze target markets and customer needs',
-            date: '2024 Q1',
-            completed: true
+            phase: "Phase 1: Market Research",
+            description: "Analyze target markets and customer needs",
+            date: "2024 Q1",
+            completed: true,
           },
           {
-            phase: 'Phase 2: Partnership Development',
-            description: 'Establish key partnerships in target regions',
-            date: '2025 Q1',
-            completed: false
+            phase: "Phase 2: Partnership Development",
+            description: "Establish key partnerships in target regions",
+            date: "2025 Q1",
+            completed: false,
           },
           {
-            phase: 'Phase 3: Distribution Network',
-            description: 'Build comprehensive distribution channels',
-            date: '2025 Q4',
-            completed: false
-          }
-        ]
-      }
-    ])
+            phase: "Phase 3: Distribution Network",
+            description: "Build comprehensive distribution channels",
+            date: "2025 Q4",
+            completed: false,
+          },
+        ],
+      },
+    ]);
 
     // Methods
     const updateParallax = () => {
-      const scrollY = window.scrollY
-      parallaxOffset.value = scrollY * 0.5
-    }
+      const scrollY = window.scrollY;
+      parallaxOffset.value = scrollY * 0.5;
+    };
 
     const scrollToContent = () => {
-      timelineSection.value?.scrollIntoView({behavior: 'smooth'})
-    }
+      timelineSection.value?.scrollIntoView({ behavior: "smooth" });
+    };
 
     const setActiveMilestone = (index) => {
-      activeMilestone.value = index
-    }
+      activeMilestone.value = index;
+    };
 
     const setActiveValue = (index) => {
-      activeValue.value = index
-    }
+      activeValue.value = index;
+    };
 
     const setActiveTeamMember = (index) => {
-      activeTeamMember.value = activeTeamMember.value === index ? null : index
-    }
+      activeTeamMember.value = activeTeamMember.value === index ? null : index;
+    };
 
     const setActiveInitiative = (index) => {
-      activeInitiative.value = index
-    }
+      activeInitiative.value = index;
+    };
 
     const setActiveGoal = (index) => {
-      activeGoal.value = activeGoal.value === index ? null : index
-    }
+      activeGoal.value = activeGoal.value === index ? null : index;
+    };
 
     const observeElements = () => {
-      const timelineItems = document.querySelectorAll('.timeline-item')
+      const timelineItems = document.querySelectorAll(".timeline-item");
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = Array.from(timelineItems).indexOf(entry.target)
-            if (!visibleMilestones.value.includes(index)) {
-              visibleMilestones.value.push(index)
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const index = Array.from(timelineItems).indexOf(entry.target);
+              if (!visibleMilestones.value.includes(index)) {
+                visibleMilestones.value.push(index);
+              }
             }
-          }
-        })
-      }, {threshold: 0.3})
+          });
+        },
+        { threshold: 0.3 }
+      );
 
       timelineItems.forEach((item) => {
-        observer.observe(item)
-      })
-    }
+        observer.observe(item);
+      });
+    };
 
     onMounted(() => {
       // Hero animation
       setTimeout(() => {
-        heroVisible.value = true
-      }, 500)
+        heroVisible.value = true;
+      }, 500);
 
       // Parallax effect
       const handleScroll = () => {
-        updateParallax()
-      }
-      window.addEventListener('scroll', handleScroll)
+        updateParallax();
+      };
+      window.addEventListener("scroll", handleScroll);
 
       // Intersection observer
       setTimeout(() => {
-        observeElements()
-      }, 1000)
-    })
+        observeElements();
+      }, 1000);
+    });
 
     onUnmounted(() => {
-      window.removeEventListener('scroll', updateParallax)
-    })
+      window.removeEventListener("scroll", updateParallax);
+    });
 
     return {
       parallaxOffset,
@@ -655,10 +698,10 @@ export default {
       setActiveValue,
       setActiveTeamMember,
       setActiveInitiative,
-      setActiveGoal
-    }
-  }
-}
+      setActiveGoal,
+    };
+  },
+};
 </script>
 
 <style scoped>
@@ -735,7 +778,11 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, rgba(9, 46, 94, 0.8), rgba(9, 46, 94, 0.6));
+  background: linear-gradient(
+    45deg,
+    rgba(9, 46, 94, 0.8),
+    rgba(9, 46, 94, 0.6)
+  );
   z-index: -1;
 }
 
@@ -794,7 +841,11 @@ export default {
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
     transform: translateX(-50%) translateY(0);
   }
   40% {
@@ -860,13 +911,14 @@ export default {
   justify-content: center;
   position: relative;
   z-index: 2;
-  transition: var(--transition);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .timeline-item.active .timeline-marker {
   background: var(--accent-color);
   color: white;
-  transform: scale(1.1);
+  transform: scale(1.2);
+  box-shadow: 0 0 20px rgba(9, 46, 94, 0.4);
 }
 
 .timeline-content {
@@ -877,12 +929,13 @@ export default {
   box-shadow: var(--shadow);
   padding: 1.5rem;
   margin-top: 1rem;
-  transition: var(--transition);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .timeline-item.active .timeline-content {
   background: var(--light-gray);
-  transform: scale(1.02);
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
 .timeline-year {
@@ -916,7 +969,7 @@ export default {
   border-radius: 12px;
   text-align: center;
   box-shadow: var(--shadow);
-  transition: var(--transition);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -924,8 +977,8 @@ export default {
 
 .value-card:hover,
 .value-card.active {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
 }
 
 .value-icon {
@@ -937,22 +990,24 @@ export default {
   align-items: center;
   justify-content: center;
   margin: 0 auto 1.5rem;
-  transition: var(--transition);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .value-card.active .value-icon {
   background: var(--accent-color);
   color: white;
+  transform: scale(1.1);
 }
 
 .value-icon span {
   font-size: 2rem;
   color: var(--accent-color);
-  transition: var(--transition);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .value-card.active .value-icon span {
   color: white;
+  transform: rotate(360deg);
 }
 
 .value-card h3 {
@@ -1009,14 +1064,14 @@ export default {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: var(--shadow);
-  transition: var(--transition);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   cursor: pointer;
 }
 
 .team-card:hover,
 .team-card.active {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .team-image {
@@ -1029,11 +1084,11 @@ export default {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: var(--transition);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .team-card:hover .team-image img {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 .team-overlay {
@@ -1047,7 +1102,8 @@ export default {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: var(--transition);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  backdrop-filter: blur(5px);
 }
 
 .team-card:hover .team-overlay,
@@ -1146,7 +1202,7 @@ export default {
   border-radius: 12px;
   text-align: center;
   box-shadow: var(--shadow);
-  transition: var(--transition);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
   overflow: hidden;
 }
@@ -1158,10 +1214,10 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--accent-color);
+  background: linear-gradient(135deg, var(--accent-color), #0a3d7a);
   transform: scaleY(0);
   transform-origin: bottom;
-  transition: transform 0.5s ease;
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   z-index: -1;
 }
 
@@ -1172,7 +1228,7 @@ export default {
 
 .csr-stat-card:hover,
 .csr-stat-card.active {
-  transform: translateY(-10px);
+  transform: translateY(-15px) scale(1.05);
   color: white;
 }
 
@@ -1183,12 +1239,13 @@ export default {
 .stat-icon span {
   font-size: 2.5rem;
   color: var(--accent-color);
-  transition: var(--transition);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .csr-stat-card:hover .stat-icon span,
 .csr-stat-card.active .stat-icon span {
   color: white;
+  transform: scale(1.2) rotate(360deg);
 }
 
 .stat-number {
@@ -1196,25 +1253,26 @@ export default {
   font-weight: 700;
   margin-bottom: 0.5rem;
   color: var(--primary-color);
-  transition: var(--transition);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .csr-stat-card:hover .stat-number,
 .csr-stat-card.active .stat-number {
   color: white;
+  transform: scale(1.1);
 }
 
 .stat-label {
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  transition: var(--transition);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .stat-description {
   font-size: 0.9rem;
   line-height: 1.4;
-  transition: var(--transition);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .csr-initiatives {
@@ -1236,18 +1294,37 @@ export default {
   border: none;
   background: transparent;
   cursor: pointer;
-  transition: var(--transition);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.tab-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--accent-color);
+  transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: -1;
+}
+
+.tab-button:hover::before,
+.tab-button.active::before {
+  left: 0;
 }
 
 .tab-button:hover,
 .tab-button.active {
-  background: var(--accent-color);
   color: white;
+  transform: translateY(-2px);
 }
 
 .initiative-content {
@@ -1342,7 +1419,7 @@ export default {
   padding: 2rem;
   border-radius: 12px;
   cursor: pointer;
-  transition: var(--transition);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   border: 2px solid transparent;
 }
 
@@ -1350,8 +1427,8 @@ export default {
 .vision-card.active {
   background: white;
   border-color: var(--accent-color);
-  transform: translateY(-5px);
-  box-shadow: var(--shadow);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
 .vision-icon {

@@ -97,24 +97,82 @@
       <div v-else class="job-grid">
         <div
           v-for="job in jobs"
-          :key="job.id"
+          :key="job.ID"
           class="job-card"
           @click="openJobDetail(job)"
         >
           <!-- Job Icon Section (menggantikan foto) -->
           <div class="job-icon">
             <div class="icon-container">
-              <span class="job-emoji">💼</span>
-              <div class="department-badge">{{ job.department }}</div>
+              <svg
+                class="job-icon-svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                v-html="
+                  departmentIcons[job.Department] || departmentIcons['default']
+                "
+              ></svg>
             </div>
           </div>
 
           <!-- Job Content -->
           <div class="job-content">
-            <h2 class="job-title">{{ job.title }}</h2>
-            <p class="job-department">🏢 {{ job.department }}</p>
+            <h2 class="job-title">{{ job.Title }}</h2>
+            <p class="job-department">
+              <svg
+                class="department-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 21H21"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M5 21V7L13 3V21"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M19 21V11L13 7"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              {{ job.Department }}
+            </p>
             <div class="job-meta">
-              <span class="job-id">ID: {{ job.id }}</span>
+              <svg
+                class="qualifications-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M22 11.08V12C21.9988 14.1564 21.3005 16.2547 20.0093 17.9818C18.7182 19.709 16.9033 20.9725 14.8354 21.5839C12.7674 22.1953 10.5573 22.1219 8.53447 21.3746C6.51168 20.6273 4.78465 19.2461 3.61096 17.4371C2.43727 15.628 1.87979 13.4881 2.02168 11.3363C2.16356 9.18455 2.99721 7.13631 4.39828 5.49706C5.79935 3.85781 7.69279 2.71537 9.79619 2.24013C11.8996 1.7649 14.1003 1.98232 16.07 2.85999"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M22 4L12 14.01L9 11.01"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span class="job-qualifications">{{ job.Qualifications }}</span>
             </div>
           </div>
         </div>
@@ -131,6 +189,15 @@ export default {
       jobs: [],
       error: null,
       loading: false,
+      departmentIcons: {
+        Production: `<path d="M4 19V9C4 7.89543 4.89543 7 6 7H8M20 19V9C20 7.89543 19.1046 7 18 7H16M12 7V5C12 3.89543 11.1046 3 10 3H8C6.89543 3 6 3.89543 6 5V7M12 7H8M12 7H16M16 7V5C16 3.89543 15.1046 3 14 3H12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 11H12M8 15H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="11" r="1" fill="currentColor"/>`,
+        HR: `<path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11ZM20 8V14M17 11H23" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`,
+        IT: `<path d="M10 20L14 4M18 8L22 12L18 16M6 16L2 12L6 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`,
+        Marketing: `<path d="M16 8V16M12 11V16M8 14V16M6 20H18C19.1046 20 20 19.1046 20 18V6C20 4.89543 19.1046 4 18 4H6C4.89543 4 4 4.89543 4 6V18C4 19.1046 4.89543 20 6 20Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`,
+        Finance: `<path d="M12 1V23M17 5H9.5C8.57174 5 7.6815 5.36875 7.02513 6.02513C6.36875 6.6815 6 7.57174 6 8.5C6 9.42826 6.36875 10.3185 7.02513 10.9749C7.6815 11.6313 8.57174 12 9.5 12H14.5C15.4283 12 16.3185 12.3687 16.9749 13.0251C17.6313 13.6815 18 14.5717 18 15.5C18 16.4283 17.6313 17.3185 16.9749 17.9749C16.3185 18.6313 15.4283 19 14.5 19H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`,
+        "Quality Control": `<path d="M9 11L12 14L22 4M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`,
+        default: `<path d="M20 7H4C2.89543 7 2 7.89543 2 9V19C2 20.1046 2.89543 21 4 21H20C21.1046 21 22 20.1046 22 19V9C22 7.89543 21.1046 7 20 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 7V5C16 3.89543 15.1046 3 14 3H10C8.89543 3 8 3.89543 8 5V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`,
+      },
     };
   },
 
@@ -190,6 +257,7 @@ export default {
         console.log("Header ditemukan:", header.trim());
         return header.trim();
       });
+      console.log("All headers:", headers); // Add this line to log all headers
       const result = [];
       let inQuotes = false;
       let currentRow = [];
@@ -220,6 +288,7 @@ export default {
             obj[header] = currentRow[index] || "-";
           });
           console.log("Data row yang diparsing:", obj);
+          console.log("Qualifications value:", obj.Qualifications); // Add this line to specifically log qualifications
           result.push(obj);
         }
         currentRow = [];
@@ -504,14 +573,13 @@ export default {
 
 .icon-container {
   text-align: center;
-  color: white;
-}
-
-.job-emoji {
-  font-size: 4rem;
-  display: block;
-  margin-bottom: 15px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  color: #1e2a44;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .department-badge {
@@ -525,35 +593,100 @@ export default {
 }
 
 .job-content {
-  padding: 25px;
+  padding: 28px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.98)
+  );
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
 }
 
 .job-title {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #2c3e50;
-  margin: 0 0 15px 0;
-  line-height: 1.4;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0 0 12px 0;
+  line-height: 1.3;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  transition: color 0.3s ease;
+}
+
+.job-card:hover .job-title {
+  color: #2563eb;
 }
 
 .job-department {
-  color: #7f8c8d;
-  font-size: 0.95rem;
-  margin: 0 0 12px 0;
+  color: #4b5563;
+  font-size: 1rem;
+  margin: 0 0 16px 0;
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-weight: 500;
+  gap: 10px;
+  font-weight: 600;
+  padding: 8px 12px;
+  background: rgba(37, 99, 235, 0.2);
+  border-radius: 8px;
+  width: fit-content;
+  transition: all 0.3s ease;
+}
+
+.job-department:hover {
+  background: rgba(37, 99, 235, 0.6);
+  transform: translateX(5px);
 }
 
 .job-meta {
-  font-size: 0.85rem;
-  color: #95a5a6;
+  font-size: 0.9rem;
+  color: #6b7280;
   font-weight: 500;
+  line-height: 1.6;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.job-icon-svg {
+  width: 80px;
+  height: 80px;
+  color: #1e2a44;
+  margin: 0 auto 15px auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.job-card:hover .job-icon-svg {
+  transform: scale(1.1);
+  color: #2563eb;
+}
+
+.department-icon {
+  width: 20px;
+  height: 20px;
+  color: #4b5563;
+}
+
+.qualifications-icon {
+  width: 20px;
+  height: 20px;
+  color: #4b5563;
+  flex-shrink: 0;
+}
+
+.job-department,
+.job-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 /* Responsive Design */

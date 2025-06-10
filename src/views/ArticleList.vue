@@ -1,99 +1,89 @@
+Berikut adalah kode yang sudah direvisi sesuai kebutuhan Anda: ## **Struktur
+Spreadsheet yang Diperlukan:** | Judul | Gambar | Tanggal Rilis | Link Google
+Docs | |-------|--------|---------------|------------------| | Tutorial Vue.js
+Dasar | https://example.com/image1.jpg | 2024-01-15 |
+https://docs.google.com/document/d/xxx/edit | | CSS Grid Layout |
+https://example.com/image2.jpg | 2024-01-12 |
+https://docs.google.com/document/d/yyy/edit | ## **Kode Vue.js yang Direvisi:**
+```vue
 <template>
   <div class="article-container">
-    <!-- SVG Shape Abstrak untuk Background Area Putih -->
+    <!-- SVG Shape Abstrak untuk Background -->
     <svg
-        class="abstract-background"
-        preserveAspectRatio="none"
-        viewBox="0 0 1200 600"
-        xmlns="http://www.w3.org/2000/svg"
+      class="abstract-background"
+      preserveAspectRatio="none"
+      viewBox="0 0 1200 600"
+      xmlns="http://www.w3.org/2000/svg"
     >
       <path
-          d="M0 200 C300 100, 700 300, 1200 150 L1200 600 L0 600 Z"
-          fill="rgba(30, 42, 68, 0.1)"
+        d="M0 200 C300 100, 700 300, 1200 150 L1200 600 L0 600 Z"
+        fill="rgba(30, 42, 68, 0.1)"
       />
       <path
-          d="M0 300 C200 400, 600 200, 1200 350 L1200 600 L0 600 Z"
-          fill="rgba(30, 42, 68, 0.15)"
+        d="M0 300 C200 400, 600 200, 1200 350 L1200 600 L0 600 Z"
+        fill="rgba(30, 42, 68, 0.15)"
       />
     </svg>
 
     <div class="content-wrapper">
       <h1 class="page-title">Artikel Terbaru</h1>
 
-      <!-- Debug Info (hapus di production) -->
-      <div v-if="debugMode" class="debug-info">
-        <h3>🔧 Debug Information:</h3>
-        <p><strong>Spreadsheet ID:</strong> {{ spreadsheetId }}</p>
-        <p><strong>Attempts:</strong> {{ attemptCount }}</p>
-        <p><strong>Last URL:</strong> {{ lastAttemptedUrl }}</p>
-        <button @click="toggleDebug">Hide Debug</button>
-      </div>
-
       <!-- Loading State -->
       <div v-if="loading" class="loading">
         <div class="spinner"></div>
-        <p>{{ loadingMessage }}</p>
+        <p>Memuat artikel...</p>
       </div>
 
       <!-- Error State -->
       <div v-else-if="error" class="error">
         <h3>⚠️ Gagal Memuat Data</h3>
         <p>{{ error }}</p>
-
-        <div class="error-actions">
-          <button class="retry-btn" @click="retryFetch">🔄 Coba Lagi</button>
-          <button class="test-btn" @click="useTestData">📝 Gunakan Data Test</button>
-          <button class="debug-btn" @click="showDebug">🔧 Show Debug</button>
-        </div>
-
-        <details class="troubleshoot">
-          <summary>🛠️ Panduan Troubleshooting</summary>
-          <ol>
-            <li>Pastikan Google Sheets sudah dipublikasikan ke web</li>
-            <li>Pastikan sharing permission "Anyone with the link"</li>
-            <li>Cek koneksi internet Anda</li>
-            <li>Coba disable VPN/Proxy jika ada</li>
-            <li>Coba refresh halaman</li>
-          </ol>
-        </details>
+        <button class="retry-btn" @click="fetchArticles">🔄 Coba Lagi</button>
       </div>
 
       <!-- Articles Grid -->
       <div v-else-if="articles.length > 0" class="article-grid">
         <div
-            v-for="article in articles"
-            :key="article.id"
-            class="article-card"
-            @click="openArticle(article)"
+          v-for="article in articles"
+          :key="article.id"
+          class="article-card"
+          @click="openArticle(article)"
         >
+          <!-- Article Image -->
           <div class="article-image">
             <img
-                v-if="article.gambar && article.gambar !== '-' && !article.imageError"
-                :alt="article.judul"
-                :src="article.gambar"
-                loading="lazy"
-                @error="handleImageError(article)"
+              :src="article.gambar"
+              :alt="article.judul"
+              @error="handleImageError"
+              loading="lazy"
             />
-            <div v-else class="no-image">
-              <span>📰</span>
+            <div class="image-overlay">
+              <span class="read-more">Baca Artikel</span>
             </div>
           </div>
 
           <div class="article-content">
             <h2 class="article-title">{{ article.judul }}</h2>
-            <p class="article-date">📅 {{ formatDate(article.tanggal_terbit) }}</p>
-            <div class="article-meta">
-              <span class="article-id">ID: {{ article.id }}</span>
-            </div>
+            <p class="article-date">
+              <svg class="date-icon" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M8 2V6M16 2V6M3 10H21M5 4H19C20.1046 4 21 4.89543 21 6V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V6C3 4.89543 3.89543 4 5 4Z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              {{ formatDate(article.tanggal_rilis) }}
+            </p>
           </div>
         </div>
       </div>
 
       <!-- No Data State -->
       <div v-else class="no-data">
-        <h3>📋 Tidak Ada Data</h3>
-        <p>Tidak ada artikel yang tersedia saat ini.</p>
-        <button class="test-btn" @click="useTestData">📝 Muat Data Test</button>
+        <h3>📋 Tidak Ada Artikel</h3>
+        <p>Belum ada artikel yang tersedia saat ini.</p>
       </div>
     </div>
   </div>
@@ -107,12 +97,8 @@ export default {
       articles: [],
       error: null,
       loading: false,
-      loadingMessage: "Memuat artikel...",
-      spreadsheetId: "17woNBxM9mpcMdQdn5Ybabz3fujgQOBbvZ4DrJWE0zGA",
-      debugMode: false,
-      attemptCount: 0,
-      lastAttemptedUrl: "",
-      testDataUsed: false
+      spreadsheetId:
+        "e/2PACX-1vSCH_k-gs8KgjIQQXwS1tmKFWdrrejVwljZMr5STCiuqCDC7x6hKw7vL5_LUrEimlaFn9fJ4HtkhVmc", // Ganti dengan ID spreadsheet Anda
     };
   },
 
@@ -124,279 +110,118 @@ export default {
     async fetchArticles() {
       this.loading = true;
       this.error = null;
-      this.attemptCount = 0;
-      this.testDataUsed = false;
-
-      console.log("🚀 Memulai pengambilan data artikel...");
-
-      // Berbagai strategi untuk mengakses Google Sheets
-      const strategies = [
-        {
-          name: "Direct CSV Export",
-          url: `https://docs.google.com/spreadsheets/d/${this.spreadsheetId}/export?format=csv&gid=0`,
-          method: "fetch"
-        },
-        {
-          name: "Alternative CSV Export",
-          url: `https://docs.google.com/spreadsheets/d/${this.spreadsheetId}/export?format=csv`,
-          method: "fetch"
-        },
-        {
-          name: "GViz Query",
-          url: `https://docs.google.com/spreadsheets/d/${this.spreadsheetId}/gviz/tq?tqx=out:csv&sheet=Sheet1`,
-          method: "fetch"
-        },
-        {
-          name: "Public CSV",
-          url: `https://docs.google.com/spreadsheets/d/${this.spreadsheetId}/pub?output=csv`,
-          method: "fetch"
-        },
-        {
-          name: "CORS Proxy 1",
-          url: `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://docs.google.com/spreadsheets/d/${this.spreadsheetId}/export?format=csv&gid=0`)}`,
-          method: "fetch"
-        },
-        {
-          name: "CORS Proxy 2",
-          url: `https://corsproxy.io/?${encodeURIComponent(`https://docs.google.com/spreadsheets/d/${this.spreadsheetId}/export?format=csv&gid=0`)}`,
-          method: "fetch"
-        }
-      ];
-
-      for (const strategy of strategies) {
-        try {
-          this.attemptCount++;
-          this.loadingMessage = `Mencoba ${strategy.name}... (${this.attemptCount}/${strategies.length})`;
-          this.lastAttemptedUrl = strategy.url;
-
-          console.log(`🔄 Strategi ${this.attemptCount}: ${strategy.name}`);
-          console.log(`🌐 URL: ${strategy.url}`);
-
-          const csvData = await this.fetchWithStrategy(strategy);
-
-          if (csvData) {
-            const parsedData = this.parseCSVData(csvData);
-
-            if (parsedData.length > 0) {
-              this.articles = parsedData;
-              this.loading = false;
-              console.log(`✅ Berhasil dengan ${strategy.name}! Data: ${parsedData.length} artikel`);
-              return;
-            }
-          }
-
-        } catch (error) {
-          console.log(`❌ ${strategy.name} gagal:`, error.message);
-
-          // Jeda sebentar sebelum mencoba strategi berikutnya
-          await new Promise(resolve => setTimeout(resolve, 500));
-        }
-      }
-
-      // Jika semua strategi gagal
-      this.handleAllStrategiesFailed();
-    },
-
-    async fetchWithStrategy(strategy) {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 10000);
 
       try {
-        const response = await fetch(strategy.url, {
-          signal: controller.signal,
-          method: 'GET',
-          headers: {
-            'Accept': 'text/csv,text/plain,*/*',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-            'Cache-Control': 'no-cache',
-            'Pragma': 'no-cache'
-          },
-          mode: 'cors',
-          credentials: 'omit'
-        });
+        const csvUrl = `https://docs.google.com/spreadsheets/d/${this.spreadsheetId}/pub?output=csv`;
 
-        clearTimeout(timeoutId);
+        const response = await fetch(csvUrl);
 
         if (!response.ok) {
-          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+          throw new Error(`Gagal mengambil data: ${response.status}`);
         }
 
-        const text = await response.text();
+        const csvText = await response.text();
+        this.articles = this.parseCSV(csvText);
 
-        if (!text || text.trim().length < 10) {
-          throw new Error("Response kosong atau tidak valid");
+        if (this.articles.length === 0) {
+          this.error = "Tidak ada data artikel yang ditemukan.";
         }
-
-        return text;
-
       } catch (error) {
-        clearTimeout(timeoutId);
-        throw error;
+        this.error = error.message;
+      } finally {
+        this.loading = false;
       }
     },
 
-    parseCSVData(csvText) {
-      try {
-        console.log("📊 Parsing CSV data...");
-        console.log("📄 CSV preview:", csvText.substring(0, 200));
+    parseCSV(csvText) {
+      const lines = csvText.trim().split("\n");
+      if (lines.length < 2) return [];
 
-        const lines = csvText.trim().split('\n').filter(line => line.trim());
+      // Ambil header dan bersihkan
+      const headers = lines[0]
+        .split(",")
+        .map((h) => h.trim().replace(/"/g, ""));
 
-        if (lines.length < 2) {
-          throw new Error("CSV tidak memiliki data yang cukup");
-        }
+      const articles = [];
 
-        // Parse header
-        const headers = this.parseCSVLine(lines[0])
-            .map(h => h.toLowerCase().trim().replace(/[^a-z0-9_]/g, '_'));
+      for (let i = 1; i < lines.length; i++) {
+        const values = this.parseCSVLine(lines[i]);
 
-        console.log("📋 Headers:", headers);
+        if (values.length >= 3) {
+          const article = {
+            id: i,
+            judul: values[0] || "Tanpa Judul",
+            gambar:
+              values[1] ||
+              "https://via.placeholder.com/400x250/e5e7eb/6b7280?text=No+Image",
+            tanggal_rilis: values[2] || "",
+            link_google_docs: values[3] || "",
+          };
 
-        const articles = [];
-
-        // Parse data rows
-        for (let i = 1; i < lines.length; i++) {
-          const values = this.parseCSVLine(lines[i]);
-
-          if (values.length >= headers.length) {
-            const article = {};
-
-            headers.forEach((header, index) => {
-              article[header] = values[index] ? values[index].trim() : '';
-            });
-
-            // Validasi dan format artikel
-            if (article.id && article.judul) {
-              articles.push({
-                id: article.id,
-                judul: article.judul,
-                tanggal_terbit: article.tanggal_terbit || new Date().toISOString().split('T')[0],
-                gambar: article.gambar || '',
-                link_isi_artikel: article.link_isi_artikel || '',
-                imageError: false
-              });
-            }
+          // Hanya tambahkan jika ada judul
+          if (article.judul && article.judul !== "Tanpa Judul") {
+            articles.push(article);
           }
         }
-
-        console.log(`✨ Berhasil parse ${articles.length} artikel`);
-        return articles;
-
-      } catch (error) {
-        console.error("❌ Error parsing CSV:", error);
-        throw error;
       }
+
+      return articles;
     },
 
     parseCSVLine(line) {
       const result = [];
-      let current = '';
+      let current = "";
       let inQuotes = false;
 
       for (let i = 0; i < line.length; i++) {
         const char = line[i];
 
         if (char === '"') {
-          if (inQuotes && line[i + 1] === '"') {
-            current += '"';
-            i++;
-          } else {
-            inQuotes = !inQuotes;
-          }
-        } else if (char === ',' && !inQuotes) {
-          result.push(current);
-          current = '';
+          inQuotes = !inQuotes;
+        } else if (char === "," && !inQuotes) {
+          result.push(current.trim());
+          current = "";
         } else {
           current += char;
         }
       }
 
-      result.push(current);
-      return result;
-    },
-
-    handleAllStrategiesFailed() {
-      this.loading = false;
-      this.error = `Tidak dapat mengakses data dari Google Sheets setelah ${this.attemptCount} percobaan.`;
-      console.error("💥 Semua strategi gagal");
-    },
-
-    // Test data untuk fallback
-    useTestData() {
-      console.log("📝 Menggunakan data test...");
-      this.articles = [
-        {
-          id: "1",
-          judul: "Artikel Test 1 - Teknologi Terbaru",
-          tanggal_terbit: "2024-01-15",
-          gambar: "https://via.placeholder.com/300x200/4CAF50/white?text=Tech+News",
-          link_isi_artikel: "#",
-          imageError: false
-        },
-        {
-          id: "2",
-          judul: "Artikel Test 2 - Tips Programming",
-          tanggal_terbit: "2024-01-10",
-          gambar: "https://via.placeholder.com/300x200/2196F3/white?text=Programming",
-          link_isi_artikel: "#",
-          imageError: false
-        },
-        {
-          id: "3",
-          judul: "Artikel Test 3 - Design Trends",
-          tanggal_terbit: "2024-01-05",
-          gambar: "",
-          link_isi_artikel: "#",
-          imageError: false
-        }
-      ];
-      this.error = null;
-      this.testDataUsed = true;
-      console.log("✅ Data test dimuat");
+      result.push(current.trim());
+      return result.map((item) => item.replace(/^"|"$/g, ""));
     },
 
     formatDate(dateString) {
-      try {
-        if (!dateString || dateString === '-') return 'Tanggal tidak tersedia';
+      if (!dateString) return "Tanggal tidak tersedia";
 
+      try {
         const date = new Date(dateString);
         if (isNaN(date.getTime())) return dateString;
 
-        return new Intl.DateTimeFormat('id-ID', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
+        return new Intl.DateTimeFormat("id-ID", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
         }).format(date);
-      } catch (error) {
+      } catch {
         return dateString;
       }
     },
 
-    handleImageError(article) {
-      article.imageError = true;
-      this.$forceUpdate();
-    },
-
     openArticle(article) {
-      if (article.link_isi_artikel && article.link_isi_artikel !== '-' && article.link_isi_artikel !== '#') {
-        window.open(article.link_isi_artikel, '_blank');
+      if (article.link_google_docs) {
+        // Konversi link edit ke link view yang bisa dibaca publik
+        const viewLink = article.link_google_docs.replace("/edit", "/pub");
+        window.open(viewLink, "_blank");
       } else {
-        alert(`Artikel: ${article.judul}\nBelum ada link artikel yang tersedia.`);
+        alert(`Artikel "${article.judul}" belum memiliki link dokumen.`);
       }
     },
 
-    async retryFetch() {
-      await this.fetchArticles();
+    handleImageError(event) {
+      event.target.src =
+        "https://via.placeholder.com/400x250/e5e7eb/6b7280?text=Gambar+Tidak+Tersedia";
     },
-
-    showDebug() {
-      this.debugMode = true;
-    },
-
-    toggleDebug() {
-      this.debugMode = !this.debugMode;
-    }
-  }
+  },
 };
 </script>
 
@@ -405,7 +230,7 @@ export default {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 }
 
 .article-container {
@@ -413,10 +238,11 @@ export default {
   min-height: 100vh;
   padding: 0;
   overflow-x: hidden;
+  background-color: #f8f9fa;
 }
 
 .abstract-background {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -428,50 +254,35 @@ export default {
 .content-wrapper {
   position: relative;
   z-index: 1;
-  padding: 30px 20px 20px;
+  padding: 30px 20px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .page-title {
   font-size: 2.5rem;
-  color: #2c3e50;
+  color: #374151;
   text-align: center;
   margin-bottom: 40px;
   font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.debug-info {
-  background: rgba(240, 248, 255, 0.9);
-  border: 1px solid #0066cc;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 20px;
-  font-family: monospace;
-  font-size: 0.9rem;
-  backdrop-filter: blur(10px);
-}
-
-.debug-info h3 {
-  margin: 0 0 10px 0;
-  color: #0066cc;
+  letter-spacing: -0.02em;
 }
 
 .loading {
   text-align: center;
   padding: 60px 20px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
   backdrop-filter: blur(10px);
+  border: 1px solid rgba(209, 213, 219, 0.3);
 }
 
 .spinner {
-  border: 4px solid rgba(52, 152, 219, 0.2);
-  border-top: 4px solid #3498db;
+  border: 3px solid rgba(156, 163, 175, 0.3);
+  border-top: 3px solid #6b7280;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   animation: spin 1s linear infinite;
   margin: 0 auto 20px;
 }
@@ -486,135 +297,65 @@ export default {
 }
 
 .error {
-  background: rgba(255, 235, 238, 0.9);
-  border: 1px solid #f44336;
-  border-radius: 12px;
+  background: rgba(254, 242, 242, 0.9);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 16px;
   padding: 30px;
-  margin: 20px 0;
   text-align: center;
   backdrop-filter: blur(10px);
 }
 
 .error h3 {
-  color: #d32f2f;
-  margin: 0 0 15px 0;
-  font-size: 1.5rem;
+  color: #dc2626;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
 }
 
-.error-actions {
-  margin: 25px 0;
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.retry-btn, .test-btn, .debug-btn {
-  padding: 12px 24px;
+.retry-btn {
+  padding: 10px 20px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  font-size: 0.9rem;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.retry-btn {
-  background: linear-gradient(135deg, #4CAF50, #45a049);
+  background: #6b7280;
   color: white;
+  margin-top: 15px;
 }
 
 .retry-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
-}
-
-.test-btn {
-  background: linear-gradient(135deg, #ff9800, #f57c00);
-  color: white;
-}
-
-.test-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
-}
-
-.debug-btn {
-  background: linear-gradient(135deg, #607d8b, #546e7a);
-  color: white;
-}
-
-.debug-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(96, 125, 139, 0.3);
-}
-
-.troubleshoot {
-  margin-top: 25px;
-  text-align: left;
-  background: rgba(255, 255, 255, 0.8);
-  padding: 20px;
-  border-radius: 8px;
-  backdrop-filter: blur(10px);
-}
-
-.troubleshoot summary {
-  cursor: pointer;
-  font-weight: bold;
-  color: #1976d2;
-  font-size: 1.1rem;
-}
-
-.troubleshoot ol {
-  margin: 15px 0 0 20px;
-  line-height: 1.6;
-}
-
-.no-data {
-  text-align: center;
-  padding: 60px 20px;
-  background: rgba(245, 245, 245, 0.9);
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-}
-
-.no-data h3 {
-  color: #666;
-  margin-bottom: 15px;
-  font-size: 1.5rem;
+  background: #4b5563;
+  transform: translateY(-1px);
 }
 
 .article-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 30px;
+  gap: 24px;
   margin-top: 30px;
 }
 
 .article-card {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s ease;
-  border: 1px solid rgba(224, 224, 224, 0.3);
+  border: 1px solid rgba(209, 213, 219, 0.3);
   backdrop-filter: blur(10px);
 }
 
 .article-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(107, 114, 128, 0.15);
+  border-color: rgba(156, 163, 175, 0.4);
 }
 
 .article-image {
-  height: 220px;
+  position: relative;
+  height: 200px;
   overflow: hidden;
-  background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: #f3f4f6;
 }
 
 .article-image img {
@@ -625,24 +366,51 @@ export default {
 }
 
 .article-card:hover .article-image img {
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
-.no-image {
-  font-size: 3.5rem;
-  color: #bbb;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(55, 65, 81, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.article-card:hover .image-overlay {
+  opacity: 1;
+}
+
+.read-more {
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 8px 16px;
+  border: 2px solid white;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.article-card:hover .read-more {
+  background: white;
+  color: #374151;
 }
 
 .article-content {
-  padding: 25px;
+  padding: 24px;
 }
 
 .article-title {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 600;
-  color: #2c3e50;
-  margin: 0 0 15px 0;
+  color: #131314;
+  margin-bottom: 16px;
   line-height: 1.4;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -651,25 +419,43 @@ export default {
 }
 
 .article-date {
-  color: #7f8c8d;
-  font-size: 0.95rem;
-  margin: 0 0 12px 0;
+  color: #6b7280;
+  font-size: 0.9rem;
   display: flex;
   align-items: center;
   gap: 8px;
   font-weight: 500;
 }
 
-.article-meta {
-  font-size: 0.85rem;
-  color: #95a5a6;
-  font-weight: 500;
+.date-icon {
+  width: 16px;
+  height: 16px;
+  color: #9ca3af;
+}
+
+.no-data {
+  text-align: center;
+  padding: 60px 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(209, 213, 219, 0.3);
+}
+
+.no-data h3 {
+  color: #6b7280;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.no-data p {
+  color: #9ca3af;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .content-wrapper {
-    padding: 20px 15px 15px;
+    padding: 20px 15px;
   }
 
   .page-title {
@@ -680,16 +466,6 @@ export default {
   .article-grid {
     grid-template-columns: 1fr;
     gap: 20px;
-    margin-top: 20px;
-  }
-
-  .error-actions {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .retry-btn, .test-btn, .debug-btn {
-    width: 200px;
   }
 
   .article-image {
@@ -703,12 +479,11 @@ export default {
 
 @media (max-width: 480px) {
   .content-wrapper {
-    padding: 15px 10px 10px;
+    padding: 15px 10px;
   }
 
   .page-title {
     font-size: 1.8rem;
-    margin-bottom: 25px;
   }
 
   .article-image {
@@ -716,7 +491,7 @@ export default {
   }
 
   .article-content {
-    padding: 15px;
+    padding: 16px;
   }
 
   .article-title {
@@ -727,7 +502,7 @@ export default {
 /* Tablet Responsive */
 @media (min-width: 769px) and (max-width: 1024px) {
   .content-wrapper {
-    padding: 25px 20px 15px;
+    padding: 25px 20px;
   }
 
   .page-title {
@@ -738,6 +513,10 @@ export default {
   .article-grid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 25px;
+  }
+
+  .article-image {
+    height: 200px;
   }
 }
 </style>
