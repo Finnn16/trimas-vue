@@ -2,63 +2,63 @@
   <div class="career-page">
     <!-- SVG Shape Abstrak untuk Background Area Putih -->
     <svg
-        class="abstract-background"
-        preserveAspectRatio="none"
-        viewBox="0 0 1200 600"
-        xmlns="http://www.w3.org/2000/svg"
+      class="abstract-background"
+      preserveAspectRatio="none"
+      viewBox="0 0 1200 600"
+      xmlns="http://www.w3.org/2000/svg"
     >
       <path
-          d="M0 200 C300 100, 700 300, 1200 150 L1200 600 L0 600 Z"
-          fill="rgba(30, 42, 68, 0.1)"
+        d="M0 200 C300 100, 700 300, 1200 150 L1200 600 L0 600 Z"
+        fill="rgba(30, 42, 68, 0.1)"
       />
       <path
-          d="M0 300 C200 400, 600 200,   1200 350 L1200 600 L0 600 Z"
-          fill="rgba(30, 42, 68, 0.15)"
+        d="M0 300 C200 400, 600 200,   1200 350 L1200 600 L0 600 Z"
+        fill="rgba(30, 42, 68, 0.15)"
       />
     </svg>
 
     <div class="content-wrapper">
       <h1 class="page-title">Discover Your Career Opportunities</h1>
       <p class="subtitle">
-        Join our thriving company in the garment industry, where innovation meets
-        excellence. We are committed to fostering a supportive work environment
-        where every team member can grow professionally and personally. With our
-        strong mentorship program, continuous learning opportunities, and
-        inclusive culture, we ensure that your career journey with us will be both
-        rewarding and meaningful.
+        Join our thriving company in the garment industry, where innovation
+        meets excellence. We are committed to fostering a supportive work
+        environment where every team member can grow professionally and
+        personally. With our strong mentorship program, continuous learning
+        opportunities, and inclusive culture, we ensure that your career journey
+        with us will be both rewarding and meaningful.
       </p>
 
       <!-- Section Narasi -->
       <div class="why-join-section">
         <!-- SVG Shape Abstrak untuk Section Why Join Us -->
         <svg
-            class="abstract-shape"
-            preserveAspectRatio="none"
-            viewBox="0 0 1000 400"
-            xmlns="http://www.w3.org/2000/svg"
+          class="abstract-shape"
+          preserveAspectRatio="none"
+          viewBox="0 0 1000 400"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <path
-              d="M0 0 C300 100, 700 300, 1000 200 L1000 400 L0 400 Z"
-              fill="rgba(255, 255, 255, 0.1)"
+            d="M0 0 C300 100, 700 300, 1000 200 L1000 400 L0 400 Z"
+            fill="rgba(255, 255, 255, 0.1)"
           />
           <path
-              d="M0 100 C200 200, 600 50, 1000 300 L1000 400 L0 400 Z"
-              fill="rgba(255, 255, 255, 0.15)"
+            d="M0 100 C200 200, 600 50, 1000 300 L1000 400 L0 400 Z"
+            fill="rgba(255, 255, 255, 0.15)"
           />
         </svg>
 
         <h2 class="why-join-title">Why Join Us?</h2>
         <p class="why-join-text">
-          At Trimas SGI - Sarana Garment Industry, we are more than just a garment
-          company specializing in golf apparel and hospital uniforms. We are a
-          community driven by a passion to
+          At Trimas SGI - Sarana Garment Industry, we are more than just a
+          garment company specializing in golf apparel and hospital uniforms. We
+          are a community driven by a passion to
           <strong>create a better life for all</strong>. Our
           <strong>vision</strong> is to become the world's premier choice for
-          flexible and innovative garment solutions, delivering excellence through
-          sustainable profit growth and high-quality products—our
+          flexible and innovative garment solutions, delivering excellence
+          through sustainable profit growth and high-quality products—our
           <strong>mission</strong>. Our <strong>core values</strong> of quality,
-          care, and commitment guide us in crafting a workplace where your skills
-          and ambitions can thrive.
+          care, and commitment guide us in crafting a workplace where your
+          skills and ambitions can thrive.
         </p>
         <p class="why-join-text">Join us to be part of a team that:</p>
         <ul class="join-benefits">
@@ -74,8 +74,8 @@
           Take the first step towards a rewarding career—<a
             class="apply-now"
             href="#"
-        >apply today</a
-        >
+            >apply today</a
+          >
           and help us shape a better tomorrow!
         </p>
       </div>
@@ -96,25 +96,25 @@
       <!-- Job Cards Grid -->
       <div v-else class="job-grid">
         <div
-            v-for="job in jobs"
-            :key="job.ID"
-            class="job-card"
-            @click="openJobDetail(job)"
+          v-for="job in jobs"
+          :key="job.id"
+          class="job-card"
+          @click="openJobDetail(job)"
         >
           <!-- Job Icon Section (menggantikan foto) -->
           <div class="job-icon">
             <div class="icon-container">
               <span class="job-emoji">💼</span>
-              <div class="department-badge">{{ job.Department }}</div>
+              <div class="department-badge">{{ job.department }}</div>
             </div>
           </div>
 
           <!-- Job Content -->
           <div class="job-content">
-            <h2 class="job-title">{{ job.Title }}</h2>
-            <p class="job-department">🏢 {{ job.Department }}</p>
+            <h2 class="job-title">{{ job.title }}</h2>
+            <p class="job-department">🏢 {{ job.department }}</p>
             <div class="job-meta">
-              <span class="job-id">ID: {{ job.ID }}</span>
+              <span class="job-id">ID: {{ job.id }}</span>
             </div>
           </div>
         </div>
@@ -143,21 +143,24 @@ export default {
       this.loading = true;
       this.error = null;
 
-      const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRgkjmUSVoYCO6Q-Q9CYwp0D0QzbvVGjlS8dDeSyMWUIcTOqGrQuTyL7tym8kuHdzC2fi-dFr_G_RVI/pub?output=csv";
+      const csvUrl =
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vR5Qv234SiVIEasFXGciUTaRqzEAZJR1sR8817TcDLo-WJqTAzm4qU-LqyRxB-elkKL3KiKRDN3Crle/pub?output=csv";
 
       try {
         console.log("🔄 Mengambil data lowongan kerja...");
 
         const response = await fetch(csvUrl, {
-          method: 'GET',
+          method: "GET",
           headers: {
-            'Accept': 'text/csv,text/plain,*/*',
-            'Cache-Control': 'no-cache'
-          }
+            Accept: "text/csv,text/plain,*/*",
+            "Cache-Control": "no-cache",
+          },
         });
 
         if (!response.ok) {
-          throw new Error(`HTTP ${response.status}: Gagal mengambil data. Pastikan URL CSV valid dan spreadsheet sudah dipublikasikan.`);
+          throw new Error(
+            `HTTP ${response.status}: Gagal mengambil data. Pastikan URL CSV valid dan spreadsheet sudah dipublikasikan.`
+          );
         }
 
         const csvText = await response.text();
@@ -166,11 +169,11 @@ export default {
         this.jobs = this.csvToArray(csvText);
 
         if (this.jobs.length === 0) {
-          this.error = "Data kosong. Pastikan spreadsheet memiliki kolom ID, Title, Department, Link, Qualifications, dan JobDescription.";
+          this.error =
+            "Data kosong. Pastikan spreadsheet memiliki kolom ID, Title, Department, Link, Qualifications, dan JobDescription.";
         } else {
           console.log(`✅ Berhasil memuat ${this.jobs.length} lowongan kerja`);
         }
-
       } catch (error) {
         this.error = `Error: ${error.message}`;
         console.error("❌ Error fetching job data:", error);
@@ -183,7 +186,10 @@ export default {
       const rows = csvText.trim().split("\n");
       if (rows.length < 2) return [];
 
-      const headers = rows[0].split(",").map((header) => header.trim());
+      const headers = rows[0].split(",").map((header) => {
+        console.log("Header ditemukan:", header.trim());
+        return header.trim();
+      });
       const result = [];
       let inQuotes = false;
       let currentRow = [];
@@ -206,13 +212,14 @@ export default {
           currentField = "";
         }
         if (
-            currentRow.length === headers.length &&
-            currentRow.some((cell) => cell)
+          currentRow.length === headers.length &&
+          currentRow.some((cell) => cell)
         ) {
           const obj = {};
           headers.forEach((header, index) => {
             obj[header] = currentRow[index] || "-";
           });
+          console.log("Data row yang diparsing:", obj);
           result.push(obj);
         }
         currentRow = [];
@@ -223,8 +230,8 @@ export default {
     },
 
     openJobDetail(job) {
-      if (job.Link && job.Link !== '-') {
-        window.open(job.Link, '_blank');
+      if (job.Link && job.Link !== "-") {
+        window.open(job.Link, "_blank");
       } else {
         // Fallback ke rute internal
         this.$router?.push(`/job-detail/${job.ID}`);
@@ -233,7 +240,7 @@ export default {
 
     async retryFetch() {
       await this.fetchJobs();
-    }
+    },
   },
 };
 </script>
@@ -251,16 +258,18 @@ export default {
   min-height: 100vh;
   padding: 0;
   overflow-x: hidden;
+  background-color: #f5f5f5;
 }
 
 .abstract-background {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 0;
   pointer-events: none;
+  transition: transform 0.1s ease-out;
 }
 
 .content-wrapper {
@@ -269,6 +278,7 @@ export default {
   padding: 30px 20px 20px;
   max-width: 1200px;
   margin: 0 auto;
+  animation: fadeIn 1s ease-in;
 }
 
 .page-title {
@@ -278,6 +288,7 @@ export default {
   margin-bottom: 20px;
   font-weight: 700;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in;
 }
 
 .subtitle {
@@ -289,6 +300,8 @@ export default {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  animation: fadeIn 1s ease-in 0.3s;
+  animation-fill-mode: both;
 }
 
 .why-join-section {
@@ -302,6 +315,13 @@ export default {
   color: #fff;
   overflow: hidden;
   backdrop-filter: blur(10px);
+  animation: fadeIn 1s ease-in 0.6s;
+  animation-fill-mode: both;
+  transition: transform 0.3s ease;
+}
+
+.why-join-section:hover {
+  transform: translateY(-5px);
 }
 
 .abstract-shape {
@@ -351,19 +371,24 @@ export default {
 }
 
 .apply-now {
-  color: #1e2a44;
-  background-color: #fff;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-weight: bold;
-  text-decoration: none;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  color: white;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .apply-now:hover {
-  background-color: #d1d5db;
-  text-decoration: none;
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+  text-decoration: none;
 }
 
 .loading {
@@ -419,7 +444,7 @@ export default {
   font-size: 0.9rem;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  background: linear-gradient(135deg, #4CAF50, #45a049);
+  background: linear-gradient(135deg, #4caf50, #45a049);
   color: white;
   margin-top: 15px;
 }
@@ -427,6 +452,17 @@ export default {
 .retry-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .job-grid {
@@ -452,14 +488,18 @@ export default {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
+.job-card:hover .job-icon {
+  transform: scale(1.08);
+}
+
 .job-icon {
   height: 220px;
   overflow: hidden;
-  background: linear-gradient(135deg, #1e2a44, #2c3e50);
+  background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  transition: transform 0.3s ease;
 }
 
 .icon-container {

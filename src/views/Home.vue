@@ -2,19 +2,6 @@
 <template>
   <main class="main-content">
     <HeroSection />
-    <h1 class="head-content">
-      Our Values &<span style="color: #092e5e"> Excellence</span>
-    </h1>
-    <div class="values-container">
-      <CompanyCard
-        v-for="(item, index) in companyValues"
-        :key="index"
-        :title="item.title"
-        :description="item.description"
-        :iconSrc="item.iconSrc"
-        :productImage="item.productImage"
-      />
-    </div>
     <br /><br />
     <ProductionInfo />
     <h1 class="head-content">
