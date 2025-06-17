@@ -26,19 +26,27 @@
 <script setup>
 import { ref, onMounted, nextTick } from "vue";
 
-// Import images
-// For Vue 3 with Vite you'd use direct import URLs
-const logoPath = "/src/assets/img/logo/";
+// Import logo images
+import jackNicklausLogo from "@/assets/img/logo/JackNicklaus.png";
+import pumaLogo from "@/assets/img/logo/puma.png";
+import mizunoLogo from "@/assets/img/logo/MIZUNO_-2048x1134.png";
+import nhgLogo from "@/assets/img/logo/NHG.jpg.webp";
+import leCoqLogo from "@/assets/img/logo/le-coq-sportif.png";
+import bridgestoneLogo from "@/assets/img/logo/Logo-bridgestone.png";
+import srixonLogo from "@/assets/img/logo/srixon.svg";
+import jobbLogo from "@/assets/img/logo/jobb-big.png";
+import wacLogo from "@/assets/img/logo/WAC.png";
+
 const logos = ref([
-  { src: `${logoPath}JackNicklaus.png`, alt: "Jack Nicklaus" },
-  { src: `${logoPath}puma.png`, alt: "Puma" },
-  { src: `${logoPath}MIZUNO_-2048x1134.png`, alt: "Mizuno" },
-  { src: `${logoPath}NHG.jpg.webp`, alt: "NHG" },
-  { src: `${logoPath}le-coq-sportif.png`, alt: "Le Coq Sportif" },
-  { src: `${logoPath}Logo-bridgestone.png`, alt: "Bridgestone" },
-  { src: `${logoPath}srixon.svg`, alt: "Srixon" },
-  { src: `${logoPath}jobb-big.png`, alt: "Jobb" },
-  { src: `${logoPath}WAC.png`, alt: "WAC" },
+  { src: jackNicklausLogo, alt: "Jack Nicklaus" },
+  { src: pumaLogo, alt: "Puma" },
+  { src: mizunoLogo, alt: "Mizuno" },
+  { src: nhgLogo, alt: "NHG" },
+  { src: leCoqLogo, alt: "Le Coq Sportif" },
+  { src: bridgestoneLogo, alt: "Bridgestone" },
+  { src: srixonLogo, alt: "Srixon" },
+  { src: jobbLogo, alt: "Jobb" },
+  { src: wacLogo, alt: "WAC" },
 ]);
 
 const logosContainer = ref(null);

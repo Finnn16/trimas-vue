@@ -409,38 +409,39 @@ export default {
 
     const values = ref([
       {
-        title: "Quality Excellence",
+        title: "Quality",
         description:
-          "Uncompromising commitment to the highest standards of craftsmanship.",
+          "Delivering excellence in every stitch, every product, every time.",
         icon: "star",
         details: [
-          "Premium material selection",
-          "Rigorous quality control",
-          "Continuous improvement processes",
-          "Customer satisfaction guarantee",
+          "Superior craftsmanship",
+          "Stringent quality assurance",
+          "Excellence in production",
+          "Best-in-class materials",
         ],
       },
       {
-        title: "Innovation",
+        title: "Care",
         description:
-          "Embracing cutting-edge technology and creative design solutions.",
-        icon: "lightbulb",
+          "Dedicated to the well-being of our customers, employees, and community.",
+        icon: "volunteer_activism",
         details: [
-          "Research & development investment",
-          "Technology integration",
-          "Design innovation",
-          "Process optimization",
+          "Customer satisfaction priority",
+          "Employee welfare focus",
+          "Community support",
+          "Ethical business practices",
         ],
       },
       {
-        title: "Sustainability",
-        description: "Protecting our environment for future generations.",
-        icon: "nature",
+        title: "Commitment",
+        description:
+          "Unwavering dedication to our promises and long-term relationships.",
+        icon: "handshake",
         details: [
-          "Eco-friendly materials",
-          "Waste reduction programs",
-          "Energy efficiency",
-          "Carbon footprint reduction",
+          "Reliable partnerships",
+          "On-time delivery",
+          "Continuous improvement",
+          "Long-term relationships",
         ],
       },
     ]);
