@@ -27,15 +27,15 @@
 import { ref, onMounted, nextTick } from "vue";
 
 // Import logo images
-import jackNicklausLogo from "@/assets/img/logo/JackNicklaus.png";
-import pumaLogo from "@/assets/img/logo/puma.png";
-import mizunoLogo from "@/assets/img/logo/MIZUNO_-2048x1134.png";
-import nhgLogo from "@/assets/img/logo/NHG.jpg.webp";
-import leCoqLogo from "@/assets/img/logo/le-coq-sportif.png";
-import bridgestoneLogo from "@/assets/img/logo/Logo-bridgestone.png";
-import srixonLogo from "@/assets/img/logo/srixon.svg";
-import jobbLogo from "@/assets/img/logo/jobb-big.png";
-import wacLogo from "@/assets/img/logo/WAC.png";
+import jackNicklausLogo from "/img/logo/JackNicklaus.png";
+import pumaLogo from "/img/logo/puma.png";
+import mizunoLogo from "/img/logo/MIZUNO_-2048x1134.png";
+import nhgLogo from "/img/logo/NHG.jpg.webp";
+import leCoqLogo from "/img/logo/le-coq-sportif.png";
+import bridgestoneLogo from "/img/logo/Logo-bridgestone.png";
+import srixonLogo from "/img/logo/srixon.svg";
+import jobbLogo from "/img/logo/jobb-big.png";
+import wacLogo from "/img/logo/WAC.png";
 
 const logos = ref([
   { src: jackNicklausLogo, alt: "Jack Nicklaus" },
