@@ -3,21 +3,20 @@
   <main class="main-content">
     <HeroSection />
     <br /><br />
+    <h1 class="head-content">
+      Trusted By <span style="color: #092e5e">Leading Brands</span>
+    </h1>
+    <BrandSlider />
     <ProductionInfo />
     <h1 class="head-content">
       Shipping<span style="color: #092e5e"> Brands</span>
     </h1>
     <ShippingMap />
-    <h1 class="head-content">
-      Trusted By <span style="color: #092e5e">Leading Brands</span>
-    </h1>
-    <BrandSlider />
   </main>
 </template>
 
 <script>
 import PresidentMessage from "../components/PresidentMessage.vue";
-import CompanyCard from "../components/CardVision.vue";
 import BrandSlider from "../components/BrandCarousel.vue";
 import ProductionInfo from "../components/ProductionInfo.vue";
 import HeroSection from "../components/HeroSection.vue";
@@ -28,7 +27,6 @@ export default {
   name: "Home",
   components: {
     PresidentMessage,
-    CompanyCard,
     BrandSlider,
     ProductionInfo,
     HeroSection,
@@ -107,9 +105,9 @@ body {
 .head-content {
   font-family: "MDPrimer", sans-serif;
   font-weight: 800;
-  font-size: 5.5rem;
+  font-size: 5.1rem;
   text-align: center;
-  margin: 5% 0;
+  margin: 2% 0;
   color: black;
 }
 

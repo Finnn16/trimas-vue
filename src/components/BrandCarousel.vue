@@ -133,7 +133,7 @@ onMounted(() => {
 
 .brand-desk {
   font-family: "IBM Plex Serif", serif;
-  font-size: 1.3rem;
+  font-size: 1rem;
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
