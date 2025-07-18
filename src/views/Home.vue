@@ -2,10 +2,6 @@
 <template>
   <main class="main-content">
     <HeroSection />
-    <br /><br />
-    <h1 class="head-content">
-      Trusted By <span style="color: #092e5e">Leading Brands</span>
-    </h1>
     <BrandSlider />
     <ProductionInfo />
     <h1 class="head-content">

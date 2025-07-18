@@ -4,6 +4,7 @@
       <NavBar />
     </header>
     <router-view></router-view>
+    <LanguageSwitcher />
     <Footer />
   </div>
 </template>
@@ -11,12 +12,14 @@
 <script>
 import NavBar from "./components/NavBar.vue";
 import Footer from "./components/Footer.vue";
+import LanguageSwitcher from "./components/LanguageSwitcher.vue";
 
 export default {
   name: "App",
   components: {
     NavBar,
     Footer,
+    LanguageSwitcher,
   },
 };
 </script>

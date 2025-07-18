@@ -6,25 +6,17 @@
     ></div>
     <div class="overlay"></div>
     <div class="content">
-      <h1>
-        Crafting Excellence in Every Stitch: Your Premium Garment Solutions
-        Partner
-      </h1>
-      <p>
-        We specialize in crafting premium garments with meticulous attention to
-        detail, delivering excellence in every product we create. With years of
-        experience and unwavering dedication, we're committed to meeting your
-        garment needs with unparalleled quality and service.
-      </p>
+      <h1>{{ $t("hero.title") }}</h1>
+      <p>{{ $t("hero.description") }}</p>
       <div class="cta-buttons">
         <router-link
           to="/about-us"
           class="cta-button primary"
           @click="closeMenu"
-          >More Info</router-link
+          >{{ $t("hero.cta.more_info") }}</router-link
         >
         <button @click="openContactModal" class="cta-button secondary">
-          Contact Us
+          {{ $t("hero.cta.contact_us") }}
         </button>
       </div>
     </div>
@@ -37,45 +29,37 @@
     >
       <div class="modal-content" @click.stop>
         <div class="modal-header">
-          <h2>Contact Information</h2>
-          <button @click="closeContactModal" class="close-button">
-            &times;
-          </button>
+          <h2>{{ $t("hero.contact_modal.title") }}</h2>
+          <button @click="closeContactModal" class="close-button">×</button>
         </div>
         <div class="modal-body">
           <div class="contact-item">
             <div class="contact-info">
-              <h3>Address</h3>
-              <p>
-                Jl. Raya Kopo KM.7 No.82, Sayati, Kec. Margahayu<br />
-                Kota Bandung, Jawa Barat 40228
-              </p>
+              <h3>{{ $t("hero.contact_modal.address_label") }}</h3>
+              <p v-html="$t('hero.contact_modal.address')"></p>
             </div>
           </div>
           <div class="contact-item">
             <div class="contact-info">
-              <h3>Phone</h3>
-              <p>+62 812 3456 7890</p>
+              <h3>{{ $t("hero.contact_modal.phone_label") }}</h3>
+              <p>{{ $t("hero.contact_modal.phone") }}</p>
             </div>
           </div>
           <div class="contact-item">
             <div class="contact-info">
-              <h3>Email</h3>
-              <p>trimas-hc@trisula.com</p>
+              <h3>{{ $t("hero.contact_modal.email_label") }}</h3>
+              <p>{{ $t("hero.contact_modal.email") }}</p>
             </div>
           </div>
           <div class="contact-item">
             <div class="contact-info">
-              <h3>Business Hours</h3>
-              <p>
-                Monday - Friday: 8:00 AM - 5:00 PM<br />
-                Saturday - Sunday: Closed
-              </p>
+              <h3>{{ $t("hero.contact_modal.business_hours_label") }}</h3>
+              <p v-html="$t('hero.contact_modal.business_hours')"></p>
             </div>
           </div>
           <div class="contact-item">
             <div class="contact-info">
-              <h3>Follow Us</h3>
+              <h3>{{ $t("hero.contact_modal.follow_us") }}</h3>
               <div class="social-links-modal">
                 <a
                   href="https://www.instagram.com/trimassgi.official/"
@@ -107,7 +91,7 @@
                     ></path>
                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                   </svg>
-                  Instagram
+                  {{ $t("hero.contact_modal.instagram") }}
                 </a>
                 <a
                   href="https://id.linkedin.com/company/pt-trimas-sarana-garment-industry"
@@ -132,7 +116,7 @@
                     <rect x="2" y="9" width="4" height="12"></rect>
                     <circle cx="4" cy="4" r="2"></circle>
                   </svg>
-                  LinkedIn
+                  {{ $t("hero.contact_modal.linkedin") }}
                 </a>
               </div>
             </div>
@@ -145,12 +129,16 @@
 
 <script>
 import { ref, onMounted, onUnmounted } from "vue";
+import { useI18n } from "vue-i18n";
 
 export default {
   name: "HeroSection",
   setup() {
+    const { locale } = useI18n();
     const parallaxOffset = ref(0);
     const showContactModal = ref(false);
+
+    const languages = ["id", "en", "ja"];
 
     const updateParallax = () => {
       const scrollY = window.scrollY;
@@ -160,12 +148,43 @@ export default {
 
     const openContactModal = () => {
       showContactModal.value = true;
-      document.body.style.overflow = "hidden"; // Prevent background scrolling
+      document.body.style.overflow = "hidden";
     };
 
     const closeContactModal = () => {
       showContactModal.value = false;
-      document.body.style.overflow = "auto"; // Restore scrolling
+      document.body.style.overflow = "auto";
+    };
+
+    const getCurrentLanguageLabel = () => {
+      const labels = {
+        id: "ID",
+        en: "EN",
+        ja: "JP",
+      };
+      return labels[locale.value];
+    };
+
+    const getNextLanguageLabel = () => {
+      const currentIndex = languages.indexOf(locale.value);
+      const nextIndex = (currentIndex + 1) % languages.length;
+      const nextLang = languages[nextIndex];
+
+      const labels = {
+        id: "Indonesian",
+        en: "English",
+        ja: "Japanese",
+      };
+      return labels[nextLang];
+    };
+
+    const switchLanguage = () => {
+      const currentIndex = languages.indexOf(locale.value);
+      const nextIndex = (currentIndex + 1) % languages.length;
+      const nextLanguage = languages[nextIndex];
+
+      locale.value = nextLanguage;
+      localStorage.setItem("locale", nextLanguage);
     };
 
     onMounted(() => {
@@ -173,7 +192,7 @@ export default {
     });
 
     onUnmounted(() => {
-      document.body.style.overflow = "auto"; // Cleanup
+      document.body.style.overflow = "auto";
     });
 
     return {
@@ -181,6 +200,9 @@ export default {
       showContactModal,
       openContactModal,
       closeContactModal,
+      getCurrentLanguageLabel,
+      getNextLanguageLabel,
+      switchLanguage,
     };
   },
 };
@@ -506,6 +528,18 @@ p {
   .contact-item {
     padding: 12px;
     margin-bottom: 15px;
+  }
+
+  /* Language Switcher Responsive */
+  .language-switcher {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .language-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 12px;
   }
 }
 

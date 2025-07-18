@@ -23,18 +23,41 @@
       </div>
 
       <div class="menu-items" :class="{ active: isOpen }">
-        <router-link to="/" class="nav-link" @click="closeMenu"
+        <router-link
+          to="/"
+          class="navLink"
+          active-class="activeLink"
+          @click="closeMenu"
           >Home</router-link
         >
-        <router-link to="/article-list" class="nav-link" @click="closeMenu"
+        <router-link
+          to="/article-list"
+          class="navLink"
+          active-class="activeLink"
+          @click="closeMenu"
           >Article</router-link
         >
-        <router-link to="/career-page" class="nav-link" @click="closeMenu"
+        <router-link
+          to="/career-page"
+          class="navLink"
+          active-class="activeLink"
+          @click="closeMenu"
           >Career</router-link
         >
-        <router-link to="/about-us" class="nav-link" @click="closeMenu"
+        <router-link
+          to="/about-us"
+          class="navLink"
+          active-class="activeLink"
+          @click="closeMenu"
           >About Us</router-link
         >
+      </div>
+
+      <!-- Language Selector -->
+      <div class="language-selector">
+        <button @click="cycleLanguage" class="language-button">
+          <component :is="currentFlag" class="flag-icon" />
+        </button>
       </div>
     </div>
   </nav>
@@ -43,11 +66,79 @@
 </template>
 
 <script>
+import { ref } from "vue";
+
+// Define flag components with detailed SVGs
+const IndonesiaFlag = {
+  template: `
+    <svg class="flag-icon" viewBox="0 0 32 24" xmlns="http://www.w3.org/2000/svg">
+      <rect width="32" height="12" fill="#FF0000"/>
+      <rect y="12" width="32" height="12" fill="#FFFFFF"/>
+    </svg>
+  `,
+};
+
+const JapanFlag = {
+  template: `
+    <svg class="flag-icon" viewBox="0 0 32 24" xmlns="http://www.w3.org/2000/svg">
+      <rect width="32" height="24" fill="#FFFFFF"/>
+      <circle cx="16" cy="12" r="8" fill="#BC002D"/>
+    </svg>
+  `,
+};
+
+const USFlag = {
+  template: `
+    <svg class="flag-icon" viewBox="0 0 32 24" xmlns="http://www.w3.org/2000/svg">
+      <rect width="32" height="24" fill="#FFFFFF"/>
+      <rect width="32" height="3.69" fill="#B22234"/>
+      <rect y="7.38" width="32" height="3.69" fill="#B22234"/>
+      <rect y="14.76" width="32" height="3.69" fill="#B22234"/>
+      <rect y="22.15" width="32" height="1.85" fill="#B22234"/>
+      <rect width="12.8" height="13.84" fill="#3C3B6E"/>
+      <g fill="#FFFFFF">
+        <rect x="1.6" y="1.6" width="0.8" height="0.8"/>
+        <rect x="4.8" y="1.6" width="0.8" height="0.8"/>
+        <rect x="8" y="1.6" width="0.8" height="0.8"/>
+        <rect x="1.6" y="4.8" width="0.8" height="0.8"/>
+        <rect x="4.8" y="4.8" width="0.8" height="0.8"/>
+        <rect x="8" y="4.8" width="0.8" height="0.8"/>
+        <rect x="1.6" y="8" width="0.8" height="0.8"/>
+        <rect x="4.8" y="8" width="0.8" height="0.8"/>
+        <rect x="8" y="8" width="0.8" height="0.8"/>
+      </g>
+    </svg>
+  `,
+};
+
+// Language options
+const languages = [
+  { code: "ID", flag: IndonesiaFlag },
+  { code: "JP", flag: JapanFlag },
+  { code: "US", flag: USFlag },
+];
+
 export default {
   name: "NavBar",
   data() {
     return {
       isOpen: false,
+    };
+  },
+  setup() {
+    // Reactive state for language selector
+    const currentIndex = ref(0);
+    const currentFlag = ref(languages[0].flag);
+
+    // Function to cycle through languages
+    const cycleLanguage = () => {
+      currentIndex.value = (currentIndex.value + 1) % languages.length;
+      currentFlag.value = languages[currentIndex.value].flag;
+    };
+
+    return {
+      currentFlag,
+      cycleLanguage,
     };
   },
   methods: {
@@ -103,6 +194,7 @@ export default {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
+  position: relative;
 }
 
 .mobile-header {
@@ -125,35 +217,46 @@ export default {
   gap: 2rem;
 }
 
-.nav-link {
-  color: #2d3748;
+.navLink {
+  color: var(--color-gray-700, #495057);
   text-decoration: none;
-  font-family: "Montserrat", sans-serif;
   font-size: 1rem;
   font-weight: 800;
   position: relative;
-  transition: color 0.3s ease;
+  transition: var(--transition-base, 0.2s ease);
   letter-spacing: 1.2px;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md, 6px);
 }
 
-.nav-link:hover {
-  color: #1a4971;
+.navLink:hover {
+  color: var(--color-primary, #1a4971);
 }
 
-.nav-link::after {
+.navLink::after {
   content: "";
   position: absolute;
   width: 0;
   height: 2px;
   bottom: -4px;
   left: 50%;
-  background-color: #1a4971;
-  transition: all 0.3s ease;
+  background-color: var(--color-primary, #1a4971);
+  transition: var(--transition-base, 0.2s ease);
   transform: translateX(-50%);
 }
 
-.nav-link:hover::after {
+.navLink:hover::after {
   width: 100%;
+}
+
+/* Active link styles */
+.activeLink {
+  color: var(--color-primary, #1a4971) !important;
+  font-weight: 900;
+}
+
+.activeLink::after {
+  width: 100% !important;
 }
 
 .burger {
@@ -168,6 +271,37 @@ export default {
   background-color: #2d3748;
   margin: 5px;
   transition: all 0.3s ease;
+}
+
+/* Language Selector Styles */
+.language-selector {
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-50%);
+  z-index: 1001;
+}
+
+.language-button {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 9999px;
+  padding: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.language-button:hover {
+  background-color: #f3f4f6;
+}
+
+.flag-icon {
+  width: 24px;
+  height: 18px;
 }
 
 /* Mobile Styles */
@@ -211,20 +345,26 @@ export default {
     transform: translateX(0);
   }
 
-  .nav-link {
+  .navLink {
     font-size: 1.2rem;
     padding: 0.75rem;
     width: 100%;
     text-align: center;
   }
 
-  .nav-link::after {
-    display: none;
-  }
-
-  .nav-link:hover {
+  .navLink:hover {
     background-color: #f7fafc;
     color: #1a4971;
+  }
+
+  .activeLink {
+    background-color: #e3f2fd;
+    color: #1a4971;
+  }
+
+  .navLink::after,
+  .activeLink::after {
+    display: none; /* Hide underline on mobile */
   }
 
   .burger {
@@ -241,6 +381,10 @@ export default {
 
   .navbar-open .line3 {
     transform: rotate(45deg) translate(-5px, -6px);
+  }
+
+  .language-selector {
+    right: 4rem; /* Adjust to avoid overlapping with burger */
   }
 }
 
@@ -263,9 +407,18 @@ export default {
     height: calc(100vh - 55px);
   }
 
-  .nav-link {
+  .navLink {
     font-size: 1.1rem;
     padding: 0.5rem;
+  }
+
+  .language-selector {
+    right: 3.5rem;
+  }
+
+  .flag-icon {
+    width: 20px;
+    height: 15px;
   }
 }
 </style>

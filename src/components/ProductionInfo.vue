@@ -4,38 +4,39 @@
     <section class="quality-section">
       <div class="container">
         <div class="section-header">
-          <h1>We Serve <span class="text-accent">Since 1991</span></h1>
+          <h1>
+            {{ $t("production.heroTitle") }}
+            <span class="text-accent">{{ $t("production.since1991") }}</span>
+          </h1>
           <p class="section-tagline">
-            Premium garment manufacturing with decades of expertise
+            {{ $t("production.heroTagline") }}
           </p>
         </div>
 
         <div class="quality-content">
           <div class="quality-text">
-            <h3>Premium <span class="text-accent">Quality</span></h3>
+            <h3>
+              {{ $t("production.premium") }}
+              <span class="text-accent">{{ $t("production.quality") }}</span>
+            </h3>
             <p>
-              We are dedicated to creating garments of the highest quality,
-              paying meticulous attention to every detail. Our commitment to
-              excellence ensures that each product we manufacture meets the
-              highest standards of craftsmanship and durability.
+              {{ $t("production.qualityDescription1") }}
             </p>
             <p>
-              From the selection of premium materials to the precision of our
-              stitching, we strive to deliver garments that not only look great
-              but also stand the test of time.
+              {{ $t("production.qualityDescription2") }}
             </p>
             <div class="quality-features">
               <div class="feature">
                 <span class="material-icons">verified</span>
-                <span>Premium Materials</span>
+                <span>{{ $t("production.features.premiumMaterials") }}</span>
               </div>
               <div class="feature">
                 <span class="material-icons">verified</span>
-                <span>Expert Craftsmanship</span>
+                <span>{{ $t("production.features.expertCraftsmanship") }}</span>
               </div>
               <div class="feature">
                 <span class="material-icons">verified</span>
-                <span>Rigorous Quality Control</span>
+                <span>{{ $t("production.features.qualityControl") }}</span>
               </div>
             </div>
           </div>
@@ -46,7 +47,7 @@
                 alt="Premium Blazer"
               />
               <div class="product-overlay">
-                <span>Premium Craftsmanship</span>
+                <span>{{ $t("production.premiumCraftsmanship") }}</span>
               </div>
             </div>
             <div class="gallery-small-items">
@@ -72,9 +73,14 @@
     <section class="process-section">
       <div class="container">
         <div class="section-header">
-          <h2>Our <span class="text-accent">Process</span></h2>
+          <h2>
+            {{ $t("production.ourProcess.title") }}
+            <span class="text-accent">{{
+              $t("production.ourProcess.process")
+            }}</span>
+          </h2>
           <p class="section-tagline">
-            How we create premium garments from start to finish
+            {{ $t("production.ourProcess.subtitle") }}
           </p>
         </div>
 
@@ -89,7 +95,9 @@
                 @click="activeStep = index"
               >
                 <div class="indicator-number">{{ index + 1 }}</div>
-                <div class="indicator-title">{{ step.title }}</div>
+                <div class="indicator-title">
+                  {{ $t(`production.processSteps.${index}.title`) }}
+                </div>
               </div>
             </div>
             <div class="indicator-line"></div>
@@ -102,12 +110,18 @@
                 <div class="process-image">
                   <img
                     :src="processSteps[activeStep].image"
-                    :alt="processSteps[activeStep].title"
+                    :alt="$t(`production.processSteps.${activeStep}.title`)"
                   />
                 </div>
                 <div class="process-details">
-                  <h3>{{ processSteps[activeStep].title }}</h3>
-                  <p>{{ processSteps[activeStep].description }}</p>
+                  <h3>
+                    {{ $t(`production.processSteps.${activeStep}.title`) }}
+                  </h3>
+                  <p>
+                    {{
+                      $t(`production.processSteps.${activeStep}.description`)
+                    }}
+                  </p>
                   <div
                     class="process-tools"
                     v-if="processSteps[activeStep].tools"
@@ -122,7 +136,11 @@
                         alt="Production Tool"
                         class="tool-img"
                       />
-                      <span>{{ tool }}</span>
+                      <span>{{
+                        $t(
+                          `production.processSteps.${activeStep}.tools.${index}`
+                        )
+                      }}</span>
                     </div>
                   </div>
                 </div>
@@ -138,7 +156,12 @@
                 <span class="material-icons">arrow_back</span>
               </button>
               <div class="process-step-indicator">
-                Step {{ activeStep + 1 }} of {{ processSteps.length }}
+                {{
+                  $t("production.stepIndicator", {
+                    current: activeStep + 1,
+                    total: processSteps.length,
+                  })
+                }}
               </div>
               <button
                 class="nav-button next"
@@ -157,9 +180,14 @@
     <section class="stats-section">
       <div class="container">
         <div class="section-header">
-          <h2>Our <span class="text-accent">Numbers</span></h2>
+          <h2>
+            {{ $t("production.stats.title") }}
+            <span class="text-accent">{{
+              $t("production.stats.numbers")
+            }}</span>
+          </h2>
           <p class="section-tagline">
-            Metrics that reflect our commitment to excellence
+            {{ $t("production.stats.subtitle") }}
           </p>
         </div>
 
@@ -176,8 +204,12 @@
               <span class="material-icons">{{ stat.icon }}</span>
             </div>
             <div class="stat-number">{{ stat.value }}</div>
-            <div class="stat-title">{{ stat.title }}</div>
-            <p class="stat-desc">{{ stat.description }}</p>
+            <div class="stat-title">
+              {{ $t(`production.statsData.${index}.title`) }}
+            </div>
+            <p class="stat-desc">
+              {{ $t(`production.statsData.${index}.description`) }}
+            </p>
           </div>
         </div>
       </div>
@@ -201,73 +233,46 @@ export default {
       {
         icon: "inventory_2",
         value: "6",
-        title: "Production Lines",
-        description:
-          "We operate 6 advanced sewing lines, ensuring high-quality garments with every stitch.",
       },
       {
         icon: "history",
         value: "34",
-        title: "Years Experience",
-        description:
-          "Established in 1991, our company has amassed decades of experience in the garment industry.",
       },
       {
         icon: "groups",
         value: "1000",
-        title: "Skilled Employees",
-        description:
-          "Our skilled employees ensure the quality of our garments, maintaining high standards.",
       },
       {
         icon: "inventory",
         value: "10K+",
-        title: "Products Monthly",
-        description:
-          "We produce thousands of high-quality garments each month with precision and care.",
       },
       {
         icon: "public",
         value: "18+",
-        title: "International Buyers",
-        description:
-          "Trusted by over 18 international buyers, showcasing our global reach in premium garment manufacturing.",
       },
     ]);
 
-    // Enhanced process steps (tidak beru bah)
+    // Enhanced process steps
     const processSteps = ref([
       {
-        title: "Material Selection",
-        description:
-          "We source only the finest fabrics and materials for our garments. Each material is carefully evaluated for quality, durability, and comfort before being approved for production.",
         image:
           "https://cdn.propercloth.com/fab_gallery/f95c9e1d2b3c8df6e66b00356faeadc5.jpg",
-        tools: ["Material Testing Kit", "Quality Inspection Tools"],
+        tools: [0, 1], // Index untuk i18n tools
       },
       {
-        title: "Pattern Making",
-        description:
-          "Our expert pattern makers create precise templates for each garment. These patterns are the foundation of our clothing, ensuring perfect fit and style for every piece we produce.",
         image:
           "https://i0.wp.com/textilelearner.net/wp-content/uploads/2023/11/Pattern-Making.jpg?fit=600%2C400&ssl=1",
-        tools: ["CAD Software", "Precision Cutting Tools"],
+        tools: [0, 1],
       },
       {
-        title: "Cutting & Stitching",
-        description:
-          "Using Juki machines, we cut and stitch each piece with precision. Our skilled operators follow strict quality guidelines to ensure every seam is perfect and every detail is carefully executed.",
         image:
           "https://images-cdn.ubuy.com.sa/634fef3d0f9ef1365518f4b7-juki-ddl-8100-economy-straight-stitch.jpg",
-        tools: ["Juki Sewing Machines", "Precision Cutters"],
+        tools: [0, 1],
       },
       {
-        title: "Quality Control",
-        description:
-          "Every garment undergoes rigorous quality checks before leaving our facility. Our QC team inspects each piece for stitching quality, measurements, and overall finish to ensure only the best reaches our customers.",
         image:
           "https://img.freepik.com/premium-photo/garment-factory-quality-control-check-defects_508835-1985.jpg",
-        tools: ["Quality Inspection Forms", "Measurement Tools"],
+        tools: [0, 1],
       },
     ]);
 
@@ -391,7 +396,7 @@ p {
 .section-header h2 {
   font-family: "MDPrimer", sans-serif;
   font-weight: 800;
-  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-size: clamp(2.5rem, 6vw, 6rem);
 }
 
 .section-tagline {
@@ -896,4 +901,3 @@ p {
   }
 }
 </style>
-<style scoped></style>

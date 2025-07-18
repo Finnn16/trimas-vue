@@ -1,5 +1,19 @@
 <template>
-  <div>
+  <div class="brand-section">
+    <!-- Header Section with same style as ProductionInfo -->
+    <div class="container">
+      <div class="section-header">
+        <h2>
+          {{ $t("brands.title") }}
+          <span class="text-accent">{{ $t("brands.partners") }}</span>
+        </h2>
+        <p class="section-tagline">
+          {{ $t("brands.subtitle") }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Logo Carousel -->
     <div class="logos" ref="logosContainer">
       <div class="logos-slide" ref="logosSlide">
         <div class="logo-container" v-for="(logo, index) in logos" :key="index">
@@ -9,16 +23,11 @@
       <!-- The clone will be added here programmatically -->
     </div>
 
-    <div class="brand-desk">
-      <p>
-        Our partnerships with globally recognized brands speak volumes about our
-        dedication to quality and reliability. Over the years, leading names
-        like Jack Nicklaus, Bridgestone, Mizuno, and Srixon have repeatedly
-        chosen us for their projects, a testament to the level of trust and
-        satisfaction we consistently deliver. We understand the importance of
-        maintaining strong, long-term relationships with our clients, and these
-        collaborations reflect our commitment to excellence and innovation.
-      </p>
+    <!-- Brand Description -->
+    <div class="container">
+      <div class="brand-description">
+        <p>{{ $t("brands.description") }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -64,6 +73,34 @@ onMounted(() => {
 </script>
 
 <style scoped>
+/* Container and Section Header - Same as ProductionInfo */
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-header h2 {
+  font-family: "MDPrimer", sans-serif;
+  font-size: clamp(2.5rem, 6vw, 6rem);
+  font-weight: 800;
+  color: #1a202c;
+  margin-bottom: 20px;
+}
+
+.text-accent {
+  color: #092e5e;
+}
+
+.section-tagline {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.25rem;
+  color: #4a5568;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Logo Carousel Styles - Original Style */
 .logos {
   padding: 60px 0;
   overflow-x: hidden;
@@ -83,12 +120,12 @@ onMounted(() => {
 
 .logos:before {
   left: 0;
-  background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+  background: linear-gradient(to left, rgba(248, 250, 252, 0), #f8fafc);
 }
 
 .logos:after {
   right: 0;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+  background: linear-gradient(to right, rgba(248, 250, 252, 0), #f8fafc);
 }
 
 .logos:hover .logos-slide {
@@ -112,7 +149,7 @@ onMounted(() => {
 }
 
 .logo-container:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
 }
 
 .logo-container img {
@@ -131,13 +168,19 @@ onMounted(() => {
   opacity: 1;
 }
 
-.brand-desk {
-  font-family: "IBM Plex Serif", serif;
-  font-size: 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
+/* Brand Description */
+.brand-description {
   text-align: center;
-  padding: 0 20px;
+  margin-top: 40px;
+}
+
+.brand-description p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.1rem;
+  color: #4a5568;
+  line-height: 1.8;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 @keyframes slide {
@@ -149,9 +192,34 @@ onMounted(() => {
   }
 }
 
+/* Responsive Design */
+@media (max-width: 992px) {
+  .section-header h2 {
+    font-size: 2.8rem;
+  }
+
+  .section-tagline {
+    font-size: 1.1rem;
+  }
+
+  .logo-container {
+    width: 110px;
+    height: 70px;
+    margin: 0 30px;
+  }
+}
+
 @media (max-width: 768px) {
-  #brand {
-    font-size: 3rem;
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .section-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .section-tagline {
+    font-size: 1rem;
   }
 
   .logo-container {
@@ -160,8 +228,38 @@ onMounted(() => {
     margin: 0 20px;
   }
 
-  .brand-desk {
-    font-size: 1.1rem;
+  .brand-description p {
+    font-size: 1rem;
+    padding: 0 15px;
+  }
+
+  .logos {
+    padding: 40px 0;
+  }
+
+  .logos:before,
+  .logos:after {
+    width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .section-tagline {
+    font-size: 0.95rem;
+  }
+
+  .logo-container {
+    width: 80px;
+    height: 50px;
+    margin: 0 15px;
+  }
+
+  .brand-description p {
+    font-size: 0.95rem;
   }
 }
 </style>

@@ -1,0 +1,423 @@
+{
+  "hero": {
+    "title": "Weaving Excellence in Every Stitch: Your Premium Apparel Partner",
+    "description": "We specialize in crafting premium apparel with meticulous attention to detail, delivering excellence in every product we create. With decades of experience and unwavering dedication, we are committed to meeting your apparel needs with unmatched quality and service.",
+    "cta": {
+      "more_info": "Learn More",
+      "contact_us": "Contact Us"
+    },
+    "contact_modal": {
+      "title": "Contact Information",
+      "address_label": "Address",
+      "address": "Jl. Raya Kopo KM.7 No.82, Sayati, Margahayu District<br />Bandung City, West Java 40228, Indonesia",
+      "phone_label": "Phone",
+      "phone": "+62 812 3456 7890",
+      "email_label": "Email",
+      "email": "trimas-hc@trisula.com",
+      "business_hours_label": "Business Hours",
+      "business_hours": "Monday - Friday: 08:00 - 17:00<br />Saturday - Sunday: Closed",
+      "follow_us": "Follow Us",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
+    }
+  },
+  "production": {
+    "heroTitle": "We Deliver",
+    "since1991": "Since 1991",
+    "heroTagline": "Premium garment manufacturing with decades of expertise",
+    "premium": "Quality",
+    "quality": "Premium",
+    "qualityDescription1": "We are dedicated to crafting garments of the highest quality, paying meticulous attention to every detail. Our commitment to excellence ensures that every product we manufacture meets the highest standards of craftsmanship and durability.",
+    "qualityDescription2": "From selecting premium materials to precision stitching, we strive to deliver garments that not only look exceptional but also stand the test of time.",
+    "features": {
+      "premiumMaterials": "Premium Materials",
+      "expertCraftsmanship": "Expert Craftsmanship",
+      "qualityControl": "Rigorous Quality Control"
+    },
+    "premiumCraftsmanship": "Premium Craftsmanship",
+    "ourProcess": {
+      "title": "Process",
+      "process": "Our",
+      "subtitle": "How we create premium garments from start to finish"
+    },
+    "processSteps": {
+      "0": {
+        "title": "Material Selection",
+        "description": "We use only the finest fabrics and materials for our garments. Each material is carefully evaluated for quality, durability, and comfort before being approved for production.",
+        "tools": {
+          "0": "Material Testing Kit",
+          "1": "Quality Inspection Tools"
+        }
+      },
+      "1": {
+        "title": "Pattern Making",
+        "description": "Our expert pattern makers create precise templates for every garment. These patterns are the foundation of our apparel, ensuring a perfect fit and style for every piece we produce.",
+        "tools": {
+          "0": "CAD Software",
+          "1": "Precision Cutting Tools"
+        }
+      },
+      "2": {
+        "title": "Cutting & Sewing",
+        "description": "Using Juki machines, we cut and sew each piece with precision. Our skilled operators follow strict quality guidelines to ensure every stitch is perfect and every detail is executed with care.",
+        "tools": {
+          "0": "Juki Sewing Machines",
+          "1": "Precision Cutters"
+        }
+      },
+      "3": {
+        "title": "Quality Control",
+        "description": "Every garment undergoes rigorous quality checks before leaving our facility. Our QC team inspects each piece for stitching quality, sizing, and overall finish to ensure only the best reaches our clients.",
+        "tools": {
+          "0": "Quality Inspection Forms",
+          "1": "Measuring Tools"
+        }
+      }
+    },
+    "stepIndicator": "Step {current} of {total}",
+    "stats": {
+      "title": "Numbers",
+      "numbers": "Our",
+      "subtitle": "Metrics that reflect our commitment to excellence"
+    },
+    "statsData": {
+      "0": {
+        "title": "Production Lines",
+        "description": "We operate 6 advanced sewing lines, ensuring high-quality garments with every stitch."
+      },
+      "1": {
+        "title": "Years of Experience",
+        "description": "Founded in 1991, our company has amassed decades of expertise in the garment industry."
+      },
+      "2": {
+        "title": "Skilled Employees",
+        "description": "Our skilled workforce ensures the quality of our garments, maintaining high standards."
+      },
+      "3": {
+        "title": "Monthly Products",
+        "description": "We produce thousands of high-quality garments monthly with precision and care."
+      },
+      "4": {
+        "title": "International Buyers",
+        "description": "Trusted by over 18 international buyers, showcasing our global reach in premium garment manufacturing."
+      }
+    }
+  },
+  "brands": {
+    "title": "Partners",
+    "partners": "Trusted",
+    "subtitle": "Collaborating with leading global brands to deliver unmatched quality",
+    "description": "Our partnerships with globally recognized brands demonstrate our dedication to quality and reliability. Over the years, leading names like Jack Nicklaus, Bridgestone, Mizuno, and Srixon have repeatedly chosen us for their projects, a testament to the consistent trust and satisfaction we deliver. We understand the importance of maintaining strong, long-term relationships with our clients, and these collaborations reflect our commitment to excellence and innovation."
+  },
+  "about": {
+    "hero": {
+      "title": "About",
+      "company": "Trimas SGI",
+      "subtitle": "Crafting Excellence Since 1991",
+      "description": "Discover the story behind our commitment to premium garment manufacturing and sustainable business practices."
+    },
+    "journey": {
+      "title": "Journey",
+      "journey": "Our",
+      "subtitle": "From humble beginnings to industry leadership"
+    },
+    "milestones": {
+      "0": {
+        "title": "Company Founded",
+        "description": "Started as a small family business with a vision for quality garment manufacturing."
+      },
+      "1": {
+        "title": "First Major Contract",
+        "description": "Secured our first international contract, marking our entry into the global market."
+      },
+      "2": {
+        "title": "Technology Integration",
+        "description": "Introduced advanced manufacturing technologies to enhance efficiency and quality."
+      },
+      "3": {
+        "title": "Sustainability Initiatives",
+        "description": "Launched a comprehensive environmental and social responsibility program."
+      },
+      "4": {
+        "title": "Digital Transformation",
+        "description": "Implemented Industry 4.0 technologies for smart manufacturing."
+      },
+      "5": {
+        "title": "Global Expansion",
+        "description": "Expanded operations to serve 25+ countries with premium garments."
+      }
+    },
+    "values": {
+      "title": "Values",
+      "values": "Our",
+      "subtitle": "Principles that guide everything we do"
+    },
+    "valuesData": {
+      "0": {
+        "title": "Quality",
+        "description": "Delivering excellence in every stitch, every product, every time.",
+        "details": {
+          "0": "Superior craftsmanship",
+          "1": "Rigorous quality assurance",
+          "2": "Production excellence",
+          "3": "Best-in-class materials"
+        }
+      },
+      "1": {
+        "title": "Care",
+        "description": "Dedicated to the well-being of our customers, employees, and communities.",
+        "details": {
+          "0": "Customer satisfaction priority",
+          "1": "Employee welfare focus",
+          "2": "Community support",
+          "3": "Ethical business practices"
+        }
+      },
+      "2": {
+        "title": "Commitment",
+        "description": "Unwavering dedication to our promises and long-term relationships.",
+        "details": {
+          "0": "Reliable partnerships",
+          "1": "Timely delivery",
+          "2": "Continuous improvement",
+          "3": "Long-term relationships"
+        }
+      }
+    },
+    "team": {
+      "title": "Team",
+      "team": "Leadership",
+      "subtitle": "Meet the visionaries behind our success"
+    },
+    "teamCategories": {
+      "bod": {
+        "title": "Board of Directors"
+      },
+      "boc": {
+        "title": "Board of Commissioners"
+      },
+      "managers": {
+        "title": "Management Team"
+      }
+    },
+    "teamMembers": {
+      "bod": {
+        "0": {
+          "name": "Kevin Oen",
+          "role": "President Director",
+          "bio": "With over 25 years of experience in the garment industry, Kevin leads our company with vision and passion for excellence.",
+          "achievements": {
+            "0": "Led 300% company growth over 10 years",
+            "1": "Implemented sustainable manufacturing practices",
+            "2": "Built partnerships with 18+ international buyers"
+          }
+        },
+        "1": {
+          "name": "David Chen",
+          "role": "Finance Director",
+          "bio": "David brings 20 years of financial expertise, ensuring robust fiscal management and sustainable growth.",
+          "achievements": {
+            "0": "Secured major international investments",
+            "1": "Implemented cost-efficient operations",
+            "2": "Developed strategic financial planning"
+          }
+        }
+      },
+      "boc": {
+        "0": {
+          "name": "William Zhang",
+          "role": "President Commissioner",
+          "bio": "William oversees corporate governance and ensures alignment with our vision and values.",
+          "achievements": {
+            "0": "Built robust corporate governance",
+            "1": "Led strategic planning initiatives",
+            "2": "Enhanced stakeholder relationships"
+          }
+        },
+        "1": {
+          "name": "Emily Wong",
+          "role": "Independent Commissioner",
+          "bio": "Emily provides independent oversight and extensive industry expertise to ensure company growth.",
+          "achievements": {
+            "0": "Strengthened risk management",
+            "1": "Enhanced corporate transparency",
+            "2": "Improved board effectiveness"
+          }
+        }
+      },
+      "managers": {
+        "0": {
+          "name": "Michael Lee",
+          "role": "Production Manager",
+          "bio": "Michael oversees all production operations, ensuring efficiency and quality standards.",
+          "achievements": {
+            "0": "Optimized production efficiency by 40%",
+            "1": "Implemented lean manufacturing",
+            "2": "Reduced production waste by 30%"
+          }
+        },
+        "1": {
+          "name": "Sarah Lin",
+          "role": "HR Manager",
+          "bio": "Sarah leads our human resources initiatives, focusing on employee development and workplace culture.",
+          "achievements": {
+            "0": "Developed comprehensive training programs",
+            "1": "Improved employee retention by 25%",
+            "2": "Implemented performance management systems"
+          }
+        },
+        "2": {
+          "name": "James Wilson",
+          "role": "Quality Control Manager",
+          "bio": "James ensures the highest quality standards across all our products and processes.",
+          "achievements": {
+            "0": "Achieved ISO 9001 certification",
+            "1": "Reduced defect rates by 50%",
+            "2": "Implemented QC automation"
+          }
+        }
+      }
+    },
+    "clickToLearnMore": "Click to learn more",
+    "profileAbout": "About",
+    "keyAchievements": "Key Achievements",
+    "csr": {
+      "title": "Impact",
+      "impact": "Social",
+      "subtitle": "Creating positive change in our communities"
+    },
+    "csrStats": {
+      "0": {
+        "label": "Students Trained",
+        "description": "Vocational training programs for underprivileged youth"
+      },
+      "1": {
+        "label": "Trees Planted",
+        "description": "Environmental conservation and reforestation efforts"
+      },
+      "2": {
+        "label": "Hospitals Supported",
+        "description": "Free uniform donations to healthcare facilities"
+      },
+      "3": {
+        "label": "Waste Reduction",
+        "description": "Achieved through sustainable manufacturing processes"
+      }
+    },
+    "csrInitiatives": {
+      "0": {
+        "title": "Youth Empowerment",
+        "description": "Our vocational training programs equip young people with valuable skills, creating pathways to meaningful careers in the garment industry.",
+        "impact": {
+          "0": {
+            "metric": "Students Trained"
+          },
+          "1": {
+            "metric": "Job Placement Rate"
+          },
+          "2": {
+            "metric": "Training Centers"
+          }
+        }
+      },
+      "1": {
+        "title": "Environmental Conservation",
+        "description": "We actively participate in reforestation projects and implement eco-friendly manufacturing processes to protect our environment.",
+        "impact": {
+          "0": {
+            "metric": "Trees Planted"
+          },
+          "1": {
+            "metric": "Waste Reduction"
+          },
+          "2": {
+            "metric": "Energy Savings"
+          }
+        }
+      },
+      "2": {
+        "title": "Healthcare Support",
+        "description": "Supporting healthcare workers by providing high-quality uniforms to hospitals and medical facilities in underserved communities.",
+        "impact": {
+          "0": {
+            "metric": "Hospitals Supported"
+          },
+          "1": {
+            "metric": "Uniforms Donated"
+          },
+          "2": {
+            "metric": "Cities Reached"
+          }
+        }
+      }
+    },
+    "impactMetrics": "Impact Metrics",
+    "vision": {
+      "title": "Vision",
+      "vision": "Future",
+      "subtitle": "Our commitment to innovation and sustainability"
+    },
+    "futureGoals": {
+      "0": {
+        "title": "Carbon-Neutral Operations",
+        "description": "Achieving complete carbon neutrality in our manufacturing operations by implementing renewable energy sources and optimizing our supply chain.",
+        "steps": {
+          "0": {
+            "phase": "Phase 1: Energy Audit",
+            "description": "Comprehensive assessment of current energy consumption"
+          },
+          "1": {
+            "phase": "Phase 2: Solar Installation",
+            "description": "Installing solar panels across all facilities"
+          },
+          "2": {
+            "phase": "Phase 3: Process Optimization",
+            "description": "Implementing energy-efficient manufacturing processes"
+          },
+          "3": {
+            "phase": "Phase 4: Supply Chain Integration",
+            "description": "Collaborating with suppliers to reduce carbon footprint"
+          }
+        }
+      },
+      "1": {
+        "title": "Digital Manufacturing",
+        "description": "Transforming our operations with Industry 4.0 technologies, including AI, IoT, and automated quality control systems.",
+        "steps": {
+          "0": {
+            "phase": "Phase 1: Infrastructure Setup",
+            "description": "Upgrading IT infrastructure and connectivity"
+          },
+          "1": {
+            "phase": "Phase 2: IoT Integration",
+            "description": "Installing sensors and monitoring systems"
+          },
+          "2": {
+            "phase": "Phase 3: AI Implementation",
+            "description": "Deploying AI for quality control and optimization"
+          }
+        }
+      },
+      "2": {
+        "title": "Global Market Expansion",
+        "description": "Expanding our reach to serve 30+ countries by building strategic partnerships and distribution networks.",
+        "steps": {
+          "0": {
+            "phase": "Phase 1: Market Research",
+            "description": "Analyzing target markets and customer needs"
+          },
+          "1": {
+            "phase": "Phase 2: Partnership Development",
+            "description": "Building key partnerships in target regions"
+          },
+          "2": {
+            "phase": "Phase 3: Distribution Network",
+            "description": "Establishing comprehensive distribution channels"
+          }
+        }
+      }
+    },
+    "complete": "Complete",
+    "implementationTimeline": "Implementation Timeline"
+  }
+}

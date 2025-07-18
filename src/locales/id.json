@@ -1,0 +1,423 @@
+{
+  "hero": {
+    "title": "Merajut Keunggulan di Setiap Jahitan: Mitra Solusi Pakaian Premium Anda",
+    "description": "Kami spesialis dalam membuat pakaian premium dengan perhatian cermat terhadap detail, menghadirkan keunggulan dalam setiap produk yang kami ciptakan. Dengan pengalaman bertahun-tahun dan dedikasi yang tak tergoyahkan, kami berkomitmen untuk memenuhi kebutuhan pakaian Anda dengan kualitas dan layanan yang tak tertandingi.",
+    "cta": {
+      "more_info": "Info Lebih Lanjut",
+      "contact_us": "Hubungi Kami"
+    },
+    "contact_modal": {
+      "title": "Informasi Kontak",
+      "address_label": "Alamat",
+      "address": "Jl. Raya Kopo KM.7 No.82, Sayati, Kec. Margahayu<br />Kota Bandung, Jawa Barat 40228",
+      "phone_label": "Telepon",
+      "phone": "+62 812 3456 7890",
+      "email_label": "Email",
+      "email": "trimas-hc@trisula.com",
+      "business_hours_label": "Jam Operasional",
+      "business_hours": "Senin - Jumat: 08.00 - 17.00<br />Sabtu - Minggu: Tutup",
+      "follow_us": "Ikuti Kami",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
+    }
+  },
+  "production": {
+    "heroTitle": "Kami Melayani",
+    "since1991": "Sejak 1991",
+    "heroTagline": "Manufaktur garmen premium dengan puluhan tahun keahlian",
+    "premium": "Kualitas",
+    "quality": "Premium",
+    "qualityDescription1": "Kami berdedikasi untuk menciptakan garmen dengan kualitas tertinggi, memberikan perhatian teliti pada setiap detail. Komitmen kami terhadap keunggulan memastikan bahwa setiap produk yang kami manufaktur memenuhi standar tertinggi dalam hal keahlian dan daya tahan.",
+    "qualityDescription2": "Dari pemilihan bahan premium hingga presisi jahitan kami, kami berusaha menghadirkan garmen yang tidak hanya terlihat bagus tetapi juga tahan lama.",
+    "features": {
+      "premiumMaterials": "Bahan Premium",
+      "expertCraftsmanship": "Keahlian Ahli",
+      "qualityControl": "Kontrol Kualitas Ketat"
+    },
+    "premiumCraftsmanship": "Keahlian Premium",
+    "ourProcess": {
+      "title": "Proses",
+      "process": "Kami",
+      "subtitle": "Bagaimana kami menciptakan garmen premium dari awal hingga akhir"
+    },
+    "processSteps": {
+      "0": {
+        "title": "Pemilihan Material",
+        "description": "Kami hanya menggunakan kain dan material terbaik untuk garmen kami. Setiap material dievaluasi dengan teliti untuk kualitas, daya tahan, dan kenyamanan sebelum disetujui untuk produksi.",
+        "tools": {
+          "0": "Kit Tes Material",
+          "1": "Alat Inspeksi Kualitas"
+        }
+      },
+      "1": {
+        "title": "Pembuatan Pola",
+        "description": "Pembuat pola ahli kami menciptakan template yang presisi untuk setiap garmen. Pola-pola ini adalah fondasi pakaian kami, memastikan pas dan gaya yang sempurna untuk setiap potong yang kami produksi.",
+        "tools": {
+          "0": "Software CAD",
+          "1": "Alat Potong Presisi"
+        }
+      },
+      "2": {
+        "title": "Pemotongan & Jahit",
+        "description": "Menggunakan mesin Juki, kami memotong dan menjahit setiap potong dengan presisi. Operator terampil kami mengikuti pedoman kualitas ketat untuk memastikan setiap jahitan sempurna dan setiap detail dieksekusi dengan hati-hati.",
+        "tools": {
+          "0": "Mesin Jahit Juki",
+          "1": "Pemotong Presisi"
+        }
+      },
+      "3": {
+        "title": "Kontrol Kualitas",
+        "description": "Setiap garmen menjalani pemeriksaan kualitas ketat sebelum meninggalkan fasilitas kami. Tim QC kami memeriksa setiap potong untuk kualitas jahitan, ukuran, dan finishing keseluruhan untuk memastikan hanya yang terbaik yang sampai ke pelanggan kami.",
+        "tools": {
+          "0": "Formulir Inspeksi Kualitas",
+          "1": "Alat Pengukur"
+        }
+      }
+    },
+    "stepIndicator": "Langkah {current} dari {total}",
+    "stats": {
+      "title": "Angka",
+      "numbers": "Kami",
+      "subtitle": "Metrik yang mencerminkan komitmen kami terhadap keunggulan"
+    },
+    "statsData": {
+      "0": {
+        "title": "Lini Produksi",
+        "description": "Kami mengoperasikan 6 lini jahit canggih, memastikan garmen berkualitas tinggi dengan setiap jahitan."
+      },
+      "1": {
+        "title": "Tahun Pengalaman",
+        "description": "Didirikan pada 1991, perusahaan kami telah mengumpulkan puluhan tahun pengalaman di industri garmen."
+      },
+      "2": {
+        "title": "Karyawan Terampil",
+        "description": "Karyawan terampil kami memastikan kualitas garmen kami, mempertahankan standar tinggi."
+      },
+      "3": {
+        "title": "Produk Bulanan",
+        "description": "Kami memproduksi ribuan garmen berkualitas tinggi setiap bulan dengan presisi dan perhatian."
+      },
+      "4": {
+        "title": "Pembeli Internasional",
+        "description": "Dipercaya oleh lebih dari 18 pembeli internasional, menunjukkan jangkauan global kami dalam manufaktur garmen premium."
+      }
+    }
+  },
+  "brands": {
+    "title": "Mitra",
+    "partners": "Terpercaya",
+    "subtitle": "Bekerja sama dengan merek-merek global terkemuka untuk menghadirkan kualitas terbaik",
+    "description": "Kemitraan kami dengan merek-merek yang diakui secara global menunjukkan dedikasi kami terhadap kualitas dan keandalan. Selama bertahun-tahun, nama-nama terkemuka seperti Jack Nicklaus, Bridgestone, Mizuno, dan Srixon telah berulang kali memilih kami untuk proyek mereka, sebagai bukti tingkat kepercayaan dan kepuasan yang konsisten kami berikan. Kami memahami pentingnya mempertahankan hubungan yang kuat dan jangka panjang dengan klien kami, dan kolaborasi ini mencerminkan komitmen kami terhadap keunggulan dan inovasi."
+  },
+  "about": {
+    "hero": {
+      "title": "Tentang",
+      "company": "Trimas SGI",
+      "subtitle": "Keahlian Keunggulan Sejak 1991",
+      "description": "Temukan cerita di balik komitmen kami terhadap manufaktur garmen premium dan praktik bisnis berkelanjutan."
+    },
+    "journey": {
+      "title": "Perjalanan",
+      "journey": "Kami",
+      "subtitle": "Dari awal yang sederhana hingga kepemimpinan industri"
+    },
+    "milestones": {
+      "0": {
+        "title": "Perusahaan Didirikan",
+        "description": "Dimulai sebagai bisnis keluarga kecil dengan visi untuk manufaktur garmen berkualitas."
+      },
+      "1": {
+        "title": "Kontrak Besar Pertama",
+        "description": "Mengamankan kontrak internasional pertama kami, menandai masuk ke pasar global."
+      },
+      "2": {
+        "title": "Integrasi Teknologi",
+        "description": "Memperkenalkan teknologi manufaktur canggih untuk meningkatkan efisiensi dan kualitas."
+      },
+      "3": {
+        "title": "Inisiatif Keberlanjutan",
+        "description": "Meluncurkan program tanggung jawab lingkungan dan sosial yang komprehensif."
+      },
+      "4": {
+        "title": "Transformasi Digital",
+        "description": "Mengimplementasikan teknologi Industri 4.0 untuk manufaktur cerdas."
+      },
+      "5": {
+        "title": "Ekspansi Global",
+        "description": "Memperluas operasi untuk melayani 25+ negara dengan garmen premium."
+      }
+    },
+    "values": {
+      "title": "Nilai-nilai",
+      "values": "Kami",
+      "subtitle": "Prinsip-prinsip yang memandu segala yang kami lakukan"
+    },
+    "valuesData": {
+      "0": {
+        "title": "Kualitas",
+        "description": "Memberikan keunggulan dalam setiap jahitan, setiap produk, setiap saat.",
+        "details": {
+          "0": "Keahlian superior",
+          "1": "Jaminan kualitas ketat",
+          "2": "Keunggulan dalam produksi",
+          "3": "Material terbaik di kelasnya"
+        }
+      },
+      "1": {
+        "title": "Perhatian",
+        "description": "Berdedikasi pada kesejahteraan pelanggan, karyawan, dan komunitas kami.",
+        "details": {
+          "0": "Prioritas kepuasan pelanggan",
+          "1": "Fokus kesejahteraan karyawan",
+          "2": "Dukungan komunitas",
+          "3": "Praktik bisnis etis"
+        }
+      },
+      "2": {
+        "title": "Komitmen",
+        "description": "Dedikasi tak tergoyahkan pada janji dan hubungan jangka panjang kami.",
+        "details": {
+          "0": "Kemitraan yang dapat diandalkan",
+          "1": "Pengiriman tepat waktu",
+          "2": "Perbaikan berkelanjutan",
+          "3": "Hubungan jangka panjang"
+        }
+      }
+    },
+    "team": {
+      "title": "Tim",
+      "team": "Kepemimpinan",
+      "subtitle": "Temui para visioner di balik kesuksesan kami"
+    },
+    "teamCategories": {
+      "bod": {
+        "title": "Dewan Direktur"
+      },
+      "boc": {
+        "title": "Dewan Komisaris"
+      },
+      "managers": {
+        "title": "Tim Manajemen"
+      }
+    },
+    "teamMembers": {
+      "bod": {
+        "0": {
+          "name": "Kevin Oen",
+          "role": "Direktur Utama",
+          "bio": "Dengan pengalaman lebih dari 25 tahun di industri garmen, Kevin memimpin perusahaan kami dengan visi dan passion untuk keunggulan.",
+          "achievements": {
+            "0": "Memimpin pertumbuhan perusahaan 300% selama 10 tahun",
+            "1": "Mengimplementasikan praktik manufaktur berkelanjutan",
+            "2": "Membangun kemitraan dengan 18+ pembeli internasional"
+          }
+        },
+        "1": {
+          "name": "David Chen",
+          "role": "Direktur Keuangan",
+          "bio": "David membawa keahlian keuangan 20 tahun, memastikan manajemen fiskal yang kuat dan pertumbuhan berkelanjutan.",
+          "achievements": {
+            "0": "Mengamankan investasi internasional besar",
+            "1": "Mengimplementasikan operasi hemat biaya",
+            "2": "Mengembangkan perencanaan keuangan strategis"
+          }
+        }
+      },
+      "boc": {
+        "0": {
+          "name": "William Zhang",
+          "role": "Presiden Komisaris",
+          "bio": "William mengawasi tata kelola perusahaan dan memastikan keselarasan dengan visi dan nilai perusahaan.",
+          "achievements": {
+            "0": "Membangun tata kelola perusahaan yang robust",
+            "1": "Memimpin inisiatif perencanaan strategis",
+            "2": "Meningkatkan hubungan pemangku kepentingan"
+          }
+        },
+        "1": {
+          "name": "Emily Wong",
+          "role": "Komisaris Independen",
+          "bio": "Emily membawa pengawasan independen dan keahlian industri yang luas untuk memastikan pertumbuhan perusahaan.",
+          "achievements": {
+            "0": "Memperkuat manajemen risiko",
+            "1": "Meningkatkan transparansi perusahaan",
+            "2": "Meningkatkan efektivitas dewan"
+          }
+        }
+      },
+      "managers": {
+        "0": {
+          "name": "Michael Lee",
+          "role": "Manajer Produksi",
+          "bio": "Michael mengawasi semua operasi produksi, memastikan efisiensi dan standar kualitas.",
+          "achievements": {
+            "0": "Mengoptimalkan efisiensi produksi sebesar 40%",
+            "1": "Mengimplementasikan lean manufacturing",
+            "2": "Mengurangi limbah produksi sebesar 30%"
+          }
+        },
+        "1": {
+          "name": "Sarah Lin",
+          "role": "Manajer SDM",
+          "bio": "Sarah memimpin inisiatif sumber daya manusia kami, fokus pada pengembangan karyawan dan budaya tempat kerja.",
+          "achievements": {
+            "0": "Mengembangkan program pelatihan komprehensif",
+            "1": "Meningkatkan retensi karyawan sebesar 25%",
+            "2": "Mengimplementasikan sistem manajemen kinerja"
+          }
+        },
+        "2": {
+          "name": "James Wilson",
+          "role": "Manajer Kontrol Kualitas",
+          "bio": "James memastikan standar kualitas tertinggi di semua produk dan proses kami.",
+          "achievements": {
+            "0": "Mencapai sertifikasi ISO 9001",
+            "1": "Mengurangi tingkat cacat sebesar 50%",
+            "2": "Mengimplementasikan otomasi QC"
+          }
+        }
+      }
+    },
+    "clickToLearnMore": "Klik untuk mempelajari lebih lanjut",
+    "profileAbout": "Tentang",
+    "keyAchievements": "Pencapaian Utama",
+    "csr": {
+      "title": "Dampak",
+      "impact": "Sosial",
+      "subtitle": "Menciptakan perubahan positif di komunitas kami"
+    },
+    "csrStats": {
+      "0": {
+        "label": "Siswa Dilatih",
+        "description": "Program pelatihan kejuruan untuk remaja kurang mampu"
+      },
+      "1": {
+        "label": "Pohon Ditanam",
+        "description": "Upaya konservasi lingkungan dan reboisasi"
+      },
+      "2": {
+        "label": "Rumah Sakit Didukung",
+        "description": "Donasi seragam gratis ke fasilitas kesehatan"
+      },
+      "3": {
+        "label": "Pengurangan Limbah",
+        "description": "Dicapai melalui proses manufaktur berkelanjutan"
+      }
+    },
+    "csrInitiatives": {
+      "0": {
+        "title": "Pemberdayaan Pemuda",
+        "description": "Program pelatihan kejuruan kami memberikan keterampilan berharga kepada anak muda, menciptakan jalur menuju karir yang bermakna di industri garmen.",
+        "impact": {
+          "0": {
+            "metric": "Siswa Dilatih"
+          },
+          "1": {
+            "metric": "Tingkat Penempatan Kerja"
+          },
+          "2": {
+            "metric": "Pusat Pelatihan"
+          }
+        }
+      },
+      "1": {
+        "title": "Konservasi Lingkungan",
+        "description": "Kami secara aktif berpartisipasi dalam proyek reboisasi dan mengimplementasikan proses manufaktur ramah lingkungan untuk melindungi lingkungan kami.",
+        "impact": {
+          "0": {
+            "metric": "Pohon Ditanam"
+          },
+          "1": {
+            "metric": "Pengurangan Limbah"
+          },
+          "2": {
+            "metric": "Penghematan Energi"
+          }
+        }
+      },
+      "2": {
+        "title": "Dukungan Kesehatan",
+        "description": "Mendukung petugas kesehatan dengan menyediakan seragam berkualitas ke rumah sakit dan fasilitas medis di komunitas yang kurang terlayani.",
+        "impact": {
+          "0": {
+            "metric": "Rumah Sakit Didukung"
+          },
+          "1": {
+            "metric": "Seragam Didonasikan"
+          },
+          "2": {
+            "metric": "Kota Dijangkau"
+          }
+        }
+      }
+    },
+    "impactMetrics": "Metrik Dampak",
+    "vision": {
+      "title": "Visi",
+      "vision": "Masa Depan",
+      "subtitle": "Komitmen kami terhadap inovasi dan keberlanjutan"
+    },
+    "futureGoals": {
+      "0": {
+        "title": "Operasi Netral Karbon",
+        "description": "Mencapai netralitas karbon lengkap dalam operasi manufaktur kami dengan mengimplementasikan sumber energi terbarukan dan mengoptimalkan rantai pasokan kami.",
+        "steps": {
+          "0": {
+            "phase": "Fase 1: Audit Energi",
+            "description": "Penilaian lengkap konsumsi energi saat ini"
+          },
+          "1": {
+            "phase": "Fase 2: Instalasi Solar",
+            "description": "Memasang panel surya di semua fasilitas"
+          },
+          "2": {
+            "phase": "Fase 3: Optimasi Proses",
+            "description": "Mengimplementasikan proses manufaktur hemat energi"
+          },
+          "3": {
+            "phase": "Fase 4: Integrasi Rantai Pasokan",
+            "description": "Bekerja dengan pemasok untuk mengurangi jejak karbon"
+          }
+        }
+      },
+      "1": {
+        "title": "Manufaktur Digital",
+        "description": "Mentransformasi operasi kami dengan teknologi Industri 4.0 termasuk AI, IoT, dan sistem kontrol kualitas otomatis.",
+        "steps": {
+          "0": {
+            "phase": "Fase 1: Setup Infrastruktur",
+            "description": "Upgrade infrastruktur IT dan konektivitas"
+          },
+          "1": {
+            "phase": "Fase 2: Integrasi IoT",
+            "description": "Memasang sensor dan sistem monitoring"
+          },
+          "2": {
+            "phase": "Fase 3: Implementasi AI",
+            "description": "Deploy AI untuk kontrol kualitas dan optimasi"
+          }
+        }
+      },
+      "2": {
+        "title": "Ekspansi Pasar Global",
+        "description": "Memperluas jangkauan kami untuk melayani 30+ negara dengan membangun kemitraan strategis dan jaringan distribusi.",
+        "steps": {
+          "0": {
+            "phase": "Fase 1: Riset Pasar",
+            "description": "Menganalisis pasar target dan kebutuhan pelanggan"
+          },
+          "1": {
+            "phase": "Fase 2: Pengembangan Kemitraan",
+            "description": "Membangun kemitraan kunci di wilayah target"
+          },
+          "2": {
+            "phase": "Fase 3: Jaringan Distribusi",
+            "description": "Membangun saluran distribusi komprehensif"
+          }
+        }
+      }
+    },
+    "complete": "Selesai",
+    "implementationTimeline": "Timeline Implementasi"
+  }
+}

@@ -10,13 +10,13 @@
       <div class="hero-content">
         <div :class="{ 'animate-in': heroVisible }" class="hero-text">
           <h1 class="hero-title">
-            About <span class="text-accent-hero">Trimas SGI</span>
+            {{ $t("about.hero.title") }}
+            <span class="text-accent-hero">{{ $t("about.hero.company") }}</span>
           </h1>
-          <p class="hero-subtitle">Crafting Excellence Since 1991</p>
+          <p class="hero-subtitle">{{ $t("about.hero.subtitle") }}</p>
           <div class="hero-description">
             <p>
-              Discover the story behind our commitment to premium garment
-              manufacturing and sustainable business practices.
+              {{ $t("about.hero.description") }}
             </p>
           </div>
         </div>
@@ -30,9 +30,12 @@
     <section ref="timelineSection" class="timeline-section">
       <div class="container">
         <div class="section-header">
-          <h2>Our <span class="text-accent">Journey</span></h2>
+          <h2>
+            {{ $t("about.journey.title") }}
+            <span class="text-accent">{{ $t("about.journey.journey") }}</span>
+          </h2>
           <p class="section-tagline">
-            From humble beginnings to industry leadership
+            {{ $t("about.journey.subtitle") }}
           </p>
         </div>
 
@@ -53,8 +56,8 @@
             </div>
             <div class="timeline-content">
               <div class="timeline-year">{{ milestone.year }}</div>
-              <h3>{{ milestone.title }}</h3>
-              <p>{{ milestone.description }}</p>
+              <h3>{{ $t(`about.milestones.${index}.title`) }}</h3>
+              <p>{{ $t(`about.milestones.${index}.description`) }}</p>
             </div>
           </div>
         </div>
@@ -65,9 +68,12 @@
     <section class="values-section">
       <div class="container">
         <div class="section-header">
-          <h2>Our <span class="text-accent">Values</span></h2>
+          <h2>
+            {{ $t("about.values.title") }}
+            <span class="text-accent">{{ $t("about.values.values") }}</span>
+          </h2>
           <p class="section-tagline">
-            The principles that guide everything we do
+            {{ $t("about.values.subtitle") }}
           </p>
         </div>
 
@@ -83,12 +89,15 @@
             <div class="value-icon">
               <span class="material-icons">{{ value.icon }}</span>
             </div>
-            <h3>{{ value.title }}</h3>
-            <p>{{ value.description }}</p>
+            <h3>{{ $t(`about.valuesData.${index}.title`) }}</h3>
+            <p>{{ $t(`about.valuesData.${index}.description`) }}</p>
             <div v-if="activeValue === index" class="value-details">
               <ul>
-                <li v-for="detail in value.details" :key="detail">
-                  {{ detail }}
+                <li
+                  v-for="(detail, detailIndex) in value.details"
+                  :key="detailIndex"
+                >
+                  {{ $t(`about.valuesData.${index}.details.${detailIndex}`) }}
                 </li>
               </ul>
             </div>
@@ -101,8 +110,11 @@
     <section class="team-section">
       <div class="container">
         <div class="section-header">
-          <h2>Leadership <span class="text-accent">Team</span></h2>
-          <p class="section-tagline">Meet the visionaries behind our success</p>
+          <h2>
+            {{ $t("about.team.title") }}
+            <span class="text-accent">{{ $t("about.team.team") }}</span>
+          </h2>
+          <p class="section-tagline">{{ $t("about.team.subtitle") }}</p>
         </div>
 
         <div class="leadership-categories">
@@ -111,7 +123,9 @@
             :key="categoryKey"
             class="leadership-category"
           >
-            <h3 class="category-title">{{ category.title }}</h3>
+            <h3 class="category-title">
+              {{ $t(`about.teamCategories.${categoryKey}.title`) }}
+            </h3>
             <div class="team-showcase">
               <div class="team-modern-grid">
                 <div
@@ -125,18 +139,27 @@
                 >
                   <div class="member-image-container">
                     <div class="member-image">
-                      <img :alt="member.name" :src="member.image" />
+                      <img
+                        :alt="
+                          $t(`about.teamMembers.${categoryKey}.${index}.name`)
+                        "
+                        :src="member.image"
+                      />
                       <div class="image-overlay">
                         <div class="overlay-content">
                           <span class="material-icons">info</span>
-                          <p>Click to learn more</p>
+                          <p>{{ $t("about.clickToLearnMore") }}</p>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="member-info">
-                    <h4 class="member-name">{{ member.name }}</h4>
-                    <p class="member-role">{{ member.role }}</p>
+                    <h4 class="member-name">
+                      {{ $t(`about.teamMembers.${categoryKey}.${index}.name`) }}
+                    </h4>
+                    <p class="member-role">
+                      {{ $t(`about.teamMembers.${categoryKey}.${index}.role`) }}
+                    </p>
                     <div class="member-divider"></div>
                   </div>
                 </div>
@@ -159,27 +182,27 @@
                   <div class="profile-header">
                     <div class="profile-avatar">
                       <img
-                        :alt="getActiveMember.name"
+                        :alt="getActiveMemberName"
                         :src="getActiveMember.image"
                       />
                     </div>
                     <div class="profile-title">
-                      <h3>{{ getActiveMember.name }}</h3>
-                      <p class="profile-position">{{ getActiveMember.role }}</p>
+                      <h3>{{ getActiveMemberName }}</h3>
+                      <p class="profile-position">{{ getActiveMemberRole }}</p>
                     </div>
                   </div>
                   <div class="profile-body">
                     <div class="profile-bio">
-                      <h5>About</h5>
-                      <p>{{ getActiveMember.bio }}</p>
+                      <h5>{{ $t("about.profileAbout") }}</h5>
+                      <p>{{ getActiveMemberBio }}</p>
                     </div>
                     <div class="profile-achievements">
-                      <h5>Key Achievements</h5>
+                      <h5>{{ $t("about.keyAchievements") }}</h5>
                       <div class="achievements-list">
                         <div
                           v-for="(
                             achievement, idx
-                          ) in getActiveMember.achievements"
+                          ) in getActiveMemberAchievements"
                           :key="idx"
                           class="achievement-item"
                         >
@@ -203,9 +226,12 @@
     <section class="csr-section">
       <div class="container">
         <div class="section-header">
-          <h2>Social <span class="text-accent">Impact</span></h2>
+          <h2>
+            {{ $t("about.csr.title") }}
+            <span class="text-accent">{{ $t("about.csr.impact") }}</span>
+          </h2>
           <p class="section-tagline">
-            Creating positive change in our community
+            {{ $t("about.csr.subtitle") }}
           </p>
         </div>
 
@@ -223,8 +249,12 @@
                 <span class="material-icons">{{ stat.icon }}</span>
               </div>
               <div ref="statNumbers" class="stat-number">{{ stat.value }}</div>
-              <div class="stat-label">{{ stat.label }}</div>
-              <p class="stat-description">{{ stat.description }}</p>
+              <div class="stat-label">
+                {{ $t(`about.csrStats.${index}.label`) }}
+              </div>
+              <p class="stat-description">
+                {{ $t(`about.csrStats.${index}.description`) }}
+              </p>
             </div>
           </div>
 
@@ -238,7 +268,7 @@
                 @click="setActiveInitiative(index)"
               >
                 <span class="material-icons">{{ initiative.icon }}</span>
-                {{ initiative.title }}
+                {{ $t(`about.csrInitiatives.${index}.title`) }}
               </button>
             </div>
 
@@ -247,24 +277,39 @@
                 <div :key="activeInitiative" class="initiative-details">
                   <div class="initiative-image">
                     <img
-                      :alt="csrInitiatives[activeInitiative].title"
+                      :alt="
+                        $t(`about.csrInitiatives.${activeInitiative}.title`)
+                      "
                       :src="csrInitiatives[activeInitiative].image"
                     />
                   </div>
                   <div class="initiative-text">
-                    <h3>{{ csrInitiatives[activeInitiative].title }}</h3>
-                    <p>{{ csrInitiatives[activeInitiative].description }}</p>
+                    <h3>
+                      {{ $t(`about.csrInitiatives.${activeInitiative}.title`) }}
+                    </h3>
+                    <p>
+                      {{
+                        $t(
+                          `about.csrInitiatives.${activeInitiative}.description`
+                        )
+                      }}
+                    </p>
                     <div class="initiative-impact">
-                      <h5>Impact Metrics:</h5>
+                      <h5>{{ $t("about.impactMetrics") }}:</h5>
                       <div class="impact-items">
                         <div
-                          v-for="impact in csrInitiatives[activeInitiative]
-                            .impact"
-                          :key="impact.metric"
+                          v-for="(impact, impactIndex) in csrInitiatives[
+                            activeInitiative
+                          ].impact"
+                          :key="impactIndex"
                           class="impact-item"
                         >
                           <span class="impact-number">{{ impact.value }}</span>
-                          <span class="impact-label">{{ impact.metric }}</span>
+                          <span class="impact-label">{{
+                            $t(
+                              `about.csrInitiatives.${activeInitiative}.impact.${impactIndex}.metric`
+                            )
+                          }}</span>
                         </div>
                       </div>
                     </div>
@@ -281,9 +326,12 @@
     <section class="vision-section">
       <div class="container">
         <div class="section-header">
-          <h2>Future <span class="text-accent">Vision</span></h2>
+          <h2>
+            {{ $t("about.vision.title") }}
+            <span class="text-accent">{{ $t("about.vision.vision") }}</span>
+          </h2>
           <p class="section-tagline">
-            Our commitment to innovation and sustainability
+            {{ $t("about.vision.subtitle") }}
           </p>
         </div>
 
@@ -299,7 +347,7 @@
               <div class="vision-icon">
                 <span class="material-icons">{{ goal.icon }}</span>
               </div>
-              <h4>{{ goal.title }}</h4>
+              <h4>{{ $t(`about.futureGoals.${index}.title`) }}</h4>
               <div class="vision-progress">
                 <div class="progress-bar">
                   <div
@@ -307,7 +355,9 @@
                     class="progress-fill"
                   ></div>
                 </div>
-                <span class="progress-text">{{ goal.progress }}% Complete</span>
+                <span class="progress-text"
+                  >{{ goal.progress }}% {{ $t("about.complete") }}</span
+                >
               </div>
             </div>
           </div>
@@ -315,10 +365,10 @@
           <div v-if="activeGoal !== null" class="vision-details">
             <transition mode="out-in" name="slide-up">
               <div :key="activeGoal" class="goal-details">
-                <h3>{{ futureGoals[activeGoal].title }}</h3>
-                <p>{{ futureGoals[activeGoal].description }}</p>
+                <h3>{{ $t(`about.futureGoals.${activeGoal}.title`) }}</h3>
+                <p>{{ $t(`about.futureGoals.${activeGoal}.description`) }}</p>
                 <div class="goal-timeline">
-                  <h5>Implementation Timeline:</h5>
+                  <h5>{{ $t("about.implementationTimeline") }}:</h5>
                   <div class="timeline-steps">
                     <div
                       v-for="(step, index) in futureGoals[activeGoal].steps"
@@ -328,8 +378,20 @@
                     >
                       <div class="step-marker"></div>
                       <div class="step-content">
-                        <h6>{{ step.phase }}</h6>
-                        <p>{{ step.description }}</p>
+                        <h6>
+                          {{
+                            $t(
+                              `about.futureGoals.${activeGoal}.steps.${index}.phase`
+                            )
+                          }}
+                        </h6>
+                        <p>
+                          {{
+                            $t(
+                              `about.futureGoals.${activeGoal}.steps.${index}.description`
+                            )
+                          }}
+                        </p>
                         <span class="step-date">{{ step.date }}</span>
                       </div>
                     </div>
@@ -346,10 +408,12 @@
 
 <script>
 import { onMounted, onUnmounted, ref, computed } from "vue";
+import { useI18n } from "vue-i18n";
 
 export default {
   name: "AboutUs",
   setup() {
+    const { t } = useI18n();
     const parallaxOffset = ref(0);
     const heroVisible = ref(false);
     const activeMilestone = ref(0);
@@ -365,184 +429,83 @@ export default {
     const milestones = ref([
       {
         year: "1991",
-        title: "Company Founded",
-        description:
-          "Started as a small family business with a vision for quality garment manufacturing.",
         icon: "flag",
       },
       {
         year: "1995",
-        title: "First Major Contract",
-        description:
-          "Secured our first international contract, marking our entry into global markets.",
         icon: "handshake",
       },
       {
         year: "2000",
-        title: "Technology Integration",
-        description:
-          "Introduced advanced manufacturing technology to improve efficiency and quality.",
         icon: "precision_manufacturing",
       },
       {
         year: "2010",
-        title: "Sustainability Initiative",
-        description:
-          "Launched comprehensive environmental and social responsibility programs.",
         icon: "eco",
       },
       {
         year: "2020",
-        title: "Digital Transformation",
-        description:
-          "Implemented Industry 4.0 technologies for smart manufacturing.",
         icon: "smart_toy",
       },
       {
         year: "2025",
-        title: "Global Expansion",
-        description:
-          "Expanding operations to serve 25+ countries with premium garments.",
         icon: "public",
       },
     ]);
 
     const values = ref([
       {
-        title: "Quality",
-        description:
-          "Delivering excellence in every stitch, every product, every time.",
         icon: "star",
-        details: [
-          "Superior craftsmanship",
-          "Stringent quality assurance",
-          "Excellence in production",
-          "Best-in-class materials",
-        ],
+        details: [0, 1, 2, 3], // Index untuk i18n details
       },
       {
-        title: "Care",
-        description:
-          "Dedicated to the well-being of our customers, employees, and community.",
         icon: "volunteer_activism",
-        details: [
-          "Customer satisfaction priority",
-          "Employee welfare focus",
-          "Community support",
-          "Ethical business practices",
-        ],
+        details: [0, 1, 2, 3],
       },
       {
-        title: "Commitment",
-        description:
-          "Unwavering dedication to our promises and long-term relationships.",
         icon: "handshake",
-        details: [
-          "Reliable partnerships",
-          "On-time delivery",
-          "Continuous improvement",
-          "Long-term relationships",
-        ],
+        details: [0, 1, 2, 3],
       },
     ]);
 
     const leadershipTeams = ref({
       bod: {
-        title: "Board of Directors",
         members: [
           {
-            name: "Kevin Oen",
-            role: "President Director",
             image:
               "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=300&fit=crop&crop=face",
-            bio: "With over 25 years of experience in the garment industry, Kevin leads our company with vision and passion for excellence.",
-            achievements: [
-              "Led company growth by 300% over 10 years",
-              "Implemented sustainable manufacturing practices",
-              "Established partnerships with 18+ international buyers",
-            ],
           },
           {
-            name: "David Chen",
-            role: "Finance Director",
             image:
               "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=300&fit=crop&crop=face",
-            bio: "David brings 20 years of financial expertise, ensuring strong fiscal management and sustainable growth.",
-            achievements: [
-              "Secured major international investments",
-              "Implemented cost-effective operations",
-              "Developed strategic financial planning",
-            ],
           },
         ],
       },
       boc: {
-        title: "Board of Commissioners",
         members: [
           {
-            name: "William Zhang",
-            role: "President Commissioner",
             image:
               "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
-            bio: "William oversees corporate governance and ensures alignment with company vision and values.",
-            achievements: [
-              "Established robust corporate governance",
-              "Led strategic planning initiatives",
-              "Enhanced stakeholder relationships",
-            ],
           },
           {
-            name: "Emily Wong",
-            role: "Independent Commissioner",
             image:
               "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=300&fit=crop&crop=face",
-            bio: "Emily brings independent oversight and extensive industry expertise to ensure company growth.",
-            achievements: [
-              "Strengthened risk management",
-              "Improved corporate transparency",
-              "Enhanced board effectiveness",
-            ],
           },
         ],
       },
       managers: {
-        title: "Management Team",
         members: [
           {
-            name: "Michael Lee",
-            role: "Production Manager",
             image:
               "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=300&fit=crop&crop=face",
-            bio: "Michael oversees all production operations, ensuring efficiency and quality standards.",
-            achievements: [
-              "Optimized production efficiency by 40%",
-              "Implemented lean manufacturing",
-              "Reduced production waste by 30%",
-            ],
           },
           {
-            name: "Sarah Lin",
-            role: "HR Manager",
             image:
               "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=300&fit=crop&crop=face",
-            bio: "Sarah leads our human resources initiatives, focusing on employee development and workplace culture.",
-            achievements: [
-              "Developed comprehensive training programs",
-              "Improved employee retention by 25%",
-              "Implemented performance management system",
-            ],
           },
           {
-            name: "James Wilson",
-            role: "Quality Control Manager",
             image:
               "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
-            bio: "James ensures the highest quality standards across all our products and processes.",
-            achievements: [
-              "Achieved ISO 9001 certification",
-              "Reduced defect rate by 50%",
-              "Implemented QC automation",
-            ],
           },
         ],
       },
@@ -552,154 +515,96 @@ export default {
       {
         icon: "school",
         value: "500+",
-        label: "Students Trained",
-        description: "Vocational training programs for underprivileged youth",
       },
       {
         icon: "forest",
         value: "10,000",
-        label: "Trees Planted",
-        description: "Environmental conservation and reforestation efforts",
       },
       {
         icon: "local_hospital",
         value: "50+",
-        label: "Hospitals Supported",
-        description: "Free uniform donations to healthcare facilities",
       },
       {
         icon: "recycling",
         value: "75%",
-        label: "Waste Reduction",
-        description: "Achieved through sustainable manufacturing processes",
       },
     ]);
 
     const csrInitiatives = ref([
       {
-        title: "Youth Empowerment",
         icon: "school",
         image:
           "https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=600&h=400&fit=crop",
-        description:
-          "Our vocational training programs provide valuable skills to young people, creating pathways to meaningful careers in the garment industry.",
-        impact: [
-          { value: "500+", metric: "Students Trained" },
-          { value: "85%", metric: "Job Placement Rate" },
-          { value: "20", metric: "Training Centers" },
-        ],
+        impact: [{ value: "500+" }, { value: "85%" }, { value: "20" }],
       },
       {
-        title: "Environmental Conservation",
         icon: "eco",
         image:
           "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop",
-        description:
-          "We actively participate in reforestation projects and implement eco-friendly manufacturing processes to protect our environment.",
-        impact: [
-          { value: "10,000", metric: "Trees Planted" },
-          { value: "75%", metric: "Waste Reduction" },
-          { value: "50%", metric: "Energy Savings" },
-        ],
+        impact: [{ value: "10,000" }, { value: "75%" }, { value: "50%" }],
       },
       {
-        title: "Healthcare Support",
         icon: "local_hospital",
         image:
           "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop",
-        description:
-          "Supporting healthcare workers by providing quality uniforms to hospitals and medical facilities in underserved communities.",
-        impact: [
-          { value: "50+", metric: "Hospitals Supported" },
-          { value: "5,000+", metric: "Uniforms Donated" },
-          { value: "25", metric: "Cities Reached" },
-        ],
+        impact: [{ value: "50+" }, { value: "5,000+" }, { value: "25" }],
       },
     ]);
 
     const futureGoals = ref([
       {
-        title: "Carbon Neutral Operations",
         icon: "eco",
         progress: 65,
-        description:
-          "Achieving complete carbon neutrality in our manufacturing operations by implementing renewable energy sources and optimizing our supply chain.",
         steps: [
           {
-            phase: "Phase 1: Energy Audit",
-            description: "Complete assessment of current energy consumption",
             date: "2024 Q1",
             completed: true,
           },
           {
-            phase: "Phase 2: Solar Installation",
-            description: "Install solar panels across all facilities",
             date: "2024 Q3",
             completed: true,
           },
           {
-            phase: "Phase 3: Process Optimization",
-            description: "Implement energy-efficient manufacturing processes",
             date: "2025 Q1",
             completed: false,
           },
           {
-            phase: "Phase 4: Supply Chain Integration",
-            description: "Work with suppliers to reduce carbon footprint",
             date: "2025 Q3",
             completed: false,
           },
         ],
       },
       {
-        title: "Digital Manufacturing",
         icon: "precision_manufacturing",
         progress: 45,
-        description:
-          "Transforming our operations with Industry 4.0 technologies including AI, IoT, and automated quality control systems.",
         steps: [
           {
-            phase: "Phase 1: Infrastructure Setup",
-            description: "Upgrade IT infrastructure and connectivity",
             date: "2024 Q2",
             completed: true,
           },
           {
-            phase: "Phase 2: IoT Integration",
-            description: "Install sensors and monitoring systems",
             date: "2024 Q4",
             completed: false,
           },
           {
-            phase: "Phase 3: AI Implementation",
-            description: "Deploy AI for quality control and optimization",
             date: "2025 Q2",
             completed: false,
           },
         ],
       },
       {
-        title: "Global Market Expansion",
         icon: "public",
         progress: 30,
-        description:
-          "Expanding our reach to serve 30+ countries by establishing strategic partnerships and distribution networks.",
         steps: [
           {
-            phase: "Phase 1: Market Research",
-            description: "Analyze target markets and customer needs",
             date: "2024 Q1",
             completed: true,
           },
           {
-            phase: "Phase 2: Partnership Development",
-            description: "Establish key partnerships in target regions",
             date: "2025 Q1",
             completed: false,
           },
           {
-            phase: "Phase 3: Distribution Network",
-            description: "Build comprehensive distribution channels",
             date: "2025 Q4",
             completed: false,
           },
@@ -733,6 +638,51 @@ export default {
       if (!activeTeamMember.value) return null;
       const [category, index] = activeTeamMember.value.split("-");
       return leadershipTeams.value[category].members[index];
+    });
+
+    const getActiveMemberName = computed(() => {
+      if (!activeTeamMember.value) return "";
+      const [category, index] = activeTeamMember.value.split("-");
+      return t(`about.teamMembers.${category}.${index}.name`);
+    });
+
+    const getActiveMemberRole = computed(() => {
+      if (!activeTeamMember.value) return "";
+      const [category, index] = activeTeamMember.value.split("-");
+      return t(`about.teamMembers.${category}.${index}.role`);
+    });
+
+    const getActiveMemberBio = computed(() => {
+      if (!activeTeamMember.value) return "";
+      const [category, index] = activeTeamMember.value.split("-");
+      return t(`about.teamMembers.${category}.${index}.bio`);
+    });
+
+    const getActiveMemberAchievements = computed(() => {
+      if (!activeTeamMember.value) return [];
+      const [category, index] = activeTeamMember.value.split("-");
+      const achievementCount = t(
+        `about.teamMembers.${category}.${index}.achievements`,
+        {},
+        { fallbackWarn: false }
+      );
+
+      // Get achievements array
+      const achievements = [];
+      let i = 0;
+      while (true) {
+        try {
+          const achievement = t(
+            `about.teamMembers.${category}.${index}.achievements.${i}`
+          );
+          if (achievement.includes("about.teamMembers")) break; // Stop if translation key is returned
+          achievements.push(achievement);
+          i++;
+        } catch (e) {
+          break;
+        }
+      }
+      return achievements;
     });
 
     const setActiveInitiative = (index) => {
@@ -809,6 +759,10 @@ export default {
       setActiveValue,
       setActiveTeamMember,
       getActiveMember,
+      getActiveMemberName,
+      getActiveMemberRole,
+      getActiveMemberBio,
+      getActiveMemberAchievements,
       setActiveInitiative,
       setActiveGoal,
     };
@@ -918,7 +872,7 @@ export default {
 }
 
 .hero-title {
-  font-size: clamp(3rem, 8vw, 5rem);
+  font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 700;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
